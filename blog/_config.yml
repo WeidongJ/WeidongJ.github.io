@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: PrueMat
+title: PrueMat #站点名称
 subtitle:
 description: 
 keywords:
 author: Weidong Ji
-language: zh-Hans
-timezone: Asia/Shanghai
+language: zh-Hans # 中文
+timezone: Asia/Shanghai # 东八区
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -77,7 +77,7 @@ theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repo: https://github.com/WeidongJ/WeidongJ.github.io.git
+deploy: # 部署配置
+  type: git #部署方式
+  repo: https://github.com/WeidongJ/WeidongJ.github.io.git # git
   branch: master
