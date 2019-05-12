@@ -5,6 +5,8 @@ tags:
     - hexo
     - github
     - 博客
+categories:
+    - 学习
 ---
 # hexo + github 个人博客搭建
 ## 步骤
