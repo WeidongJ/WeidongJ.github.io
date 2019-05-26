@@ -301,6 +301,39 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/性能测试/" itemprop="url" rel="index">
+                    <span itemprop="name">性能测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -512,7 +545,24 @@ java.lang.ArrayIndexOutOfBoundsException: null
       
         
           
-            <h1 id="算法图解学习笔记"><a href="#算法图解学习笔记" class="headerlink" title="算法图解学习笔记"></a>算法图解学习笔记</h1><h2 id="第一章-算法简介"><a href="#第一章-算法简介" class="headerlink" title="第一章 算法简介"></a>第一章 算法简介</h2><h2 id="第二章-选择排序"><a href="#第二章-选择排序" class="headerlink" title="第二章 选择排序"></a>第二章 选择排序</h2><h2 id="第三章-递归"><a href="#第三章-递归" class="headerlink" title="第三章 递归"></a>第三章 递归</h2><h2 id="第四章-快速排序"><a href="#第四章-快速排序" class="headerlink" title="第四章 快速排序"></a>第四章 快速排序</h2><h2 id="第五章-散列表"><a href="#第五章-散列表" class="headerlink" title="第五章 散列表"></a>第五章 散列表</h2><h2 id="第六章-广度优先搜索"><a href="#第六章-广度优先搜索" class="headerlink" title="第六章 广度优先搜索"></a>第六章 广度优先搜索</h2><p><strong>广度优先搜索</strong>：解决最短路径问题的算法。例如查找整个人际关系网查找水果经销商。主要解决2类问题：</p>
+            <h1 id="算法图解学习笔记"><a href="#算法图解学习笔记" class="headerlink" title="算法图解学习笔记"></a>算法图解学习笔记</h1><h2 id="第一章-算法简介"><a href="#第一章-算法简介" class="headerlink" title="第一章 算法简介"></a>第一章 算法简介</h2><p>二分查找：时间复杂度O(log n),</p>
+<p>实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 二分法</span><br><span class="line">def binary_search(list, item):</span><br><span class="line">    low = 0</span><br><span class="line">    high = len(list)-1</span><br><span class="line"></span><br><span class="line">    while low &lt;= high:</span><br><span class="line">        mid = (low +high)//2</span><br><span class="line">        guess = list[mid]</span><br><span class="line">        if guess == item:</span><br><span class="line">            return mid</span><br><span class="line">        if guess &lt; item:</span><br><span class="line">            low = mid +1</span><br><span class="line">        else:</span><br><span class="line">            high = mid -1</span><br><span class="line">    return None</span><br></pre></td></tr></table></figure></p>
+<h2 id="第二章-选择排序"><a href="#第二章-选择排序" class="headerlink" title="第二章 选择排序"></a>第二章 选择排序</h2><p>链表：顾名思义，每个元素连接着下一个元素（存储了下一个元素的位置）<br>优势：插入和删除元素方便，存储在内存中的任意位置</p>
+<p>数组：所有元素存储在一起，优势在于随机读取 </p>
+<p>选择排序：遍历数组找出最大或者最小的数放入新的数组中，对剩余的元素继续遍历，直到数组为空。<br>时间复杂度 O(n2)，实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 选择排序</span><br><span class="line">def selectionSorted(arr):</span><br><span class="line">    newArr = []</span><br><span class="line">    for i in range(len(arr)):</span><br><span class="line">        smallest = arr[0]</span><br><span class="line">        smallest_index = 0</span><br><span class="line">        for j in range(1,len(arr)):</span><br><span class="line">            if arr[j] &lt; smallest:</span><br><span class="line">                smallest = arr[j]</span><br><span class="line">                smallest_index = j</span><br><span class="line">        newArr.append(arr.pop(smallest_index))</span><br><span class="line"></span><br><span class="line">    return newArr</span><br></pre></td></tr></table></figure></p>
+<p>冒泡排序：遍历数组，比较每个元素两两大小，将大的或小的值交换，对剩余元素继续遍历。<br>时间复杂度 O(n2)，实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 冒泡排序 </span><br><span class="line">def bubble_sorted(arr):</span><br><span class="line">    for i in range(len(arr)-1):</span><br><span class="line">        for j in range(len(arr)-i-1):</span><br><span class="line">            if arr[j] &gt; arr[j+1]:</span><br><span class="line">                temp = arr[j]</span><br><span class="line">                arr[j] = arr[j+1]</span><br><span class="line">                arr[j+1] = temp</span><br><span class="line">    return arr</span><br></pre></td></tr></table></figure></p>
+<h2 id="第三章-递归"><a href="#第三章-递归" class="headerlink" title="第三章 递归"></a>第三章 递归</h2><p><strong>递归</strong>：返回时调用自己。只是在结构上更加清晰，没有性能上的优势，“如果使用循环，程序的性能可能更高；如果使用递归，程序可能更容易理解。如何选择要看什么对你来说更重要。”</p>
+<p><strong>栈</strong>：一种先入后出的队列，调用栈只支持2种操作：压入（插入）和弹出（删除并读取）</p>
+<h2 id="第四章-快速排序"><a href="#第四章-快速排序" class="headerlink" title="第四章 快速排序"></a>第四章 快速排序</h2><p>核心：取第一个元素作为基准值povit，其余元素与其对比，小的放入less组，大的放入glter组，返回新的数组<code>less+povit+glter</code>,对返回的数据进行同样的操作。<br>时间复杂度 O(n log n), 实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 快速排序</span><br><span class="line">def quicksort(arr):</span><br><span class="line">    if len(arr) &lt; 2:</span><br><span class="line">        return arr</span><br><span class="line">    else:</span><br><span class="line">        pivot = arr[0]</span><br><span class="line">        less = [i for i in arr[1:] if i &lt;= pivot]</span><br><span class="line">        glter = [i for i in arr[1:] if i &gt; pivot]</span><br><span class="line"></span><br><span class="line">        return quicksort(less) +[pivot] + quicksort(glter)</span><br></pre></td></tr></table></figure></p>
+<p><strong>分而治之</strong>（divide and conquer，D&amp;C）：我的理解就是分成等分之后再处理。<br><strong>欧几里得算法</strong>：2个数的最大公约数，等于较小数与2者差值的最大公约数</p>
+<h2 id="第五章-散列表"><a href="#第五章-散列表" class="headerlink" title="第五章 散列表"></a>第五章 散列表</h2><p>列表：</p>
+<p>冲突：如果两个键映射到了同一个位置</p>
+<p>解决方法：使用链表<br>影响列表速度的关键：</p>
+<ol>
+<li>装填因子：元素总数/位置总数，装因子越低，发生冲突的可能性越小，散列表的性能越高。一个不错的经验规则是：一旦填装因子大于0.7，就调整散列表的长度</li>
+<li>良好的散列函数，良好的散列函数让数组中的值呈均匀分布。</li>
+</ol>
+<h2 id="第六章-广度优先搜索"><a href="#第六章-广度优先搜索" class="headerlink" title="第六章 广度优先搜索"></a>第六章 广度优先搜索</h2><p><strong>广度优先搜索</strong>：解决最短路径问题的算法。例如查找整个人际关系网查找水果经销商。主要解决2类问题：</p>
 <ul>
 <li>从节点A出发有到达B的路径吗？</li>
 <li>从节点A到达节点B的最短路径是什么？</li>
@@ -530,7 +580,83 @@ java.lang.ArrayIndexOutOfBoundsException: null
 <p>有向图：有箭头指向。<br>树：类似家谱，所有边都是向下指。</p>
 <p>实现：通过dict实现，节点和邻居的关系，并实现邻居与邻居的联系<br>算法：python可以使用deque创建双端队列</p>
 <p><em>问题</em>：同一个节点由于可能同时是多个节点的邻居可能会多次进入队列，也会出现无线循环的情况：<br>解决方法：标记节点已经检查。</p>
-
+<h2 id="第七章-狄克斯特拉算法"><a href="#第七章-狄克斯特拉算法" class="headerlink" title="第七章 狄克斯特拉算法"></a>第七章 狄克斯特拉算法</h2><p>核心：<em>找出图中最便宜的节点，并确保没有到该节点更便宜的路径</em>。<br>适用场景：有向图，不含负加权（<strong>这是因为狄克斯特拉算法这样假设：对于处理过的海报节点，没有前往该节点的更短路径。这种假设仅在没有负权边时才成立</strong>）。</p>
+<h2 id="第八章-贪婪算法"><a href="#第八章-贪婪算法" class="headerlink" title="第八章 贪婪算法"></a>第八章 贪婪算法</h2><p>每次都取最优解，<br>优劣评判标准：</p>
+<ul>
+<li>速度有多快</li>
+<li>得到的近似解与最优解的接近程度<br><strong>NP完全问题</strong>：以难解著称的问题。</li>
+</ul>
+<h2 id="第九章-动态规划"><a href="#第九章-动态规划" class="headerlink" title="第九章 动态规划"></a>第九章 动态规划</h2><p>限制：<em>动态规划功能强大，它能够解决子问题并使用这些答案来解决大问题。但仅当每个子问题都是离散的，即不依赖于其他子问题时，动态规划才管用</em><br><strong>2种计算维度</strong>：</p>
+<ul>
+<li><p>比较最长公共子串：两个字符串都包含的最长子串的长度，伪代码：</p>
+<pre><code>if word_a[i] == word_b[j]: 
+    cell[i][j] = cell[i-1][j-1] + 1 
+else: 
+    cell[i][j] = 0 
+</code></pre></li>
+<li><p>最长公共子序列：两个单词中都有的序列包含的字母数，伪代码：</p>
+<pre><code>if word_a[i] == word_b[j]:
+    cell[i][j] = cell[i-1][j-1] + 1 
+else: 
+    cell[i][j] = max(cell[i-1][j], cell[i][j-1])
+</code></pre><p>应用：DNA相似度，git diff的实现</p>
+</li>
+</ul>
+<p>具体适用场景：</p>
+<ul>
+<li>需要在给定约束条件下优化某种指标时，动态规划很有用。</li>
+<li>问题可以分为离散问题时，可以使用动态规划来解决。</li>
+<li>每种动态规划都涉及网络。</li>
+<li>单元格的值就是要优化的值。</li>
+<li>每一个单元格都是一个子问题，因此需要将问题划分为子问题。</li>
+<li>计算动态规划的公式不唯一。</li>
+</ul>
+<h2 id="第十章-K最近邻算法"><a href="#第十章-K最近邻算法" class="headerlink" title="第十章 K最近邻算法"></a>第十章 K最近邻算法</h2><p>K最近邻算法（KNN）：</p>
+<ol>
+<li>对一个水果进行分类</li>
+<li>查看他的最近3个邻居</li>
+<li>邻居中最多的种类，是可能的类型</li>
+</ol>
+<p>回归：计算出邻居的平局值</p>
+<p><strong>机器学习</strong>：<br>OCR（图像识别）原理，</p>
+<ol>
+<li>浏览大量数字图片，提取数字图片特征（线，点，曲线特征）。–<strong>训练</strong></li>
+<li>遇到新图像时，提取图像的特征，找出他最近的邻居。</li>
+</ol>
+<p><em>**总结</em>：</p>
+<ul>
+<li>KNN就是用于分类和回归，需要考虑最近的邻居</li>
+<li>分类就是编组</li>
+<li>回归就是预测结果</li>
+<li>特征抽取意味着将物品转换为一系列可比较的数字</li>
+<li>能否挑选合适的特征事关KNN算法的成败</li>
+</ul>
+<h2 id="第十一章-十种算法"><a href="#第十一章-十种算法" class="headerlink" title="第十一章 十种算法"></a>第十一章 十种算法</h2><h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p>定义：对于每一个节点，左子节点的值都比他小，右子节点的值都比他大<br>对比快速排序：</p>
+<ul>
+<li>优点：二叉树查找法的插入和删除速度要快的很多；</li>
+<li>缺点：不能随机访问</li>
+</ul>
+<p>扩展：<em>堆</em>：又被为优先队列(priority queue)。尽管名为优先队列，但堆并不是队列。回忆一下，在队列中，我们可以进行的限定操作是dequeue和enqueue。dequeue是按照进入队列的先后顺序来取出元素。而在堆中，我们不是按照元素进入队列的先后顺序取出元素的，而是按照元素的优先级取出元素。<a href="https://www.cnblogs.com/vamei/archive/2013/03/20/2966612.html" target="_blank" rel="noopener">堆</a></p>
+<p>插入：进行名为<code>[precolate_up</code>的操作：在树的最后插入元素，和其父节点比较优先级大小，比父节点大就进行交换，直到优先级小于父节点。</p>
+<p>删除：只能删除根节点，成为2个子树；让最后一个元素（last）成为根节点，进行<code>precolate_down</code>操作，不断比较last节点和子节点的优先级大小，如果last的优先级比2个子结点中小的那个大，则和其交换位置。</p>
+<h3 id="反向索引"><a href="#反向索引" class="headerlink" title="反向索引"></a>反向索引</h3><p>定义：字典的key为单词，值为所在的页码</p>
+<p>作用：用于搜索引擎</p>
+<h3 id="傅里叶变换-？？"><a href="#傅里叶变换-？？" class="headerlink" title="傅里叶变换 ？？"></a>傅里叶变换 ？？</h3><h3 id="并行算法"><a href="#并行算法" class="headerlink" title="并行算法"></a>并行算法</h3><p>主要的问题：</p>
+<ol>
+<li>并行性管理开销：如何合理分配任务，如何有效合并任务</li>
+<li>负载均衡：如何均匀的分配任务，让各个内核的任务达到负载均衡</li>
+</ol>
+<p><strong>MapReduce</strong>：流行的分布式算法</p>
+<p>map（映射函数）：接受一个数组，并对每个元素执行同样的操作</p>
+<p>reduce（归并函数）：将一个数组转化成一个元素。</p>
+<h3 id="概率性算法"><a href="#概率性算法" class="headerlink" title="概率性算法"></a>概率性算法</h3><p><strong>布隆过滤器</strong>：一种概率性的数据结构，结果可能不对，很可能是正确的</p>
+<ul>
+<li>可能出错的情况：指出结果是正确时，结果可能是错误的</li>
+<li>不可能错误的情况：指出结果是错误的情况时<br><strong>HyperLogLog</strong></li>
+</ul>
+<h3 id="SHA算法"><a href="#SHA算法" class="headerlink" title="SHA算法"></a>SHA算法</h3><p>散列函数：即反向索引<br>安全散列算法函数（SHA）：给定一个字符串，返回其散列值。<strong>无法根据散列值推算出字符串</strong><br>特点：局部不敏感：改动一个字符串，返回的散列值没有任何的相似性，</p>
+<h3 id="Diffie-Hellman-密钥交换"><a href="#Diffie-Hellman-密钥交换" class="headerlink" title="Diffie-Hellman 密钥交换"></a>Diffie-Hellman 密钥交换</h3><p>特点:公钥和私钥结合使用：使用公钥生成散列值，使用私钥揭秘散列值。</p>
+<h3 id="线性规划：即使用方程求最优化解"><a href="#线性规划：即使用方程求最优化解" class="headerlink" title="线性规划：即使用方程求最优化解"></a>线性规划：即使用方程求最优化解</h3>
           
         
       
@@ -634,6 +760,17 @@ java.lang.ArrayIndexOutOfBoundsException: null
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/学习/" itemprop="url" rel="index">
                     <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/git-pages/" itemprop="url" rel="index">
+                    <span itemprop="name">git pages</span>
                   </a>
                 </span>
 
@@ -826,7 +963,7 @@ hexo s
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
