@@ -7,6 +7,7 @@ tags:
     - 博客
 categories:
     - 学习
+    - git pages
 ---
 # hexo + github 个人博客搭建
 ## 步骤

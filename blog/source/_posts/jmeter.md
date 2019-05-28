@@ -5,6 +5,9 @@ tags:
     - 性能测试
     - jmeter
     - 工具使用
+categories:
+    - 学习
+    - 性能测试
 ---
 
 # jmeter使用基础
