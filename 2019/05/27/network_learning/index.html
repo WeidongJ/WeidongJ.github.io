@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="网络通信,协议,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第七章 网络互连··· 因特网际协议IP7.24 ip数据报格式： 首部不可变部分：  版本：占4bit，指IP协议的版本。通信双方使用的IP协议的版本必须一致。目前广泛使用的IP协议版本号为4 (即IPv4) 首部长度：可表示的最大数值是15个单位(一个单位为4字节)，因此IP的首部长度的最大值是60字节。当IP分组的首部长度不是4字节的整数倍时，必须利用最后一个填充字段加以填充。因此数据部分永">
+<meta name="keywords" content="网络通信,协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/05/27/network_learning/index.html">
+<meta property="og:site_name" content="PrueMat">
+<meta property="og:description" content="第七章 网络互连··· 因特网际协议IP7.24 ip数据报格式： 首部不可变部分：  版本：占4bit，指IP协议的版本。通信双方使用的IP协议的版本必须一致。目前广泛使用的IP协议版本号为4 (即IPv4) 首部长度：可表示的最大数值是15个单位(一个单位为4字节)，因此IP的首部长度的最大值是60字节。当IP分组的首部长度不是4字节的整数倍时，必须利用最后一个填充字段加以填充。因此数据部分永">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/05/27/network_learning/ip.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/27/network_learning/MTU.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/27/network_learning/ip_protocol.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/27/network_learning/ICMP.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/27/network_learning/ICMP1.png">
+<meta property="og:updated_time" content="2019-06-02T14:39:25.559Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络学习笔记">
+<meta name="twitter:description" content="第七章 网络互连··· 因特网际协议IP7.24 ip数据报格式： 首部不可变部分：  版本：占4bit，指IP协议的版本。通信双方使用的IP协议的版本必须一致。目前广泛使用的IP协议版本号为4 (即IPv4) 首部长度：可表示的最大数值是15个单位(一个单位为4字节)，因此IP的首部长度的最大值是60字节。当IP分组的首部长度不是4字节的整数倍时，必须利用最后一个填充字段加以填充。因此数据部分永">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/27/network_learning/ip.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/27/network_learning/">
+
+
+
+
+
+  <title>计算机网络学习笔记 | PrueMat</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">PrueMat</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/27/network_learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Weidong Ji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrueMat">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-27T22:42:27+08:00">
+                2019-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第七章-网络互连"><a href="#第七章-网络互连" class="headerlink" title="第七章 网络互连"></a>第七章 网络互连</h2><p>···</p>
+<p><strong>因特网际协议IP</strong><br>7.24 ip数据报格式：<br><img src="/2019/05/27/network_learning/ip.png" title="ip报文"></p>
+<p>首部不可变部分：</p>
+<ol>
+<li>版本：占4bit，指IP协议的版本。通信双方使用的IP协议的版本必须一致。目前广泛使用的IP协议版本号为4 (即IPv4)</li>
+<li>首部长度：可表示的最大数值是15个单位(一个单位为4字节)，因此IP的首部长度的最大值是60字节。当IP分组的首部长度不是4字节的整数倍时，必须利用最后一个填充字段加以填充。因此数据部分永远在4字节的整数倍时开始，这样在实现IP协议时较为方便。首部长度限制为60字节的缺点是有时(如源站路由选择)不够用。但这样做是希望用户尽量减少开销。最常用的首部长度就是20字节，即不使用任何选项。 </li>
+<li>服务类型：<ul>
+<li>前3个比特表示优先级，它可使数据报具有8个优先级中的一个。 </li>
+<li>第4个比特是D比特，表示要求有更低的时延。 </li>
+<li>第5个比特是T比特，表示要求有更高的吞吐量。 </li>
+<li>第6个比特是R比特，表示要求有更高的可靠性(即在数据报传送的过程中，被路由器丢弃的概率要更小些)。 </li>
+<li>第7个比特是C比特，是新增加的，表示要求选择费用更低廉的路由。 </li>
+<li>最后一个比特目前尚未使用</li>
+</ul>
+</li>
+<li>总长度：总长度指首部和数据之和的长度，单位为字节。总长度字段为16 bit，因此数据报的最大长度为65535字节(即64 KB)。<br>在IP层下面的每一种数据链路层都有其自己的帧格式，其中包括数据字段的最大长度，这在IP层中就称为最大传送单元MTU (Maximum Transfer Unit)。当一个IP数据报封装成链路层的帧时，此数据报的总长度(即首部加上数据部分)一定不能超过MTU的值。表7-3给出了不同链路层协议的MTU值。<img src="/2019/05/27/network_learning/MTU.png" title="MTU">
+虽然使用尽可能长的数据报会使传输效率提高，但由于以太网的普遍应用，实际上使用的数据报长度很少有超过1500字节的，而有时数据报长度还被限制在576字节。当数据报长度超过网络所容许的最大传送单元MTU时，就必须将过长的数据报进行分片后才能在网络上传送。这时，数据报首部中的“总长度”字段不是指未分片前的数据报长度，而是指分片后每片的首部长度与数据长度的总和。</li>
+<li>标识：当数据过长需要分片时，各分片中的标识计数器用于重新组装数据。</li>
+<li>标志：占3bit。<ul>
+<li>最低为记为MF，MF=1表示后面还有分片的数据报；MF=0，表示这是若干数据报中的最后一个。</li>
+<li>中间一位记为DF，意思是不能分片，当其为0时允许分片</li>
+</ul>
+</li>
+<li>片位移：较长的分组在分片后，某片在原分组中的相对位置。也就是说，相对于用户数据字段的起点，该片从何处开始。片偏移以8个字节为偏移单位。片偏移等于5就表明偏移量为40字节。每个分片的长度一定是8字节(64 bit)的整数倍。</li>
+<li>生存时间：生存时间字段记为TTL(Time To Live)，即数据报在网络中的寿命。一个数据报在它通过互连网时必须具有受限的寿命。这个字段用来控制数据报所通过路由器的最大跳数。当源站发送数据报时，它在此字段写入一个数。这个数值约为任何两个主机之间的路由器数的两倍。当路由器收到一个数据报时，它先将此字段的值减1。若在减1之后此字段的值是0，路由器就丢弃该数据报。</li>
+<li>协议：占8 bit，协议字段指出此数据报携带的数据是使用何种协议，以便使目的主机的IP层知道应将此数据报上交给哪个进程。图7-15表示IP层需要根据这个协议字段的值将所收到的数据交付到正确地方。常用的一些协议和相应的协议字段值如下：<img src="/2019/05/27/network_learning/ip_protocol.png" title="ip_protocol"></li>
+<li>首部检验和：此字段只检验数据报的首部，不包括数据部分。这是因为数据报每经过一个结点，结点处理机就要重新计算一下首部检验和(一些字段，如生存时间、标志、片偏移等都可能发生变化)。检验和不采用CRC检验码而采用下面的简单计算方法：在发送端，先将IP数据报首部划分为许多16 bit字的序列，并将检验和字段置零。用反码算术运算将所有16 bit字相加后，将得到的和的反码写入检验和字段。接收端收到数据报后，将首部的所有16 bit字再使用反码算术运算相加一次。将得到的和取反码，即得出接收端检验和的计算结果。若首部未发生任何变化，则此结果必为0，于是就保留这个数据报。否则即认为出差错，并将此数据报丢弃</li>
+<li>源地址：占4字节。这是首部中最重要的字段。</li>
+<li>目的地址：占4字节。这也是首部中最重要的字段。</li>
+</ol>
+<p>首部可变部分：<br>1-40字节</p>
+<ul>
+<li>源站路由选择，通常不使用<ul>
+<li>严格源站路由选择：不允许修改源站事先规定好的路由。</li>
+<li>不严格源站路由选择：允许修改源站事先规定好的路由。</li>
+</ul>
+</li>
+<li>因特网时间戳：记录路由器收到数据报的时间戳，用于统计数据报经路由器产生的时延和时延变化。</li>
+</ul>
+<p><strong>ip层处理数据报的过程</strong><br>路由表：<strong>目的网络地址，下一跳地址</strong><br>可以使用默认路由，<br>具体转发过程如下：</p>
+<ol>
+<li>从数据报的首部提取目的站的IP地址D，得出目的网络地址为N。 </li>
+<li>若N是就与此路由器直接相连的某个网络地址，则这种交付为直接交付，即不需要再经过其他的路由器。这时就直接通过该网络将数据报交付给目的站D (这里包括将目的主机地址D转换为具体的硬件地址，将数据报封装为MAC帧，再发送此帧)；否则就是间接交付，执行（3）。 </li>
+<li>若路由表中有目的地址为D的指明主机路由，则将数据报传送给路由表中所指明的下一跳路由器；否则，执行（4）。 </li>
+<li>若路由表中有到达网络N的路由，则将数据报传送给路由表中所指明的下一跳路由器；否则，执行（5）。 </li>
+<li>若路由表中有一个默认路由，则将数据报传送给路由表中所指明的默认路由器；否则，执行（6）。 </li>
+<li>报告转发分组出错。</li>
+</ol>
+<p><strong>子网划分</strong>：子网掩码，寻址时目的网络与子网掩码相与（都是1则返回1，否则返回0），是否等于网络号，若相等则是下一跳地址。</p>
+<p><strong>无分类编址</strong>：无分类编址CIDR：ip后指定网络号的比特数。仍然使用掩码。</p>
+<p><strong>最长匹配原则</strong>：因为网络前缀越长，其地址块就越小，因而路由就越具体(more specific)。</p>
+<p>7.4 <strong>因特网控制报文协议ICMP(Internet Control Message Protocol)</strong><br>为了提高IP数据报交付成功的机会，ICMP允许主机或路由器报告差错情况和提供有关异常情况的报告。但ICMP不是高层协议，而是IP层的协议。ICMP报文作为IP层数据报的数据，加上数据报的首部，组成数据报发送出去。</p>
+<p>ICMP报文格式：<br><img src="/2019/05/27/network_learning/ICMP.png" title="ICMP"><br>ICMP报文的种类有两种，即ICMP差错报告报文和ICMP询问报文。<br>ICMP报文的前4个字节是统一的格式，共有三个字段：即类型、代码和检验和。接着的4个字节的内容与ICMP的类型有关。再后面是数据字段，其长度取决于ICMP 的类型。ICMP报文的类型字段的值与ICMP报文类型的对应关系如表7-7所示。<br><img src="/2019/05/27/network_learning/ICMP1.png" title="ICMP"></p>
+<p>7.5<strong>路由选择算法</strong><br>1.理想的路由算法<br>特点：</p>
+<ol>
+<li>算法必须是正确的和完整的。这里，“正确”的含义是：沿着各路由表所指引的路由，分组一定能够最终到达的目的网络和目的主机。</li>
+<li>算法在计算上应简单。进行路由选择的计算必然要增加分组的时延。因此，路由选择的计算不应使网络通信量增加太多的外开销。当为了计算合适的路由而必须使用网络其他路由器发来的大量状态信息时，就会使网络通信量的开销过大。</li>
+<li>算法应能适应通信量和网络拓扑的变化，这就是说，要有自适应性。当网络中的通信量发生变化时，算法能自适应地改变路由以均衡各链路的负载。当某个或某些结点、链路发生故障不能工作，或者修理好了再投入运行时，算法也能及时地改变路由。有时称这种自适应性为“稳健性”(robustness)①。 </li>
+<li>算法应具有稳定性。在网络通信量和网络拓扑相对稳定的情况下，路由算法应收敛于一个可以接受的解，而不应使得出的路由不停地变化。 </li>
+<li>算法应是公平的。这就是说，算法应对所有用户(除对少数优先级高的用户)都是平等的。例如，<br>若使某一对用户的端到端时延为最小，但不考虑其他的广大用户，这就明显地不符合公平性的要求。 </li>
+<li>算法应是最佳的。这里的“最佳”是指以最低的代价来实现路由算法。这里特别需要注意的是，在研究路由选择时，需要给每一条链路指明一定的费用(cost)(也可以将cost译为“代价”)，而这里“费用”并不是指“钱”，而是由一个或几个因素综合决定的一种度量(metric)，如链路长度、数据率、链路容量、是否要保密、传播时延等，甚至还可以是一天中某一个小时内的通信量、结点的缓存被占用的程度、链路差错率等。可以根据用户的具体情况来设置每一条链路的“费用”。由此可见，不存在一种绝对的最佳路由算法。所谓“最佳”只能是相对于某一种特定要求下得出的较为合理的选择而已。</li>
+</ol>
+<p>从路由算法能否随网络的通信量或拓扑自适应地进行调整变化来划分，则只有两大类，即<strong>静态路由选择策略</strong>与<strong>动态路由选择策略</strong>。静态路由选择也叫做非自适应路由选择，其特点是简单和开销较小，但不能及时适应网络状态的变化。动态路由选择也称为自适应路由选择，其特点是能较好地适应网络状态的变化，但实现起来较为复杂，开销也比较大。</p>
+<p>2.分层次的路由选择协议</p>
+<p>由于以下两个原因，因特网采用分层次的路由选择协议：<br>（1）因特网的规模非常大，现在就已经有几百万个路由器互连在一起。如果让所有的路由器知道所有<br>的网络应怎样到达，则这种路由表将非常大，处理起来也太花时间。而所有这些路由器之间交换路由信息<br>所需的带宽就会使因特网的通信链路饱和。<br>（2）许多单位不愿意外界了解自己单位网络的布局细节和本单位所采用的路由选择协议(这属于本单位<br>内部的事情)，但同时还希望连接到因特网上。<br>为此，因特网将整个互联网划分为许多较小的自治系统(autonomous system</p>
+<p>两大类路由选择协议：</p>
+<ul>
+<li>内部网关协议IGP (Interior Gateway Protocol)。这是在一个自治系统内部使用的路由选择协议，而<br>这与在互联网中的其他自治系统选用什么路由选择协议无关。目前这类路由选择协议使用得最多，如RIP<br>和OSPF协议。 </li>
+<li>外部网关协议EGP (External Gateway Protocol)。若源站和目的站处在不同的自治系统中(这两个自<br>治系统使用不同的内部网关协议)，当数据报传到一个自治系统的边界时，就需要使用一种协议将路由选择<br>信息传递到另一个自治系统中。这样的协议就是外部网关协议EGP。在外部网关协议中目前使用最多的是BGP</li>
+</ul>
+<p>7.5.2</p>
+<p>路由信息协议RIP (Routing Information Protocol)是内部网关协议IGP中使用得最广泛的一个[RFC 1058]。RIP是一种分布式的基于距离向量的路由选择协议，是因特网的标准协议，其最大优点就是简单。 </p>
+<p>RIP协议要求网络中的每一个路由器都要维护从它自己到其他每一个目的网络的距离记录(因此，这是一组距离，即“距离向量”)。RIP协议将“距离”定义如下：<br>从一路由器到直接连接的网络的距离定义为1。从一路由器到非直接连接的网络的距离定义为所经过的路由器数加1。“加1”是因为到达目的网络后就进行直接交付，而到直接连接的网络的距离已经定义为1。例如在前面讲过的图7-16中，路由器R1到网1或网2的距离都是1(直接连接)，而到网3的距离是2，到网4的距离是3。<br>RIP协议的“距离”也称为“跳数”(hop count)①，因为每经过一个路由器，跳数就加1。RIP认为一个好的路由就是它通过的路由器的数目少，即“距离短”。RIP允许一条路径最多只能包含15个路由器。因此“距离”的最大值为16时即相当于不可达。可见RIP只适用于小型互联网。 </p>
+<p>需要注意的是，到直接连接的网络的距离也可定义为0(采用这种定义的理由是：路由器在和直接连接在该网络上的主机通信时不需要经过另外的路由器。既然每经过一个路由器要将距离加1，那么不再经过路由器的距离就应当为零)。作者编写的其他版本的教材过去也曾使用过这种定义。但两种不同的定义对实现RIP协议并无影响，因为重要的是要找出最短距离，将所有的距离都加1或减1对选择最佳路由都是一样的。<br>RIP不能在两个网络之间同时使用多条路由。RIP选择一个具有最少路由器的路由(即最短路由)，哪怕还存在另一条高速(低时延)但路由器较多的路由。</p>
+<p>RIP协议使用运输层的用户数据报UDP进行传送。因此RIP协议的位置应当在应用层。但转发IP数据报的过程是在网络层完成的。</p>
+<p>好消息传播得快，而坏消息传播得慢。网络出故障的传播时间往往需要较长的时间(例如数分钟)。这是RIP的一个主要缺点。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络通信/" rel="tag"># 网络通信</a>
+          
+            <a href="/tags/协议/" rel="tag"># 协议</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/12/jmeter/" rel="next" title="jmeter学习记录">
+                <i class="fa fa-chevron-left"></i> jmeter学习记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Weidong Ji</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章-网络互连"><span class="nav-number">1.</span> <span class="nav-text">第七章 网络互连</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Weidong Ji</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
