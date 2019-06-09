@@ -259,6 +259,506 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/python基础知识复习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Weidong Ji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrueMat">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/08/python基础知识复习/" itemprop="url">python基础知识复习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-08T09:39:01+08:00">
+                2019-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h2><ul>
+<li>python中int没有大小限制， 无限大可以使用<code>inf</code>来表示；常量通常使用大写字母表示。</li>
+<li><p><code>utf-8</code>是可变长编码：可以根据一个Unicode字符根据字节大小编码成1-6个字节；计算机中编码的工作方式如下：</p>
+<p>  用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件:</p>
+<img src="/2019/06/08/python基础知识复习/encode.png" title="encode"></li>
+<li><code>ord()</code>函数可以获取字符的整数表示，<code>chr()</code>可以把编码转换成对应的字符。</li>
+<li><p>bytes类型的数据用<code>b&#39;ABC&#39;</code>表示，与字符串<code>ABC</code>的差别是bytes类型每个字符只占一个字节。把字符串转换成bytes型使用<code>encode()</code>方法，使用<code>decode()</code>可以把bytes转换成字符串。</p>
+<pre><code>&gt;&gt;&gt; &apos;中文&apos;.encode(&apos;utf-8&apos;)
+b&apos;\xe4\xb8\xad\xe6\x96\x87&apos;
+</code></pre></li>
+<li>dict的key必须是不可变对象，因为dict是根据key来计算存储位置，key可变，dict内部就全乱了。</li>
+<li><p><strong>zip()</strong>：函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表，如果各个迭代器的元素个数不一致，则返回列表长度与最短的对象相同，利用 * 号操作符，可以将元组解压为列表。</p>
+<pre><code>&gt;&gt;&gt;a = [1,2,3]
+&gt;&gt;&gt; b = [4,5,6]
+&gt;&gt;&gt; c = [4,5,6,7,8]
+&gt;&gt;&gt; zipped = zip(a,b)     # 打包为元组的列表
+[(1, 4), (2, 5), (3, 6)]
+&gt;&gt;&gt; zip(a,c)              # 元素个数与最短的列表一致
+[(1, 4), (2, 5), (3, 6)]
+&gt;&gt;&gt; zip(*zipped)          # 与 zip 相反，*zipped 可理解为解压，返回二维矩阵式
+[(1, 2, 3), (4, 5, 6)]
+</code></pre></li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>函数名其实就是指向一个函数对象的引用，完全可以把函数名赋给一个变量，相当于给这个函数起了一个“别名”：</p>
+<pre><code>&gt;&gt;&gt; a = abs # 变量a指向abs函数
+&gt;&gt;&gt; a(-1) # 所以也可以通过a调用abs函数
+1
+</code></pre><h3 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h3><p>默认参数</p>
+<pre><code>def power(x, n=2):
+s = 1
+while n &gt; 0:
+    n = n - 1
+    s = s * x
+return s
+</code></pre><p>默认参数必须指向不变对象：Python函数在定义的时候，默认参数L的值就被计算出来了，即[]，因为默认参数L也是一个变量，它指向对象[]，每次调用该函数，如果改变了L的内容，则下次调用时，默认参数的内容就变了，不再是函数定义时的[]了。</p>
+<pre><code>def add_end(L=[]):
+L.append(&apos;END&apos;)
+return L
+
+&gt;&gt;&gt; add_end()
+[&apos;END&apos;, &apos;END&apos;]
+&gt;&gt;&gt; add_end()
+[&apos;END&apos;, &apos;END&apos;, &apos;END&apos;]
+</code></pre><p>可变参数：<br>    def calc(<em>numbers):<br>    sum = 0<br>    for n in numbers:<br>        sum = sum + n </em> n<br>    return sum<br>*nums表示把nums这个list的所有元素作为可变参数传进去。这种写法相当有用，而且很常见：</p>
+<pre><code>&gt;&gt;&gt; nums = [1, 2, 3]
+&gt;&gt;&gt; calc(*nums)
+14
+</code></pre><p>递归：函数内部调用自己本身。</p>
+<p>使用递归需要注意防止栈溢出。可以使用尾递归优化，尾递归即调用自己本身时 return语句不包含表达式，效果等同于循环。</p>
+<pre><code># 汉诺塔移动
+def move(n, a, b, c):
+    if n == 1:
+        print(a, &apos;--&gt;&apos;, c)
+    else:
+        move(n-1, a, c, b)
+        move(1, a, b, c)
+        move(n-1, b, c, a)
+</code></pre><h3 id="函数高级特性"><a href="#函数高级特性" class="headerlink" title="函数高级特性"></a>函数高级特性</h3><p>python内置函数<code>enumerate()</code>可以把列表变成一个索引-元素对。</p>
+<pre><code>&gt;&gt;&gt; for i, value in enumerate([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]):
+...     print(i, value)
+...
+0 A
+1 B
+2 C
+</code></pre><p><strong>生成式（generate）</strong>：列表元素根据某种算法推算出来，循环种不对退算后面的数，不需要创建完整的列表，以节省大量的空间；使用()创建一个生成器，列表生成式使用[]，使用next()获取下一个返回值，最后抛出StopIteration异常。</p>
+<p>斐波拉契数列：</p>
+<pre><code># 列表生成式
+def fib(x):
+    n, a, b = 0, 0, 1
+    while n &lt; max:
+        print(b)
+        a, b = a, a + b
+        n += 1
+    return &apos;done&apos;
+</code></pre><p>generator的另一种方法。如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generator：</p>
+<pre><code># 生成器
+def fib(x):
+    n, a, b = 0, 0, 1
+    while n &lt; max:
+        yield b
+        a, b = a, a + b
+        n += 1
+    return &apos;done&apos;
+</code></pre><p>最难理解的就是generator和函数的执行流程不一样。函数是顺序执行，遇到return语句或者最后一行函数语句就返回。而变成generator的函数，<strong>在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。</strong></p>
+<pre><code>def odd():
+print(&apos;step 1&apos;)
+yield 1
+print(&apos;step 2&apos;)
+yield(3)
+print(&apos;step 3&apos;)
+yield(5)
+
+&gt;&gt;&gt; o = odd()
+&gt;&gt;&gt; next(o)
+step 1
+1
+&gt;&gt;&gt; next(o)
+step 2
+3
+&gt;&gt;&gt; next(o)
+step 3
+5
+&gt;&gt;&gt; next(o)
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+StopIteration
+</code></pre><p>杨辉三角：<br>    def trangles():<br>        L = [1]<br>        while True:<br>            yield L<br>            L = [1] + [L[a] + L[a+1] for a in range(0,len(L)-1)] + [1]</p>
+<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><ul>
+<li>可以直接作用于for循环的对象统称为可迭代对象：<strong>Iterable</strong>。</li>
+<li>可以被next()函数调用并不断返回下一个值的对象称为迭代器：<strong>Iterator</strong>。</li>
+</ul>
+<p>Python的Iterator对象表示的是一个数据流，Iterator对象可以被next()函数调用并不断返回下一个数据，直到没有数据时抛出StopIteration错误。可以把这个数据流看做是一个有序序列，但我们却不能提前知道序列的长度，只能不断通过next()函数实现按需计算下一个数据，所以Iterator的计算是惰性的，只有在需要返回下一个数据时它才会计算。Iterator甚至可以表示一个无限大的数据流，例如全体自然数。而使用list是永远不可能存储全体自然数的。</p>
+<p>Python的for循环本质上就是通过不断调用next()函数实现的</p>
+<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>函数式编程就是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量，因此，任意一个函数，只要输入是确定的，输出就是确定的，这种纯函数我们称之为没有副作用。而允许使用变量的程序设计语言，由于函数内部的变量状态不确定，同样的输入，可能得到不同的输出，因此，这种函数是有副作用的。</p>
+<p>函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！</p>
+<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><p>一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数</p>
+<p>变量可以指向函数</p>
+<pre><code>&gt;&gt;&gt; f = abs
+&gt;&gt;&gt; f(-10)
+10
+</code></pre><h3 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map()/reduce()"></a>map()/reduce()</h3><p><code>map()</code>函数接收两个参数，一个是函数，一个是Iterable，map将传入的函数依次作用到序列的每个元素，并把结果作为新的<strong>Iterator</strong>返回。</p>
+<pre><code>&gt;&gt;&gt; list(map(str, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
+[&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;, &apos;6&apos;, &apos;7&apos;, &apos;8&apos;, &apos;9&apos;]
+</code></pre><p><code>reduce()</code>把一个函数作用在一个序列[x1, x2, x3, …]上，这个函数必须接收两个参数，reduce把结果继续和序列的下一个元素做累积计算，其效果就是。</p>
+<pre><code>&gt;&gt;&gt; from functools import reduce
+&gt;&gt;&gt; def add(x, y):
+...     return x + y
+...
+&gt;&gt;&gt; reduce(add, [1, 3, 5, 7, 9])
+25
+</code></pre><p><code>filter()</code>也接收一个函数和一个序列。和map()不同的是，filter()把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素,返回一个<strong>Iterator</strong>。</p>
+<p><code>sorted()</code>排序</p>
+<pre><code>&gt;&gt;&gt; sorted([&apos;bob&apos;, &apos;about&apos;, &apos;Zoo&apos;, &apos;Credit&apos;], key=str.lower, reverse=True)
+[&apos;Zoo&apos;, &apos;Credit&apos;, &apos;bob&apos;, &apos;about&apos;]
+</code></pre><h3 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h3><p>高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。</p>
+<pre><code>def lazy_sum(*args):
+    def sum():
+        ax = 0
+        for n in args:
+            ax = ax + n
+        return ax
+    return sum
+</code></pre><p>调用<code>lazy_sum()</code>时，返回求和函数；并且每次调用时都返回一个新的函数：</p>
+<pre><code>&gt;&gt;&gt; f = lazy_sum(1, 3, 5, 7, 9)
+&gt;&gt;&gt; f
+&lt;function lazy_sum.&lt;locals&gt;.sum at 0x101c6ed90&gt;
+
+&gt;&gt;&gt; f1 = lazy_sum(1, 3, 5, 7, 9)
+&gt;&gt;&gt; f2 = lazy_sum(1, 3, 5, 7, 9)
+&gt;&gt;&gt; f1==f2
+False
+</code></pre><p>闭包：我们在函数<code>lazy_sum</code>中又定义了函数<code>sum</code>，并且，内部函数<code>sum</code>可以引用外部函数<code>lazy_sum</code>的参数和局部变量，当<code>lazy_sum</code>返回函数<code>sum</code>时，<strong>相关参数和变量都保存在返回的函数中</strong>，这种称为“闭包（Closure）”的程序结构拥有极大的威力。</p>
+<p>返回的函数并没有立刻执行，而是直到调用了f()才执行。</p>
+<pre><code>def count():
+    fs = []
+    for i in range(1, 4):
+        def f():
+            return i*i
+        fs.append(f)
+    return fs
+
+f1, f2, f3 = count()
+&gt;&gt;&gt; f1()
+9
+&gt;&gt;&gt; f2()
+9
+&gt;&gt;&gt; f3()
+9
+</code></pre><p>全部都是9！原因就在于返回的函数引用了变量i，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量i已经变成了3，因此最终结果为9。<strong>返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。</strong></p>
+<p>一定要引用循环变量怎么办？方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变:<br>    def count():<br>        def f(j):<br>            def g():<br>                return j*j<br>            return g<br>        fs = []<br>        for i in range(1, 4):<br>            fs.append(f(i)) # f(i)立刻被执行，因此i的当前值被传入f()<br>        return fs # 返回一个列表</p>
+<p>计数器：</p>
+<pre><code>def createCounter():
+    li = 0
+    def counter():
+        li += 1
+        return li
+    return counter
+</code></pre><p>上述代码会报错：当你在当前作用域中的给变量赋值时，该变量将成为该作用域的局部变量，并在外部范围中隐藏任何类似命名的变量。</p>
+<pre><code>def createCounter():
+    l = [0]
+    def counter():
+        l[0] = l[0] + 1
+        return l[0]
+    return counter
+</code></pre><h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><p>在代码运行期间动态增加功能的方式，成为<strong>装饰器（Decorator）</strong>；本质上decorator就是一个返回函数的高阶函数。</p>
+<pre><code># 装饰器
+def log(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kw):
+        print(&apos;call %s()&apos; % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+
+@log
+def now():
+    print(&apos;Hello World!&apos;)
+
+def log_text(text):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kw):
+            print(&apos;%s %s()&apos; % (text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    return decorator
+
+@log_text(&apos;调用&apos;)
+def new_now():
+    print(&apos;Hello World!&apos;)
+</code></pre><p>Python内置的<code>functools.wraps</code>，把原始函数的<code>__name__</code>属性复制到<code>wrapper()</code>中.</p>
+<p>偏函数</p>
+<p><code>functools.partial</code>的作用就是，把一个函数的某些参数给固定住（也就是设置默认值），返回一个新的函数，调用这个新函数会更简单。</p>
+<pre><code>&gt;&gt;&gt; import functools
+&gt;&gt;&gt; int2 = functools.partial(int, base=2)
+&gt;&gt;&gt; int2(&apos;1000000&apos;)
+64
+</code></pre><h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p><code>sys</code>模块有一个<code>argv</code>变量，用list存储了命令行的所有参数。运行python3 hello.py Michael获得的sys.argv就是[‘hello.py’, ‘Michael]。</p>
+<p>当我们在命令行运行hello模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试</p>
+<pre><code>if __name__==&apos;__main__&apos;:
+test()
+</code></pre><h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><p>类和实例</p>
+<p>和静态语言不同，Python允许对实例变量绑定任何数据，也就是说，对于两个实例变量，虽然它们都是同一个类的不同实例，但拥有的变量名称都可能不同。</p>
+<p>访问限制</p>
+<p>使用<code>__</code>限制属性访问，改为增加<code>get/se</code>t方法是因为<strong>在方法中可以对参数做检查</strong>。</p>
+<ul>
+<li><code>__xxx__</code> 特殊变量。</li>
+<li><code>_xxx</code> 约定的私有变量：虽然我可以被访问，但是，请把我视为私有变量，不要随意访问。</li>
+<li><code>__xx</code> 私有变量，python解释器把<code>__xx</code>对外改变成<code>_ClassName__xx</code></li>
+</ul>
+<p>外部设置变量错误，际上这个<strong>name变量和class内部的</strong>name变量不是一个变量！内部的<strong>name变量已经被Python解释器自动改成了_Student</strong>name，而外部代码给bart新增了一个__name变量：</p>
+<pre><code>&gt;&gt;&gt; bart = Student(&apos;Bart Simpson&apos;, 59)
+&gt;&gt;&gt; bart.get_name()
+&apos;Bart Simpson&apos;
+&gt;&gt;&gt; bart.__name = &apos;New Name&apos; # 设置__name变量！
+&gt;&gt;&gt; bart.__name
+&apos;New Name&apos;
+</code></pre><h3 id="继承和多态"><a href="#继承和多态" class="headerlink" title="继承和多态"></a>继承和多态</h3><p><strong>继承</strong>：子类获得了父类的全部功能。</p>
+<p><strong>多态</strong>：对于一个变量，我们只需要知道它是Animal类型，无需确切地知道它的子类型，就可以放心地调用run()方法，而具体调用的run()方法是作用在Animal、Dog、Cat还是Tortoise对象上，由运行时该对象的确切类型决定，这就是多态真正的威力：调用方只管调用，不管细节，而当我们新增一种Animal的子类时，只要确保run()方法编写正确，不用管原来的代码是如何调用的。这就是著名的“开闭”原则：</p>
+<pre><code>class Animal(object):
+def run(self):
+    print(&apos;Animal is running...&apos;)
+
+class Dog(Animal):
+    def run(self):
+        print(&apos;Dog is running...&apos;)
+
+def run_twice(animal):
+    animal.run()
+    animal.run()
+
+run_twice(Animal())
+run_twice(Dog())
+
+Animal is running...
+Animal is running...
+Dog is running...
+Dog is running...
+</code></pre><ul>
+<li>对扩展开放：允许新增Animal子类。</li>
+<li>对修改封闭：不需要修改依赖Animal类型的run_twice()等函数。</li>
+</ul>
+<p>动态语言vs静态语言</p>
+<p>对于静态语言（例如Java）来说，如果需要传入Animal类型，则传入的对象必须是Animal类型或者它的子类，否则，将无法调用run()方法。</p>
+<p>对于Python这样的动态语言来说，则不一定需要传入Animal类型。我们只需要保证传入的对象有一个run()方法就可以了：</p>
+<pre><code>class Timer(object):
+    def run(self):
+        print(&apos;start...&apos;)
+
+run_twice(Timer())
+
+start...
+start...
+</code></pre><p>这就是动态语言的“<strong>鸭子类型</strong>”，它并不要求严格的继承体系，一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子。</p>
+<h3 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h3><p><code>type()</code>用于判断对象的类型,使用<code>isinstance()</code>判断继承关系。</p>
+<p><code>dir()</code>获取对象的所有属性，实际上<code>len()</code>方法是自动调用该对象的<code>__len__()</code>方法</p>
+<p>配合<code>getattr()</code>、<code>setattr()</code>以及<code>hasattr()</code>，我们可以直接操作一个对象的状态:</p>
+<pre><code>&gt;&gt;&gt; class MyObject(object):
+...     def __init__(self):
+...         self.x = 9
+...     def power(self):
+...         return self.x * self.x
+...
+&gt;&gt;&gt; obj = MyObject()
+
+&gt;&gt;&gt; hasattr(obj, &apos;x&apos;) # 有属性&apos;x&apos;吗？
+True
+&gt;&gt;&gt; obj.x
+9
+&gt;&gt;&gt; hasattr(obj, &apos;y&apos;) # 有属性&apos;y&apos;吗？
+False
+&gt;&gt;&gt; setattr(obj, &apos;y&apos;, 19) # 设置一个属性&apos;y&apos;
+&gt;&gt;&gt; hasattr(obj, &apos;y&apos;) # 有属性&apos;y&apos;吗？
+True
+&gt;&gt;&gt; getattr(obj, &apos;y&apos;) # 获取属性&apos;y&apos;
+19
+&gt;&gt;&gt; obj.y # 获取属性&apos;y&apos;
+19
+</code></pre><h3 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h3><p>不可对实例属性和类属性使用相同的名字，因为相同名称的实例属性将屏蔽掉类属性，但是当你删除实例属性后，再使用相同的名称，访问到的将是类属性。</p>
+<pre><code>&gt;&gt;&gt; class Student(object):
+...     name = &apos;Student&apos;
+...
+&gt;&gt;&gt; s = Student() # 创建实例s
+&gt;&gt;&gt; print(s.name) # 打印name属性，因为实例并没有name属性，所以会继续查找class的name属性
+Student
+&gt;&gt;&gt; print(Student.name) # 打印类的name属性
+Student
+&gt;&gt;&gt; s.name = &apos;Michael&apos; # 给实例绑定name属性
+&gt;&gt;&gt; print(s.name) # 由于实例属性优先级比类属性高，因此，它会屏蔽掉类的name属性
+Michael
+&gt;&gt;&gt; print(Student.name) # 但是类属性并未消失，用Student.name仍然可以访问
+Student
+&gt;&gt;&gt; del s.name # 如果删除实例的name属性
+&gt;&gt;&gt; print(s.name) # 再次调用s.name，由于实例的name属性没有找到，类的name属性就显示出来了
+Student
+</code></pre><p>给Student类增加一个类属性，每创建一个实例，该属性自动增加：</p>
+<pre><code>class Student(object):
+    count = 0
+
+    def __init__(self, name):
+        self.name = name
+        Student.count += 1 # 访问类属性
+</code></pre><p>变量的类型：</p>
+<ol>
+<li>全局变量 - 在所有函数和类的外面</li>
+<li>局部变量 -  <ol>
+<li>在函数内</li>
+<li>在class的方法内，未加 self 修饰</li>
+</ol>
+</li>
+<li>静态变量 - 在class内，并且是在方法外</li>
+<li>实例变量 - 在class方法内，用self修饰</li>
+</ol>
+<h2 id="面向对象高级编程"><a href="#面向对象高级编程" class="headerlink" title="面向对象高级编程"></a>面向对象高级编程</h2><p>给实例绑定一个属性：</p>
+<pre><code>class Student(object):
+    pass
+
+&gt;&gt;&gt; s = Student()
+&gt;&gt;&gt; s.name = &apos;Michael&apos; # 动态给实例绑定一个属性
+&gt;&gt;&gt; print(s.name)
+Michael
+</code></pre><p>给实例绑定一个方法：</p>
+<pre><code>&gt;&gt;&gt; def set_age(self, age): # 定义一个函数作为实例方法
+...     self.age = age
+...
+&gt;&gt;&gt; from types import MethodType
+&gt;&gt;&gt; s.set_age = MethodType(set_age, s) # 给实例绑定一个方法
+&gt;&gt;&gt; s.set_age(25) # 调用实例方法
+&gt;&gt;&gt; s.age # 测试结果
+25
+</code></pre><p>给类绑定一个方法：</p>
+<pre><code>&gt;&gt;&gt; def set_score(self, score):
+...     self.score = score
+...
+&gt;&gt;&gt; Student.set_score = set_scor
+</code></pre><p>使用<code>__slots__</code>可以限制实例的属性,使用<strong>slots</strong>要注意，<strong>slots</strong>定义的属性仅对当前类实例起作用，对继承的子类是不起作用的。</p>
+<pre><code>class Student(object):
+    __slots__ = (&apos;name&apos;, &apos;age&apos;) # 用tuple定义允许绑定的属性名称
+</code></pre><p><code>@property</code>装饰器就是负责把一个方法变成属性调用的:</p>
+<pre><code>class Student(object):
+
+    @property
+    def score(self):
+        return self._score
+
+    @score.setter
+    def score(self, value):
+        if not isinstance(value, int):
+            raise ValueError(&apos;score must be an integer!&apos;)
+        if value &lt; 0 or value &gt; 100:
+            raise ValueError(&apos;score must between 0 ~ 100!&apos;)
+        self._score = value
+
+&gt;&gt;&gt; s = Student()
+&gt;&gt;&gt; s.score = 60 # OK，实际转化为s.set_score(60)
+&gt;&gt;&gt; s.score # OK，实际转化为s.get_score()
+60
+&gt;&gt;&gt; s.score = 9999
+Traceback (most recent call last):
+...
+ValueError: score must between 0 ~ 100!
+</code></pre><p>注意：<code>@property</code> 赋值时需要使用<code>_xx</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/27/network_learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -335,13 +835,13 @@
 <p>首部不可变部分：</p>
 <ol>
 <li>版本：占4bit，指IP协议的版本。通信双方使用的IP协议的版本必须一致。目前广泛使用的IP协议版本号为4 (即IPv4)</li>
-<li>首部长度：可表示的最大数值是15个单位(一个单位为4字节)，因此IP的首部长度的最大值是60字节。当IP分组的首部长度不是4字节的整数倍时，必须利用最后一个填充字段加以填充。因此数据部分永远在4字节的整数倍时开始，这样在实现IP协议时较为方便。首部长度限制为60字节的缺点是有时(如源站路由选择)不够用。但这样做是希望用户尽量减少开销。最常用的首部长度就是20字节，即不使用任何选项。 </li>
+<li>首部长度：可表示的最大数值是15个单位(一个单位为4字节)，因此IP的首部长度的最大值是60字节。当IP分组的首部长度不是4字节的整数倍时，必须利用最后一个填充字段加以填充。因此数据部分永远在4字节的整数倍时开始，这样在实现IP协议时较为方便。首部长度限制为60字节的缺点是有时(如源站路由选择)不够用。但这样做是希望用户尽量减少开销。最常用的首部长度就是20字节，即不使用任何选项。</li>
 <li>服务类型：<ul>
-<li>前3个比特表示优先级，它可使数据报具有8个优先级中的一个。 </li>
-<li>第4个比特是D比特，表示要求有更低的时延。 </li>
-<li>第5个比特是T比特，表示要求有更高的吞吐量。 </li>
-<li>第6个比特是R比特，表示要求有更高的可靠性(即在数据报传送的过程中，被路由器丢弃的概率要更小些)。 </li>
-<li>第7个比特是C比特，是新增加的，表示要求选择费用更低廉的路由。 </li>
+<li>前3个比特表示优先级，它可使数据报具有8个优先级中的一个。</li>
+<li>第4个比特是D比特，表示要求有更低的时延。</li>
+<li>第5个比特是T比特，表示要求有更高的吞吐量。</li>
+<li>第6个比特是R比特，表示要求有更高的可靠性(即在数据报传送的过程中，被路由器丢弃的概率要更小些)。</li>
+<li>第7个比特是C比特，是新增加的，表示要求选择费用更低廉的路由。</li>
 <li>最后一个比特目前尚未使用</li>
 </ul>
 </li>
@@ -360,7 +860,7 @@
 <li>源地址：占4字节。这是首部中最重要的字段。</li>
 <li>目的地址：占4字节。这也是首部中最重要的字段。</li>
 </ol>
-<p>首部可变部分：<br>1-40字节</p>
+<p>首部可变部分：1-40字节</p>
 <ul>
 <li>源站路由选择，通常不使用<ul>
 <li>严格源站路由选择：不允许修改源站事先规定好的路由。</li>
@@ -371,11 +871,11 @@
 </ul>
 <p><strong>ip层处理数据报的过程</strong><br>路由表：<strong>目的网络地址，下一跳地址</strong><br>可以使用默认路由，<br>具体转发过程如下：</p>
 <ol>
-<li>从数据报的首部提取目的站的IP地址D，得出目的网络地址为N。 </li>
-<li>若N是就与此路由器直接相连的某个网络地址，则这种交付为直接交付，即不需要再经过其他的路由器。这时就直接通过该网络将数据报交付给目的站D (这里包括将目的主机地址D转换为具体的硬件地址，将数据报封装为MAC帧，再发送此帧)；否则就是间接交付，执行（3）。 </li>
-<li>若路由表中有目的地址为D的指明主机路由，则将数据报传送给路由表中所指明的下一跳路由器；否则，执行（4）。 </li>
-<li>若路由表中有到达网络N的路由，则将数据报传送给路由表中所指明的下一跳路由器；否则，执行（5）。 </li>
-<li>若路由表中有一个默认路由，则将数据报传送给路由表中所指明的默认路由器；否则，执行（6）。 </li>
+<li>从数据报的首部提取目的站的IP地址D，得出目的网络地址为N。</li>
+<li>若N是就与此路由器直接相连的某个网络地址，则这种交付为直接交付，即不需要再经过其他的路由器。这时就直接通过该网络将数据报交付给目的站D (这里包括将目的主机地址D转换为具体的硬件地址，将数据报封装为MAC帧，再发送此帧)；否则就是间接交付，执行（3）。</li>
+<li>若路由表中有目的地址为D的指明主机路由，则将数据报传送给路由表中所指明的下一跳路由器；否则，执行（4）。</li>
+<li>若路由表中有到达网络N的路由，则将数据报传送给路由表中所指明的下一跳路由器；否则，执行（5）。</li>
+<li>若路由表中有一个默认路由，则将数据报传送给路由表中所指明的默认路由器；否则，执行（6）。</li>
 <li>报告转发分组出错。</li>
 </ol>
 <p><strong>子网划分</strong>：子网掩码，寻址时目的网络与子网掩码相与（都是1则返回1，否则返回0），是否等于网络号，若相等则是下一跳地址。</p>
@@ -387,9 +887,9 @@
 <ol>
 <li>算法必须是正确的和完整的。这里，“正确”的含义是：沿着各路由表所指引的路由，分组一定能够最终到达的目的网络和目的主机。</li>
 <li>算法在计算上应简单。进行路由选择的计算必然要增加分组的时延。因此，路由选择的计算不应使网络通信量增加太多的外开销。当为了计算合适的路由而必须使用网络其他路由器发来的大量状态信息时，就会使网络通信量的开销过大。</li>
-<li>算法应能适应通信量和网络拓扑的变化，这就是说，要有自适应性。当网络中的通信量发生变化时，算法能自适应地改变路由以均衡各链路的负载。当某个或某些结点、链路发生故障不能工作，或者修理好了再投入运行时，算法也能及时地改变路由。有时称这种自适应性为“稳健性”(robustness)①。 </li>
-<li>算法应具有稳定性。在网络通信量和网络拓扑相对稳定的情况下，路由算法应收敛于一个可以接受的解，而不应使得出的路由不停地变化。 </li>
-<li>算法应是公平的。这就是说，算法应对所有用户(除对少数优先级高的用户)都是平等的。例如，<br>若使某一对用户的端到端时延为最小，但不考虑其他的广大用户，这就明显地不符合公平性的要求。 </li>
+<li>算法应能适应通信量和网络拓扑的变化，这就是说，要有自适应性。当网络中的通信量发生变化时，算法能自适应地改变路由以均衡各链路的负载。当某个或某些结点、链路发生故障不能工作，或者修理好了再投入运行时，算法也能及时地改变路由。有时称这种自适应性为“稳健性”(robustness)①。</li>
+<li>算法应具有稳定性。在网络通信量和网络拓扑相对稳定的情况下，路由算法应收敛于一个可以接受的解，而不应使得出的路由不停地变化。</li>
+<li>算法应是公平的。这就是说，算法应对所有用户(除对少数优先级高的用户)都是平等的。例如，若使某一对用户的端到端时延为最小，但不考虑其他的广大用户，这就明显地不符合公平性的要求。</li>
 <li>算法应是最佳的。这里的“最佳”是指以最低的代价来实现路由算法。这里特别需要注意的是，在研究路由选择时，需要给每一条链路指明一定的费用(cost)(也可以将cost译为“代价”)，而这里“费用”并不是指“钱”，而是由一个或几个因素综合决定的一种度量(metric)，如链路长度、数据率、链路容量、是否要保密、传播时延等，甚至还可以是一天中某一个小时内的通信量、结点的缓存被占用的程度、链路差错率等。可以根据用户的具体情况来设置每一条链路的“费用”。由此可见，不存在一种绝对的最佳路由算法。所谓“最佳”只能是相对于某一种特定要求下得出的较为合理的选择而已。</li>
 </ol>
 <p>从路由算法能否随网络的通信量或拓扑自适应地进行调整变化来划分，则只有两大类，即<strong>静态路由选择策略</strong>与<strong>动态路由选择策略</strong>。静态路由选择也叫做非自适应路由选择，其特点是简单和开销较小，但不能及时适应网络状态的变化。动态路由选择也称为自适应路由选择，其特点是能较好地适应网络状态的变化，但实现起来较为复杂，开销也比较大。</p>
@@ -397,15 +897,26 @@
 <p>由于以下两个原因，因特网采用分层次的路由选择协议：<br>（1）因特网的规模非常大，现在就已经有几百万个路由器互连在一起。如果让所有的路由器知道所有<br>的网络应怎样到达，则这种路由表将非常大，处理起来也太花时间。而所有这些路由器之间交换路由信息<br>所需的带宽就会使因特网的通信链路饱和。<br>（2）许多单位不愿意外界了解自己单位网络的布局细节和本单位所采用的路由选择协议(这属于本单位<br>内部的事情)，但同时还希望连接到因特网上。<br>为此，因特网将整个互联网划分为许多较小的自治系统(autonomous system</p>
 <p>两大类路由选择协议：</p>
 <ul>
-<li>内部网关协议IGP (Interior Gateway Protocol)。这是在一个自治系统内部使用的路由选择协议，而<br>这与在互联网中的其他自治系统选用什么路由选择协议无关。目前这类路由选择协议使用得最多，如RIP<br>和OSPF协议。 </li>
+<li>内部网关协议IGP (Interior Gateway Protocol)。这是在一个自治系统内部使用的路由选择协议，而<br>这与在互联网中的其他自治系统选用什么路由选择协议无关。目前这类路由选择协议使用得最多，如RIP<br>和OSPF协议。</li>
 <li>外部网关协议EGP (External Gateway Protocol)。若源站和目的站处在不同的自治系统中(这两个自<br>治系统使用不同的内部网关协议)，当数据报传到一个自治系统的边界时，就需要使用一种协议将路由选择<br>信息传递到另一个自治系统中。这样的协议就是外部网关协议EGP。在外部网关协议中目前使用最多的是BGP</li>
 </ul>
 <p>7.5.2</p>
-<p>路由信息协议RIP (Routing Information Protocol)是内部网关协议IGP中使用得最广泛的一个[RFC 1058]。RIP是一种分布式的基于距离向量的路由选择协议，是因特网的标准协议，其最大优点就是简单。 </p>
-<p>RIP协议要求网络中的每一个路由器都要维护从它自己到其他每一个目的网络的距离记录(因此，这是一组距离，即“距离向量”)。RIP协议将“距离”定义如下：<br>从一路由器到直接连接的网络的距离定义为1。从一路由器到非直接连接的网络的距离定义为所经过的路由器数加1。“加1”是因为到达目的网络后就进行直接交付，而到直接连接的网络的距离已经定义为1。例如在前面讲过的图7-16中，路由器R1到网1或网2的距离都是1(直接连接)，而到网3的距离是2，到网4的距离是3。<br>RIP协议的“距离”也称为“跳数”(hop count)①，因为每经过一个路由器，跳数就加1。RIP认为一个好的路由就是它通过的路由器的数目少，即“距离短”。RIP允许一条路径最多只能包含15个路由器。因此“距离”的最大值为16时即相当于不可达。可见RIP只适用于小型互联网。 </p>
+<p>路由信息协议RIP (Routing Information Protocol)是内部网关协议IGP中使用得最广泛的一个[RFC 1058]。RIP是一种分布式的基于距离向量的路由选择协议，是因特网的标准协议，其最大优点就是简单。</p>
+<p>RIP协议要求网络中的每一个路由器都要维护从它自己到其他每一个目的网络的距离记录(因此，这是一组距离，即“距离向量”)。RIP协议将“距离”定义如下：<br>从一路由器到直接连接的网络的距离定义为1。从一路由器到非直接连接的网络的距离定义为所经过的路由器数加1。“加1”是因为到达目的网络后就进行直接交付，而到直接连接的网络的距离已经定义为1。例如在前面讲过的图7-16中，路由器R1到网1或网2的距离都是1(直接连接)，而到网3的距离是2，到网4的距离是3。<br>RIP协议的“距离”也称为“跳数”(hop count)①，因为每经过一个路由器，跳数就加1。RIP认为一个好的路由就是它通过的路由器的数目少，即“距离短”。RIP允许一条路径最多只能包含15个路由器。因此“距离”的最大值为16时即相当于不可达。可见RIP只适用于小型互联网。</p>
 <p>需要注意的是，到直接连接的网络的距离也可定义为0(采用这种定义的理由是：路由器在和直接连接在该网络上的主机通信时不需要经过另外的路由器。既然每经过一个路由器要将距离加1，那么不再经过路由器的距离就应当为零)。作者编写的其他版本的教材过去也曾使用过这种定义。但两种不同的定义对实现RIP协议并无影响，因为重要的是要找出最短距离，将所有的距离都加1或减1对选择最佳路由都是一样的。<br>RIP不能在两个网络之间同时使用多条路由。RIP选择一个具有最少路由器的路由(即最短路由)，哪怕还存在另一条高速(低时延)但路由器较多的路由。</p>
 <p>RIP协议使用运输层的用户数据报UDP进行传送。因此RIP协议的位置应当在应用层。但转发IP数据报的过程是在网络层完成的。</p>
 <p>好消息传播得快，而坏消息传播得慢。网络出故障的传播时间往往需要较长的时间(例如数分钟)。这是RIP的一个主要缺点。</p>
+<p>7.5.3</p>
+<p><strong>OSPF</strong>的三个要点（对比RIP）：</p>
+<ol>
+<li>向本自制系统内所有路由器发送信息，使用洪泛法：通过输出端口向所有连接的路由器发送信息，相邻路由器将此消息发送给其相邻的所有路由器。</li>
+<li>发送的信息是<em>本路由器与相邻的所有路由器的链路状态</em></li>
+<li>只有当链路状态发生变化时才使用洪泛法发送信息，<strong>收敛速度极快</strong>。</li>
+</ol>
+<p>特点：OSPF所有路由器最终建立一个链路状态数据库，实际就是<strong>全网的拓扑结构</strong>,RIP只知道所有网络的距离以及吓一跳的路由器，却不知道全网的拓扑结构。</p>
+<p>应用：为了使OSPF能够应用于规模较大的网络，可以将一个自治系统划分为若干个区域（小范围），每个区域有一个32bit的<strong>区域标志符</strong>，好处是：就是将利用洪泛法交换链路状态信息的范围局限于每一个区域而不是整个的自治系统。因此，在一个区域内部的路由器只知道本区域的完整网络拓扑，而不知道其他区域的网络拓扑的情况。为了使每一个区域能够和本区域以外的区域进行通信，OSPF使用层次结构的区域划分。在上层的区域叫做主干区域(backbone area)。主干区域的标识符规定为0.0.0.0。主干区域的作用是用来连通其他在下层的区域。从其他区域来的信息都由区域边界路由器(area border router)进行概括。主干区域还要有一个路由器与其他自治系统交换路由器信息叫做<strong>自治系统边界路由器</strong>.</p>
+<p>采用分层次划分区域的优点：虽然是交换信息的种类增加了，同时也使OSPF协议更加复杂，但是使的每一个区域内部交换路由的信息量大大减小。使OSPF能够用于很大规模的自治系统。</p>
+<p>OSPF位于网络层，使用IP数据报传送，其数据报很短可以减少路由信息的通信量。</p>
 
           
         
@@ -1152,7 +1663,7 @@ hexo s
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1174,7 +1685,7 @@ hexo s
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
