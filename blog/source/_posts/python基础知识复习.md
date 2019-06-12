@@ -43,17 +43,17 @@ tags:
 默认参数
 
     def power(x, n=2):
-    s = 1
-    while n > 0:
-        n = n - 1
-        s = s * x
-    return s
+        s = 1
+        while n > 0:
+            n = n - 1
+            s = s * x
+        return s
 
 默认参数必须指向不变对象：Python函数在定义的时候，默认参数L的值就被计算出来了，即[]，因为默认参数L也是一个变量，它指向对象[]，每次调用该函数，如果改变了L的内容，则下次调用时，默认参数的内容就变了，不再是函数定义时的[]了。
 
     def add_end(L=[]):
-    L.append('END')
-    return L
+        L.append('END')
+        return L
 
     >>> add_end()
     ['END', 'END']
@@ -62,10 +62,10 @@ tags:
 
 可变参数：
     def calc(*numbers):
-    sum = 0
-    for n in numbers:
-        sum = sum + n * n
-    return sum
+        sum = 0
+        for n in numbers:
+            sum = sum + n * n
+        return sum
 *nums表示把nums这个list的所有元素作为可变参数传进去。这种写法相当有用，而且很常见：
 
     >>> nums = [1, 2, 3]
@@ -512,3 +512,232 @@ Python内置的`functools.wraps`，把原始函数的`__name__`属性复制到`w
     ...
     ValueError: score must between 0 ~ 100!
 注意：`@property` 赋值时需要使用`_xx`
+
+### 多重继承
+
+Mixln：在设计类的继承关系时，通常主线都是翻译继承下来的，但是如果需要“混入”额外的功能，通过多重继承可以实现。这种设计模式通常称为Mixln。Mixln的目的就是给一个类增加多个功能。
+
+tips：多重继承中的属性或者方法重复，遵循取左原则
+
+    class A(object):
+
+        def __init__(self):
+            self.name = 'A'
+
+    class B(object):
+
+        def __init__(self):
+            self.name = 'B'
+
+    class C(A, B):
+        pass
+
+    class D(B, A):
+        pass
+
+    a = C()
+    print(a.name)
+    b = D()
+    print(b.name)
+
+    A
+    B
+
+python继承的优先顺序：按照拓扑排序：
+
+在图论中，拓扑排序(Topological Sorting) 是一个 有向无环图(DAG,Directed Acyclic Graph) 的所有顶点的线性序列。且该序列必须满足下面两个条件：
+
+* 每个顶点出现且只出现一次。
+* 若存在一条从顶点A到B的路径，那么序列中顶点A在B的前面。
+{% asset_img DAG.jpg Topological Sorting %}
+
+它是一个DAG图，那么如何写出它的拓扑顺序呢？这里说一种比较常用的方法：
+
+* 从DAG途中选择一个没有前驱(即没有指向其的箭头)的顶点并输出。
+* 从图中删除该顶点和所有以它为起点的有向边。
+* 重复1和2直到当前DAG图为空或当前途中不存在无前驱的顶点为止。后一种情况说明有向图中必然存在环。
+{% asset_img topo_sorted.webp Topo_sorted %}
+
+python C3算法遍历DAG顺序寻找方法，优先找到即调用。
+
+## 定制类
+
+`__str__()`存储了实例的字符串：
+
+    class Student(object):
+        count = 0
+
+        def __init__(self, name):
+            self.name = name
+            Student.count += 1 # 访问类属性
+
+        def __str__(self):
+            return 'Student object (name: %s)' % self.name
+
+    print(Student('wdji'))
+
+    Student object (name: wdji)
+直接线是调用的变量还是不好看：
+
+    >>> s = Student('Michael')
+    >>> s
+    <__main__.Student object at 0x109afb310>
+因为直接显示变量调用的不是`__str__()`，而是`__repr__()`，两者的区别是`__str__()`返回用户看到的字符串，而`__repr__()`返回程序开发者看到的字符串，也就是说，`__repr__()`是为调试服务的。
+
+    class Student(object):
+        count = 0
+
+        def __init__(self, name):
+            self.name = name
+            Student.count += 1 # 访问类属性
+
+        def __str__(self):
+            return 'Student object (name: %s)' % self.name
+
+        __repr__ == __str__
+
+`__iter__()`一个类想被`for ... in`循环，类似list，tuple就必须实现一个`__iter__()`方法，该方法返回一个迭代对象。
+
+    class Fib(object):
+
+        def __init__(self):
+            self.a, self.b = 0, 1
+
+        def __iter__(self):
+            return self
+
+        def __next__(self):
+            self.a , self.b = self.b, self.a + self.b
+            if self.a > 1000:
+                raise StopIteration()
+            return self.a
+
+    for n in Fib():
+        print(n)
+
+    1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+`__getitem__()`:实现像list一样取出按照下表取出元素
+
+    class Fib(object):
+
+        def __getitem__(self, n):
+            a, b = 1, 1
+            for x in range(n):
+                a, b = b, a + b
+            return a
+
+    f = Fib()
+    print(f[5]) # 8
+
+实现切片需要判断n的类型：
+
+    class Fib(object):
+
+        def __getitem__(self, n):
+            if isinstance(n, int):
+                a, b = 1, 1
+                for _ in range(n):
+                    a, b = b, a + b
+                return a
+            if isinstance(n, slice):
+                start = n.start
+                stop = n.stop
+                if start is None:
+                    start = 0
+                a, b = 1, 1
+                L = []
+                for x in range(stop):
+                    if x >= start:
+                        L.append(a)
+                    a, b = b, a + b
+                return L
+
+    f = Fib()
+    print(f[5:10]) # [8, 13, 21, 34, 55]
+以上没有处理step和负数，所以实现一个`__getitem__()`还有很多工作要做。如果把对象看成dict，`__getitem__()`的参数也可能是一个可以作key的object，例如str。
+
+与之对应的是`__setitem__()`方法，把对象视作list或dict来对集合赋值。最后，还有一个`__delitem__()`方法，用于删除某个元素。通过上面的方法，我们自己定义的类表现得和Python自带的list、tuple、dict没什么区别，这完全归功于动态语言的“鸭子类型”，不需要强制继承某个接口。
+
+`__getattr__()`
+
+调用不存在的属性时会报错，可以用`__getattr__()`实现动态的返回一个属性。
+
+    class Student(object):
+        count = 0
+
+        def __init__(self, name):
+            self.name = name
+            Student.count += 1 # 访问类属性
+
+        def __str__(self):
+            return 'Student object (name: %s)' % self.name
+
+        def __getattr__(self, attr):
+            if attr == 'age':
+                return lambda: 25
+            raise AttributeError('\'Student\' object has no attribute \'%s\'' % attr)
+
+    print(Student('wdji'))
+    a = Student('wdji2')
+    print(a.age()) # 25
+    print(a.grade) # AttributeError: 'Student' object has no attribute 'grade'
+
+动态调用的特性可以用在网站的REST API；利用完全动态的`__getattr__()`写出一个链式调用。
+
+    class Chain(object):
+
+        def __init__(self, path=''):
+            self._path = path
+
+        def __getattr__(self, path):
+            return Chain('%s/%s' % (self._path, path))
+
+        def __str__(self):
+            return self._path
+
+        __repr__ = __str__
+
+`__call__()`
+
+定义一个__call__()方法，就可以直接对实例进行调用:
+
+    class Student(object):
+        def __init__(self, name):
+            self.name = name
+
+        def __call__(self):
+            print('My name is %s.' % self.name)
+
+    >>> s = Student('Michael')
+    >>> s() # self参数不要传入
+    My name is Michael.
+
+`__call__()`还可以定义参数。**对实例进行直接调用就好比对一个函数进行调用一样，所以你完全可以把对象看成函数，把函数看成对象，因为这两者之间本来就没啥根本的区别。如果你把对象看成函数，那么函数本身其实也可以在运行期动态创建出来，因为类的实例都是运行期创建出来的，这么一来，我们就模糊了对象和函数的界限**。
+
+那么，怎么判断一个变量是对象还是函数呢？其实，更多的时候，我们需要判断一个对象是否能被调用，能被调用的对象就是一个Callable对象，比如函数和我们上面定义的带有__call__()的类实例：
+
+    >>> callable(Student())
+    True
+    >>> callable(max)
+    True
+    >>> callable([1, 2, 3])
+    False
+    >>> callable(None)
+    False
+    >>> callable('str')
+    False
+
+    class urls(Chain):
+        def __init__(self, path='/users'):
+        self.__path = path
+
+        def __getattr__(self, path):
+            return urls(('%s/%s' % (self.__path, path)))
+
+        def __call__(self, path):
+            return urls(('%s/%s' % (self.__path, path)))
+
+        def __str__(self):
+            return self.__path
+
+        __repr__ = __str__
