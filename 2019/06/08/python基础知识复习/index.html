@@ -88,7 +88,9 @@
 <meta property="og:description" content="数据类型和变量 python中int没有大小限制， 无限大可以使用inf来表示；常量通常使用大写字母表示。 utf-8是可变长编码：可以根据一个Unicode字符根据字节大小编码成1-6个字节；计算机中编码的工作方式如下：   用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件:  ord()函数可以">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/08/python基础知识复习/encode.png">
-<meta property="og:updated_time" content="2019-06-09T15:32:11.805Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/08/python基础知识复习/DAG.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/08/python基础知识复习/topo_sorted.webp">
+<meta property="og:updated_time" content="2019-06-12T23:57:02.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python基础知识复习">
 <meta name="twitter:description" content="数据类型和变量 python中int没有大小限制， 无限大可以使用inf来表示；常量通常使用大写字母表示。 utf-8是可变长编码：可以根据一个Unicode字符根据字节大小编码成1-6个字节；计算机中编码的工作方式如下：   用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件:  ord()函数可以">
@@ -361,21 +363,21 @@ b&apos;\xe4\xb8\xad\xe6\x96\x87&apos;
 1
 </code></pre><h3 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h3><p>默认参数</p>
 <pre><code>def power(x, n=2):
-s = 1
-while n &gt; 0:
-    n = n - 1
-    s = s * x
-return s
+    s = 1
+    while n &gt; 0:
+        n = n - 1
+        s = s * x
+    return s
 </code></pre><p>默认参数必须指向不变对象：Python函数在定义的时候，默认参数L的值就被计算出来了，即[]，因为默认参数L也是一个变量，它指向对象[]，每次调用该函数，如果改变了L的内容，则下次调用时，默认参数的内容就变了，不再是函数定义时的[]了。</p>
 <pre><code>def add_end(L=[]):
-L.append(&apos;END&apos;)
-return L
+    L.append(&apos;END&apos;)
+    return L
 
 &gt;&gt;&gt; add_end()
 [&apos;END&apos;, &apos;END&apos;]
 &gt;&gt;&gt; add_end()
 [&apos;END&apos;, &apos;END&apos;, &apos;END&apos;]
-</code></pre><p>可变参数：<br>    def calc(<em>numbers):<br>    sum = 0<br>    for n in numbers:<br>        sum = sum + n </em> n<br>    return sum<br>*nums表示把nums这个list的所有元素作为可变参数传进去。这种写法相当有用，而且很常见：</p>
+</code></pre><p>可变参数：<br>    def calc(<em>numbers):<br>        sum = 0<br>        for n in numbers:<br>            sum = sum + n </em> n<br>        return sum<br>*nums表示把nums这个list的所有元素作为可变参数传进去。这种写法相当有用，而且很常见：</p>
 <pre><code>&gt;&gt;&gt; nums = [1, 2, 3]
 &gt;&gt;&gt; calc(*nums)
 14
@@ -713,7 +715,206 @@ Traceback (most recent call last):
 ...
 ValueError: score must between 0 ~ 100!
 </code></pre><p>注意：<code>@property</code> 赋值时需要使用<code>_xx</code></p>
+<h3 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h3><p>Mixln：在设计类的继承关系时，通常主线都是翻译继承下来的，但是如果需要“混入”额外的功能，通过多重继承可以实现。这种设计模式通常称为Mixln。Mixln的目的就是给一个类增加多个功能。</p>
+<p>tips：多重继承中的属性或者方法重复，遵循取左原则</p>
+<pre><code>class A(object):
 
+    def __init__(self):
+        self.name = &apos;A&apos;
+
+class B(object):
+
+    def __init__(self):
+        self.name = &apos;B&apos;
+
+class C(A, B):
+    pass
+
+class D(B, A):
+    pass
+
+a = C()
+print(a.name)
+b = D()
+print(b.name)
+
+A
+B
+</code></pre><p>python继承的优先顺序：按照拓扑排序：</p>
+<p>在图论中，拓扑排序(Topological Sorting) 是一个 有向无环图(DAG,Directed Acyclic Graph) 的所有顶点的线性序列。且该序列必须满足下面两个条件：</p>
+<ul>
+<li>每个顶点出现且只出现一次。</li>
+<li>若存在一条从顶点A到B的路径，那么序列中顶点A在B的前面。<img src="/2019/06/08/python基础知识复习/DAG.jpg" title="Topological Sorting">
+</li>
+</ul>
+<p>它是一个DAG图，那么如何写出它的拓扑顺序呢？这里说一种比较常用的方法：</p>
+<ul>
+<li>从DAG途中选择一个没有前驱(即没有指向其的箭头)的顶点并输出。</li>
+<li>从图中删除该顶点和所有以它为起点的有向边。</li>
+<li>重复1和2直到当前DAG图为空或当前途中不存在无前驱的顶点为止。后一种情况说明有向图中必然存在环。<img src="/2019/06/08/python基础知识复习/topo_sorted.webp" title="Topo_sorted">
+</li>
+</ul>
+<p>python C3算法遍历DAG顺序寻找方法，优先找到即调用。</p>
+<h2 id="定制类"><a href="#定制类" class="headerlink" title="定制类"></a>定制类</h2><p><code>__str__()</code>存储了实例的字符串：</p>
+<pre><code>class Student(object):
+    count = 0
+
+    def __init__(self, name):
+        self.name = name
+        Student.count += 1 # 访问类属性
+
+    def __str__(self):
+        return &apos;Student object (name: %s)&apos; % self.name
+
+print(Student(&apos;wdji&apos;))
+
+Student object (name: wdji)
+</code></pre><p>直接线是调用的变量还是不好看：</p>
+<pre><code>&gt;&gt;&gt; s = Student(&apos;Michael&apos;)
+&gt;&gt;&gt; s
+&lt;__main__.Student object at 0x109afb310&gt;
+</code></pre><p>因为直接显示变量调用的不是<code>__str__()</code>，而是<code>__repr__()</code>，两者的区别是<code>__str__()</code>返回用户看到的字符串，而<code>__repr__()</code>返回程序开发者看到的字符串，也就是说，<code>__repr__()</code>是为调试服务的。</p>
+<pre><code>class Student(object):
+    count = 0
+
+    def __init__(self, name):
+        self.name = name
+        Student.count += 1 # 访问类属性
+
+    def __str__(self):
+        return &apos;Student object (name: %s)&apos; % self.name
+
+    __repr__ == __str__
+</code></pre><p><code>__iter__()</code>一个类想被<code>for ... in</code>循环，类似list，tuple就必须实现一个<code>__iter__()</code>方法，该方法返回一个迭代对象。</p>
+<pre><code>class Fib(object):
+
+    def __init__(self):
+        self.a, self.b = 0, 1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.a , self.b = self.b, self.a + self.b
+        if self.a &gt; 1000:
+            raise StopIteration()
+        return self.a
+
+for n in Fib():
+    print(n)
+
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+</code></pre><p><code>__getitem__()</code>:实现像list一样取出按照下表取出元素</p>
+<pre><code>class Fib(object):
+
+    def __getitem__(self, n):
+        a, b = 1, 1
+        for x in range(n):
+            a, b = b, a + b
+        return a
+
+f = Fib()
+print(f[5]) # 8
+</code></pre><p>实现切片需要判断n的类型：</p>
+<pre><code>class Fib(object):
+
+    def __getitem__(self, n):
+        if isinstance(n, int):
+            a, b = 1, 1
+            for _ in range(n):
+                a, b = b, a + b
+            return a
+        if isinstance(n, slice):
+            start = n.start
+            stop = n.stop
+            if start is None:
+                start = 0
+            a, b = 1, 1
+            L = []
+            for x in range(stop):
+                if x &gt;= start:
+                    L.append(a)
+                a, b = b, a + b
+            return L
+
+f = Fib()
+print(f[5:10]) # [8, 13, 21, 34, 55]
+</code></pre><p>以上没有处理step和负数，所以实现一个<code>__getitem__()</code>还有很多工作要做。如果把对象看成dict，<code>__getitem__()</code>的参数也可能是一个可以作key的object，例如str。</p>
+<p>与之对应的是<code>__setitem__()</code>方法，把对象视作list或dict来对集合赋值。最后，还有一个<code>__delitem__()</code>方法，用于删除某个元素。通过上面的方法，我们自己定义的类表现得和Python自带的list、tuple、dict没什么区别，这完全归功于动态语言的“鸭子类型”，不需要强制继承某个接口。</p>
+<p><code>__getattr__()</code></p>
+<p>调用不存在的属性时会报错，可以用<code>__getattr__()</code>实现动态的返回一个属性。</p>
+<pre><code>class Student(object):
+    count = 0
+
+    def __init__(self, name):
+        self.name = name
+        Student.count += 1 # 访问类属性
+
+    def __str__(self):
+        return &apos;Student object (name: %s)&apos; % self.name
+
+    def __getattr__(self, attr):
+        if attr == &apos;age&apos;:
+            return lambda: 25
+        raise AttributeError(&apos;\&apos;Student\&apos; object has no attribute \&apos;%s\&apos;&apos; % attr)
+
+print(Student(&apos;wdji&apos;))
+a = Student(&apos;wdji2&apos;)
+print(a.age()) # 25
+print(a.grade) # AttributeError: &apos;Student&apos; object has no attribute &apos;grade&apos;
+</code></pre><p>动态调用的特性可以用在网站的REST API；利用完全动态的<code>__getattr__()</code>写出一个链式调用。</p>
+<pre><code>class Chain(object):
+
+    def __init__(self, path=&apos;&apos;):
+        self._path = path
+
+    def __getattr__(self, path):
+        return Chain(&apos;%s/%s&apos; % (self._path, path))
+
+    def __str__(self):
+        return self._path
+
+    __repr__ = __str__
+</code></pre><p><code>__call__()</code></p>
+<p>定义一个<strong>call</strong>()方法，就可以直接对实例进行调用:</p>
+<pre><code>class Student(object):
+    def __init__(self, name):
+        self.name = name
+
+    def __call__(self):
+        print(&apos;My name is %s.&apos; % self.name)
+
+&gt;&gt;&gt; s = Student(&apos;Michael&apos;)
+&gt;&gt;&gt; s() # self参数不要传入
+My name is Michael.
+</code></pre><p><code>__call__()</code>还可以定义参数。<strong>对实例进行直接调用就好比对一个函数进行调用一样，所以你完全可以把对象看成函数，把函数看成对象，因为这两者之间本来就没啥根本的区别。如果你把对象看成函数，那么函数本身其实也可以在运行期动态创建出来，因为类的实例都是运行期创建出来的，这么一来，我们就模糊了对象和函数的界限</strong>。</p>
+<p>那么，怎么判断一个变量是对象还是函数呢？其实，更多的时候，我们需要判断一个对象是否能被调用，能被调用的对象就是一个Callable对象，比如函数和我们上面定义的带有<strong>call</strong>()的类实例：</p>
+<pre><code>&gt;&gt;&gt; callable(Student())
+True
+&gt;&gt;&gt; callable(max)
+True
+&gt;&gt;&gt; callable([1, 2, 3])
+False
+&gt;&gt;&gt; callable(None)
+False
+&gt;&gt;&gt; callable(&apos;str&apos;)
+False
+
+class urls(Chain):
+    def __init__(self, path=&apos;/users&apos;):
+    self.__path = path
+
+    def __getattr__(self, path):
+        return urls((&apos;%s/%s&apos; % (self.__path, path)))
+
+    def __call__(self, path):
+        return urls((&apos;%s/%s&apos; % (self.__path, path)))
+
+    def __str__(self):
+        return self.__path
+
+    __repr__ = __str__
+</code></pre>
       
     </div>
     
@@ -885,7 +1086,7 @@ ValueError: score must between 0 ~ 100!
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型和变量"><span class="nav-number">1.</span> <span class="nav-text">数据类型和变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的参数"><span class="nav-number">2.1.</span> <span class="nav-text">函数的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数高级特性"><span class="nav-number">2.2.</span> <span class="nav-text">函数高级特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器"><span class="nav-number">2.3.</span> <span class="nav-text">迭代器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数式编程"><span class="nav-number">3.</span> <span class="nav-text">函数式编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高阶函数"><span class="nav-number">3.1.</span> <span class="nav-text">高阶函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map-reduce"><span class="nav-number">3.2.</span> <span class="nav-text">map()/reduce()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回函数"><span class="nav-number">3.3.</span> <span class="nav-text">返回函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#装饰器"><span class="nav-number">3.4.</span> <span class="nav-text">装饰器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块"><span class="nav-number">4.</span> <span class="nav-text">模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象编程"><span class="nav-number">5.</span> <span class="nav-text">面向对象编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#继承和多态"><span class="nav-number">5.1.</span> <span class="nav-text">继承和多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取对象信息"><span class="nav-number">5.2.</span> <span class="nav-text">获取对象信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例属性和类属性"><span class="nav-number">5.3.</span> <span class="nav-text">实例属性和类属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象高级编程"><span class="nav-number">6.</span> <span class="nav-text">面向对象高级编程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型和变量"><span class="nav-number">1.</span> <span class="nav-text">数据类型和变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的参数"><span class="nav-number">2.1.</span> <span class="nav-text">函数的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数高级特性"><span class="nav-number">2.2.</span> <span class="nav-text">函数高级特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器"><span class="nav-number">2.3.</span> <span class="nav-text">迭代器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数式编程"><span class="nav-number">3.</span> <span class="nav-text">函数式编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高阶函数"><span class="nav-number">3.1.</span> <span class="nav-text">高阶函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map-reduce"><span class="nav-number">3.2.</span> <span class="nav-text">map()/reduce()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回函数"><span class="nav-number">3.3.</span> <span class="nav-text">返回函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#装饰器"><span class="nav-number">3.4.</span> <span class="nav-text">装饰器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块"><span class="nav-number">4.</span> <span class="nav-text">模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象编程"><span class="nav-number">5.</span> <span class="nav-text">面向对象编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#继承和多态"><span class="nav-number">5.1.</span> <span class="nav-text">继承和多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取对象信息"><span class="nav-number">5.2.</span> <span class="nav-text">获取对象信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例属性和类属性"><span class="nav-number">5.3.</span> <span class="nav-text">实例属性和类属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象高级编程"><span class="nav-number">6.</span> <span class="nav-text">面向对象高级编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多重继承"><span class="nav-number">6.1.</span> <span class="nav-text">多重继承</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定制类"><span class="nav-number">7.</span> <span class="nav-text">定制类</span></a></li></ol></div>
             
 
           </div>
