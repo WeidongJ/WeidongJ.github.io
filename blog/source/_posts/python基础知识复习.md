@@ -511,4 +511,3 @@ Python内置的`functools.wraps`，把原始函数的`__name__`属性复制到`w
     Traceback (most recent call last):
     ...
     ValueError: score must between 0 ~ 100!
-注意：`@property` 赋值时需要使用`_xx`
