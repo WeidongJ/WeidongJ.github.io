@@ -259,6 +259,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/10/MDN-web/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Weidong Ji">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrueMat">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/10/MDN-web/" itemprop="url">MDN-学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-10T09:39:01+08:00">
+                2019-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/python基础知识复习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -765,7 +884,7 @@ B
 print(Student(&apos;wdji&apos;))
 
 Student object (name: wdji)
-</code></pre><p>直接线是调用的变量还是不好看：</p>
+</code></pre><p>直接显示调用的变量还是不好看：</p>
 <pre><code>&gt;&gt;&gt; s = Student(&apos;Michael&apos;)
 &gt;&gt;&gt; s
 &lt;__main__.Student object at 0x109afb310&gt;
@@ -1116,6 +1235,100 @@ class urls(Chain):
 <p>应用：为了使OSPF能够应用于规模较大的网络，可以将一个自治系统划分为若干个区域（小范围），每个区域有一个32bit的<strong>区域标志符</strong>，好处是：就是将利用洪泛法交换链路状态信息的范围局限于每一个区域而不是整个的自治系统。因此，在一个区域内部的路由器只知道本区域的完整网络拓扑，而不知道其他区域的网络拓扑的情况。为了使每一个区域能够和本区域以外的区域进行通信，OSPF使用层次结构的区域划分。在上层的区域叫做主干区域(backbone area)。主干区域的标识符规定为0.0.0.0。主干区域的作用是用来连通其他在下层的区域。从其他区域来的信息都由区域边界路由器(area border router)进行概括。主干区域还要有一个路由器与其他自治系统交换路由器信息叫做<strong>自治系统边界路由器</strong>.</p>
 <p>采用分层次划分区域的优点：虽然是交换信息的种类增加了，同时也使OSPF协议更加复杂，但是使的每一个区域内部交换路由的信息量大大减小。使OSPF能够用于很大规模的自治系统。</p>
 <p>OSPF位于网络层，使用IP数据报传送，其数据报很短可以减少路由信息的通信量。</p>
+<h2 id="第八章-运输层"><a href="#第八章-运输层" class="headerlink" title="第八章 运输层"></a>第八章 运输层</h2>
+<p><strong>分用</strong>就是将运输层报文段中的数据交付到正确的套接字的工作</p>
+<p><strong>复用</strong>就是在源主机从不同套接字中收集数据块，并为每个数据块封装上首部信息，从而生成报文段，然后将报文段传递到网络层的工作。</p>
+<h3 id="运输层功能"><a href="#运输层功能" class="headerlink" title="运输层功能"></a>运输层功能</h3><ul>
+<li>运输层为应用进程之间提供逻辑通信，网络层为主机间提供逻辑通信。</li>
+<li>运输层还要对收到的报文进行差错检测。大家应当还记得，在网络层，IP数据报首部中的检验和字段，只检验首部是否出现差错而不检查数据部分。</li>
+</ul>
+<h3 id="TCP-IP体系中的运输层"><a href="#TCP-IP体系中的运输层" class="headerlink" title="TCP/IP体系中的运输层"></a>TCP/IP体系中的运输层</h3><p>运输层的2个协议<br><img src="/2019/05/27/network_learning/tcp_udp.png" title="tcp and udp"></p>
+<p>端口的概念</p>
+<p>16bit的地址，最大可允许有64k个端口号</p>
+<p>没有端口，运输层就无法知道数据应当交付给应用层的哪一个进程。从这个意义上讲，端口是用来标识应用层的进程。由于使用了复用和分用技术，在运输层与网络层的交互中已看不见各种应用进程，而只有TCP报文段或用户数据报。IP层也使用类似的复用和分用技术，因而在网络层和链路层的交互中也只有IP数据报。上述概念在网络中是十分重要的。</p>
+<p>TCP以<strong>连接</strong>作为最基本的抽象，一个连接由它的两个端点来标志，这样的端点叫做<strong>插口（socket）</strong>或者<strong>套接字</strong>，插口包括IP和端口号，共48bit。</p>
+<p>UDP的优点：</p>
+<ol>
+<li>发送数据前不需要建立连接，减少了发送数据之前的延迟。</li>
+<li>UDP没有拥塞控制，也不保证可靠交付，因此主机不需要维持具有许多参数的，复杂的连接状态表。</li>
+<li>UDP用户数据报首部只有八个字节开销，比TCP的20个要少。</li>
+<li>UDP适合允许适当丢包但实时性要求较高的数据传输。</li>
+</ol>
+<p>使用UDP的应用<br><img src="/2019/05/27/network_learning/udp-protocal.png" title="udp-protocal"></p>
+<p>UDP的缺点：</p>
+<ol>
+<li>使用没有拥塞控制的UDP，但当很多的源主机同时都向网络发送高速率的实时视频流时，网络就有可能发生拥塞，结果大家都无法正常接收。因此“UDP不具有拥塞控制功能”，可能会引起网络产生严重的拥塞问题。</li>
+<li>IP层将收到的IP数据报的数据部分上交给UDP。UDP再对收到的用户数据报进行分用，按照端口号将其加入到相应队列的末尾。如果队列已满，就丢弃该用户数据报。这里没有流量控制机制来通知发送方来降低发送速率。当应用进程要接收报文时，就从相应的队列前头取走一个报文。若队列已空，应用进程就被阻塞，直到队列中有到达的报文为止。</li>
+</ol>
+<p>UDP 数据报格式</p>
+<h3 id="TCP报文段"><a href="#TCP报文段" class="headerlink" title="TCP报文段"></a>TCP报文段</h3><img src="/2019/05/27/network_learning/TCP报文首部.png" title="TCP报文首部">
+<ol>
+<li>源端口和目的端口：16bit的端口和IP构成socket。</li>
+<li>序号：占四个字节，TCP是面向数据流的，TCP传送的保温可以看作是连续的数据流。其中每一个字节都对应一个序号。“首部的徐浩是指本报问的所发送的数据中的第一个字节的序号。例如，某报文段的序号字段的值是301，而携带的数据共100字节，则本报文段的数据的第一个字节的序号是301，而最后一个字节的序号是400。这样，下一个报文段的数据序号应当从401开始，因而下一个报文段的序号字段的值应为401。</li>
+<li>确认序号：占四个字节，是期望收到对方的下一个报文段的数据的第一个字节的序号，也就是期望收到的下一个报文段首部的序号字段的值。例如，正确收到了一个报文段，其序号字段的值是501，而数据长度是200字节，这就表明序号在501 ~ 700之间的数据均已正确收到。因此在响应的报文段中应将确认序号置为701。请注意：确认序号既不是501也不是700。 由于序号字段有32 bit长，可对4 GB(即4千兆字节)的数据进行编号。这样就可保证当序号重复使用时，旧序号的数据早已在网络中消失了。</li>
+<li>数据偏移，它指出数据开始的地方离TCP报文段的起始处有多远。<strong>就是指出数据部分从什么地方开始</strong>。</li>
+<li>保留，保留字段没有使用。</li>
+<li>控制比特：<ul>
+<li>紧急比特：URG = 1标识此报文是紧急比特（优先级高），应当尽快传送。如ctrl+C中断命令</li>
+<li>确认ACK，ACK=1时，确认序号字段才有用。为0时确认序号无效。</li>
+<li>推送比特：当两个应用进程进行交互式的通信时，有时在一端的应用进程希望在键入一个命令后立即就能够收到对方的响应。在这种情况下，TCP就可以使用推送(push)操作。这时，发送端TCP将推送比特PSH置1，并立即创建一个报文段发送出去。接收TCP收到推送比特置1的报文段，就尽快(即“推送”向前)交付给接收应用进程，而不再等到整个缓存都填满了后再向上交付。PSH比特也可叫做急迫比特。 虽然应用程序可以选择推送操作，但推送操作还是往往不被人们使用。TCP可以选择或不选择这个操作。</li>
+<li>复位比特RST (ReSeT) 当RST = 1时，表明TCP连接中出现严重差错(如由于主机崩溃或其他原因)，必须释放连接，然后再重新建立运输连接。复位比特还用来拒绝一个非法的报文段或拒绝打开一个连接。复位比特也可称为重建比特或重置比特。</li>
+<li>同步比特SYN 在连接建立时用来同步序号。当SYN = 1而ACK = 0时，表明这是一个连接请求报文段。对方若同意建立连接，则应在响应的报文段中使SYN = 1和ACK = 1。因此，同步比特SYN置为1，就表示这是一个连接请求或连接接受报文。关于连接的建立和释放，后面还要进行讨论。</li>
+<li>终止比特FIN (FINal) 用来释放一个连接。当FIN = 1时，表明此报文段的发送端的数据已发送完毕，并要求释放运输连接。</li>
+</ul>
+</li>
+<li>窗口：占2字节。窗口字段用来控制对方发送的数据量，单位为字节。用接收端的接收能力的大小来控制发送端的数据发送量。</li>
+<li>检验和:检验首部和数据部分的正确性。</li>
+<li>选项：长度可变。TCP只规定了一种选项，即最大报文段长度MSS (Maximum Segment Size)。MSS告诉对方TCP：“我的缓存所能接收的报文段的数据字段的最大长度是MSS。”当没有选项时，TCP的首部长度是20字节。</li>
+</ol>
+<h3 id="TCP的数据编号和确认"><a href="#TCP的数据编号和确认" class="headerlink" title="TCP的数据编号和确认"></a>TCP的数据编号和确认</h3><p>TCP协议是面向字节的。TCP将所要传送的整个报文(这可能包括许多个报文段)看成是<strong>一个个字节组成的数据流</strong>，并<strong>使每一个字节对应于一个序号</strong>。在连接建立时，双方要商定初始序号。TCP每次所发送的报文段的首部中的序号字段数值表示该报文段中的数据部分的<strong>第一个字节的序号</strong>。TCP的确认是对<strong>接收到的数据的最高序号</strong>(即收到的数据流中的最后一个序号)<strong>表示确认</strong>。但接收端返回的确认序号是已收到的数据的最高序号加1。也就是说，<strong>确认序号表示接收端期望下次收到的数据中的第一个数据字节的序号。</strong></p>
+<p>TCP发送数据的时机</p>
+<ol>
+<li>维持一个变量，值等于MSS，发送缓存中得到的数据达到MSS就发送出去。</li>
+<li>PUSH指定的报文段。</li>
+<li>发送端设置计时器，时间到了就把缓存中的数据发送出去。</li>
+</ol>
+<p>实际使用Nagle算法：若发送端应用进程将欲发送的数据逐个字节地送到发送端的TCP缓存，则发送端就将第一个字符(一个字符的长度是一个字节)先发送出去，将后面到达的字符都缓存起来。当接收端收到对第一个字符的确认后，再将缓存中的所有字符装成一个报文段发送出去，同时继续对随后到达的字符进行缓存。只有在收到对前一个报文段的确认后才继续发送下一个报<br>文段。当字符到达较快而网络速率较慢时，用这样的方法可明显地减少所用的网络带宽。算法还规定，当到达的字符已达到窗口大小的一半或已达到报文段的最大长度时，就立即发送一个报文段。</p>
+<img src="/2019/05/27/network_learning/TCP可变窗口流量控制.png" title="可变窗口进行流量控制举例">
+<p>流量控制不仅是为了使接收端来的及接受，也为了使网络部发生拥塞。</p>
+<p>发送窗口通常用：</p>
+<pre><code>发送窗口 = Min [通知窗口，拥塞窗口]
+</code></pre><ul>
+<li>通知窗口(advertised window)是接收端根据其接收能力许诺的窗口值，是来自接收端的流量控制。接收端将通知窗口的值放在TCP报文的首部中，传送给发送端。</li>
+<li>拥塞窗口(congestion window)是发送端根据网络拥塞情况得出的窗口值，是来自发送端的流量控制。</li>
+</ul>
+<h3 id="TCP重传机制"><a href="#TCP重传机制" class="headerlink" title="TCP重传机制"></a>TCP重传机制</h3><p>TCP每发送一个报文段，就设置一次计时器。只要计时器设置的重传时间已经到了但还没有收到确认，就要重传这一报文段。</p>
+<p>TCP采用了一种自适应算法。这种算法记录每一个报文段发出的时间，以及收到相应的确认报文段的时间。这两个时间之差就是报文段的往返时延。将各个报文段的往返时延样本加权平均，就得出报文段的平均往返时延T。每测量到一个新的往返时延样本，就按下式重新计算一次平均往返时延：</p>
+<h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><img src="/2019/05/27/network_learning/三次握手.png" title="三次握手">
+<ol>
+<li>主机A的TCP向主机B的TCP发出连接请求报文段，其首部中的同步比特SYN应置为1，同时选择一个序号x，表明在后面传送数据时的第一个数据字节的序号是x + 1。在图8-19中，一个从A到B的箭头上标有“SYN，SEQ = x”就是这个意思。</li>
+<li>主机B的TCP收到连接请求报文段后，如同意，则发回确认。在确认报文段中应将SYN置为1，确认序号应为x + 1，同时也为自己选择一个序号y。</li>
+<li>主机A的TCP收到此报文段后，还要向B给出确认，其确认序号为y + 1。</li>
+</ol>
+<p>目的： 主要是为了防止已失效的连接请求报文段突然又传送到了主机B，因而产生错误。</p>
+<p>TCP释放连接：</p>
+<img src="/2019/05/27/network_learning/TCP释放连接.png" title="释放连接">
+<ol>
+<li>TCP通知对方要释放从A到B这个方向的连接，将发往主机B的TCP报文段首部的终止比特FIN置1，其序号x等于前面已传送过的数据的最后一个字节的序号加1。</li>
+<li>主机B的TCP收到释放连接通知后即发出确认，其序号为x + 1，同时通知高层应用进程，如图8-20中的箭头①所示。这样，从A到B的连接就释放了，连接处于半关闭(half-close)状态，相当于主机A向主机B说：“我已经没有数据要发送了。但你如果还发送数据，我仍接收。</li>
+<li>在主机B向主机A的数据发送结束后，其应用进程就通知TCP释放连接，如图8-20中的箭头②所示。主机B发出的连接释放报文段必须将终止比特FIN置1，并使其序号y等于前面已传送过的数据的最后一个字节的序号加1，还必须重复上次已发送过的ACK = x + 1。</li>
+<li>主机A必须对此发出确认，给出ACK = y + 1。这样才将从B到A的反方向连接释放掉。主机A的TCP再向其应用进程报告，整个连接已经全部释放</li>
+</ol>
+<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><p>域名系统DNS (Domain Name System)：将域名转换为ip，使用udp传输</p>
+<p>域名分类</p>
+<p>顶级域名</p>
+<ol>
+<li>国家顶级域名nTLD：采用ISO 3166的规定。如：cn表示中国，us表示美国，uk表示英国，等等。</li>
+<li>国际顶级域名iTLD：采用int。国际性的组织可在int下注册。</li>
+<li>com表示公司企业，net表示网络服务机构，org表示非赢利性组织，edu表示教育机构，gov表示政府部门(美国专用)，mil表示军事部门(美国专用)</li>
+</ol>
+<p>寻址过程：递归+迭代</p>
+<ol>
+<li>先查询本地域名服务器（授权域名服务器），没有结果向上查根域名服务器</li>
+<li>根域名服务器直接返回目标域名服务器的ip</li>
+<li>查询目标域名服务器</li>
+</ol>
+<h3 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h3><p>工作原理：</p>
 
           
         
@@ -1718,7 +1931,7 @@ else:
       
         
           
-            <h1 id="hexo-github-个人博客搭建"><a href="#hexo-github-个人博客搭建" class="headerlink" title="hexo + github 个人博客搭建"></a>hexo + github 个人博客搭建</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+            <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
 <li>GitHub配置</li>
 <li>hexo安装</li>
 <li>hexo配置及命令</li>
@@ -1730,7 +1943,7 @@ else:
 <pre><code>npm install -g hexo-cli
 </code></pre><p>初始化hexo项目blog：创建一个Blog文件夹，cmd在该目录下执行</p>
 <pre><code>hexo init blog
-</code></pre><p>启动hexo </p>
+</code></pre><p>启动hexo</p>
 <pre><code>hexo g
 hexo s
 </code></pre><p>部署hexo</p>
@@ -1740,11 +1953,11 @@ hexo s
 <pre><code># Site
 title: PrueMat # 站点名称
 subtitle:
-description: 
+description:
 keywords:
 author: Weidong Ji
 language: zh-Hans # 中文
-timezone: Asia/Shanghai # 
+timezone: Asia/Shanghai #
 </code></pre><p>主题：</p>
 <pre><code>theme: next
 </code></pre><p>部署：</p>
@@ -1760,7 +1973,7 @@ hexo g
 hexo s
 </code></pre><h4 id="主题配置（next）"><a href="#主题配置（next）" class="headerlink" title="主题配置（next）"></a>主题配置（next）</h4><p>使用命令clone next主题文件夹</p>
 <pre><code>git clone https://github.com/iissnan/hexo-theme-next themes/next
-</code></pre><p>修改样式，配置文件 <code>blog/themes/next/_config.yml</code> </p>
+</code></pre><p>修改样式，配置文件 <code>blog/themes/next/_config.yml</code></p>
 <pre><code># Schemes
 #scheme: Muse
 #scheme: Mist
@@ -1862,7 +2075,7 @@ hexo s
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1884,7 +2097,7 @@ hexo s
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
