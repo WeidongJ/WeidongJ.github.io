@@ -511,8 +511,6 @@ Python内置的`functools.wraps`，把原始函数的`__name__`属性复制到`w
     Traceback (most recent call last):
     ...
     ValueError: score must between 0 ~ 100!
-<<<<<<< HEAD
-=======
 注意：`@property` 赋值时需要使用`_xx`
 
 ### 多重继承
@@ -579,7 +577,7 @@ python C3算法遍历DAG顺序寻找方法，优先找到即调用。
     print(Student('wdji'))
 
     Student object (name: wdji)
-直接线是调用的变量还是不好看：
+直接显示调用的变量还是不好看：
 
     >>> s = Student('Michael')
     >>> s
@@ -743,4 +741,3 @@ python C3算法遍历DAG顺序寻找方法，优先找到即调用。
             return self.__path
 
         __repr__ = __str__
->>>>>>> bc43e54c7435dcc1774fe65ea627bb91ddd8ad71
