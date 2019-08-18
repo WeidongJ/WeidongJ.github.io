@@ -5,6 +5,14 @@ tags:
     - python
     - 基础知识
 ---
+## python解释器
+
+* CPython 官方解释器，使用最广的解释器，C语言开发
+* IPython 交互式解释器，相比CPython在交互上有所增强，其他没有区别
+* PyPy 采用JIT技术，对python代码进行动态编译（不是解释），可以显著提高python的执行速度
+* JPython是运行再Java平台上的python解释器
+* IronPython是运行在.net上的解释器
+
 ## 数据类型和变量
 
 ### 二进制码
@@ -59,16 +67,45 @@ tags:
     2. 一个数的反码, 实际上是这个数对于一个模的同余数. 而这个模并不是我们的二进制, 而是所能表示的最大值! 这就和钟表一样, 转了一圈后总能找到在可表示范围内的一个正确的数值!
     3. 其实, 在反码的基础上+1, 只是相当于增加了模的值，表盘相当于每128个刻度转一轮. 所以用补码表示的运算结果最小值和最大值应该是[-128, 128].但是由于0的特殊情况, 没有办法表示128, 所以补码的取值范围是[-128, 127]。
 
+## 数据类型
+
+* 整型
+* 浮点型
+* 字符串
+* 布尔
+* 常量（大写字母表示）
+
+Tips
+
 * python中int没有大小限制， 无限大可以使用`inf`来表示；常量通常使用大写字母表示。
 * `utf-8`是可变长编码：可以根据一个Unicode字符根据字节大小编码成1-6个字节；计算机中编码的工作方式如下：
 
-    用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件:
+    用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件。内存中是unicode，存储器中是utf-8。
 {% asset_img encode.png encode %}
 * `ord()`函数可以获取字符的整数表示，`chr()`可以把编码转换成对应的字符。
-* bytes类型的数据用`b'ABC'`表示，与字符串`ABC`的差别是bytes类型每个字符只占一个字节。把字符串转换成bytes型使用`encode()`方法，使用`decode()`可以把bytes转换成字符串。
+* bytes类型的数据用`b'ABC'`表示，与字符串`ABC`的差别是bytes类型每个字符只占一个字节。把字符串转换成bytes型使用`encode()`方法，使用`decode()`可以把bytes转换成字符串，`len()`计算`str`的字符数，计算`bytes`的字节数。
 
         >>> '中文'.encode('utf-8')
         b'\xe4\xb8\xad\xe6\x96\x87'
+
+### 数组
+
+常用方法
+
+* l.append() 追加元素到末尾
+* l.insert(index,'value') 插入到指定的位置
+* l.pop(index) 删除指定位置的元素，不传默认删除最后一个字符，返回value
+
+tuple
+
+tuple和list非常类似，但是tuple一旦初始化就不能修改（每个元素的指向都是不变的），使的代码更加的安全。
+
+定义tuple，只有一个元素`t = (1,)`
+
+`range(6)`默认起点是0，`range(2, 12, 2)`设置起点，终点和步进
+
+### 字典
+
 * dict的key必须是不可变对象，因为dict是根据key来计算存储位置，key可变，dict内部就全乱了。
 * **zip()**：函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表，如果各个迭代器的元素个数不一致，则返回列表长度与最短的对象相同，利用 * 号操作符，可以将元组解压为列表。
 
@@ -81,6 +118,18 @@ tags:
         [(1, 4), (2, 5), (3, 6)]
         >>> zip(*zipped)          # 与 zip 相反，*zipped 可理解为解压，返回二维矩阵式
         [(1, 2, 3), (4, 5, 6)]
+
+### set
+
+set和dict类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在set中，没有重复的key。
+
+创建方式`s = set([1, 2, 3])`
+
+基本方法
+
+1. add `s.add(4)` 
+2. remove `s.remove(4)`
+3. 支持交集并集操作
 
 ## 函数
 
@@ -101,13 +150,13 @@ tags:
             s = s * x
         return s
 
-默认参数必须指向不变对象：Python函数在定义的时候，默认参数L的值就被计算出来了，即[]，因为默认参数L也是一个变量，它指向对象[]，每次调用该函数，如果改变了L的内容，则下次调用时，默认参数的内容就变了，不再是函数定义时的[]了。
+默认参数必须指向不变对象：Python函数在定义的时候，默认参数L的值就被计算出来了，即`[]`，因为默认参数L也是一个变量，它指向对象`[]`，每次调用该函数，如果改变了L的内容，则下次调用时，默认参数的内容就变了，不再是函数定义时的`[]`了。
 
     def add_end(L=[]):
         L.append('END')
         return L
 
-    >>> add_end()
+    >>> add_end() #使用了默认参数，改变了其值
     ['END', 'END']
     >>> add_end()
     ['END', 'END', 'END']
@@ -124,7 +173,12 @@ tags:
     >>> calc(*nums)
     14
 
-递归：函数内部调用自己本身。
+关键字参数
+
+关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict，传入参数时可以直接传入dict
+
+    def person(name, age, **kw):
+        print('name:', name, 'age', age, 'other',kw)
 
 使用递归需要注意防止栈溢出。可以使用尾递归优化，尾递归即调用自己本身时 return语句不包含表达式，效果等同于循环。
 
@@ -139,6 +193,9 @@ tags:
 
 ### 函数高级特性
 
+切片不包含后边界
+    >>> L[0:3] # 取 0，1，2 元素
+    ['Michael', 'Sarah', 'Tracy']
 python内置函数`enumerate()`可以把列表变成一个索引-元素对。
 
     >>> for i, value in enumerate(['A', 'B', 'C']):
@@ -148,7 +205,7 @@ python内置函数`enumerate()`可以把列表变成一个索引-元素对。
     1 B
     2 C
 
-**生成式（generate）**：列表元素根据某种算法推算出来，循环种不对退算后面的数，不需要创建完整的列表，以节省大量的空间；使用()创建一个生成器，列表生成式使用[]，使用next()获取下一个返回值，最后抛出StopIteration异常。
+**生成器（generate）**：列表元素根据某种算法推算出来，循环中不断推算出后面的数，不需要创建完整的列表，以节省大量的空间；使用()创建一个生成器，列表生成式使用[]，使用next()获取下一个返回值，最后抛出StopIteration异常。调用生成器返回一个generator对象
 
 斐波拉契数列：
 
@@ -203,6 +260,8 @@ generator的另一种方法。如果一个函数定义中包含yield关键字，
             yield L
             L = [1] + [L[a] + L[a+1] for a in range(0,len(L)-1)] + [1]
 
+
+
 ### 迭代器
 
 * 可以直接作用于for循环的对象统称为可迭代对象：**Iterable**。
@@ -245,6 +304,24 @@ Python的for循环本质上就是通过不断调用next()函数实现的
     25
 
 `filter()`也接收一个函数和一个序列。和map()不同的是，filter()把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素,返回一个**Iterator**。
+
+    # 实现一个素数函数
+    def _odd_iter():
+        n = 1
+        while True:
+            n += 2
+            yield n
+
+    def _not_divisible(n):
+        return lambda x: x % n > 0
+
+    def primes():
+        yield 2
+        it = _odd_iter()
+        while True:
+            n = next(it)
+            yield n
+            it = filter(_not_divisible(n), it)
 
 `sorted()`排序
 
@@ -793,3 +870,78 @@ python C3算法遍历DAG顺序寻找方法，优先找到即调用。
             return self.__path
 
         __repr__ = __str__
+
+### 枚举类
+
+定义常量时，可以使用枚举类定义一个class类型。
+
+    from enum import Enum
+
+    Month = Enum('Month', ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))
+
+需要更精确的控制枚举类型，可以从Enum派生自定义类：
+
+    from enum import Enum, unique
+
+    @unique
+    class Weekday(Enum):
+        Sun = 0 # Sun的value被设定为0
+        Mon = 1
+        Tue = 2
+        Wed = 3
+        Thu = 4
+        Fri = 5
+        Sat = 6
+
+### 使用元类
+
+pass
+
+## 异常和错误处理
+
+抛出异常
+
+    # err_reraise.py
+
+    def foo(s):
+        n = int(s)
+        if n==0:
+            raise ValueError('invalid value: %s' % s)
+        return 10 / n
+
+    def bar():
+        try:
+            foo('0')
+        except ValueError as e:
+            print('ValueError!')
+            raise
+
+    bar()
+在bar()函数中，我们明明已经捕获了错误，但是，打印一个ValueError!后，又把错误通过raise语句抛出去了，这不有病么？
+
+其实这种错误处理方式不但没病，而且相当常见。捕获错误目的只是记录一下，便于后续追踪。但是，由于当前函数不知道应该怎么处理该错误，所以，最恰当的方式是继续往上抛，让顶层调用者去处理。好比一个员工处理不了一个问题时，就把问题抛给他的老板，如果他的老板也处理不了，就一直往上抛，最终会抛给CEO去处理。
+
+`raise`语句如果不带参数，就会把当前错误原样抛出。此外，在`except`中`raise`一个Error，还可以把一种类型的错误转化成另一种类型。
+
+## IO编程
+
+### 序列化
+
+变量从内存中变成可存储或传输的过程称之为**序列化**。
+
+变量内容从序列化的对象重新读到内存里称之为**反序列化**。
+
+JSON
+
+    >>> import json
+    >>> d = dict(name='Bob', age=20, score=88)
+    >>> json.dumps(d)
+    '{"age": 20, "score": 88, "name": "Bob"}'
+dumps()方法返回一个str，内容就是标准的JSON。类似的，dump()方法可以直接把JSON写入一个file-like Object。
+
+要把JSON反序列化为Python对象，用loads()或者对应的load()方法，前者把JSON的字符串反序列化，后者从file-like Object中读取字符串并反序列化：
+
+    >>> json_str = '{"age": 20, "score": 88, "name": "Bob"}'
+    >>> json.loads(json_str)
+    {'age': 20, 'score': 88, 'name': 'Bob'}
+    
