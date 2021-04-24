@@ -4,13 +4,14 @@ date: 2019-06-08 09:39:01
 tags:
     - python
     - 基础知识
+description:  python基础知识
 ---
 ## python解释器
 
 * CPython 官方解释器，使用最广的解释器，C语言开发
 * IPython 交互式解释器，相比CPython在交互上有所增强，其他没有区别
 * PyPy 采用JIT技术，对python代码进行动态编译（不是解释），可以显著提高python的执行速度
-* JPython是运行再Java平台上的python解释器
+* JPython是运行在Java平台上的python解释器
 * IronPython是运行在.net上的解释器
 
 ## 数据类型和变量

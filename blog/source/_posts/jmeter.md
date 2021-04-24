@@ -8,6 +8,7 @@ tags:
 categories:
     - 学习
     - 性能测试
+description:  jmeter使用笔记
 ---
 
 # jmeter使用基础
