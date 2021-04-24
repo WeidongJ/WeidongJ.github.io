@@ -1,1155 +1,686 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-
-
-
-
-
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","images":"/images","scheme":"Mist","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="PrueMat">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="PrueMat">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Weidong Ji">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PrueMat">
 
 
+<link rel="canonical" href="http://yoursite.com/">
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
   };
 </script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/">
-
-
-
-
-
-  <title>PrueMat</title>
+<title>PrueMat</title>
   
 
 
 
 
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
 
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
 
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
 
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">PrueMat</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">PrueMat</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
+
+
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-schedule">
-          <a href="/schedule/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
-            
-            日程表
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="calendar fa-fw"></i>日程表</a></li>
+  </ul>
 </nav>
 
 
 
- </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Weidong Ji</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/WeidongJ" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;WeidongJ" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
     
-      
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
+  <a href="https://github.com/WeidongJ" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
   
 
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/10/MDN-web/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Weidong Ji">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Weidong Ji">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="PrueMat">
     </span>
-
-    
       <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">数据结构学习笔记</a>
+        </h2>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/10/MDN-web/" itemprop="url">MDN-学习</a></h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-10T09:39:01+08:00">
-                2019-06-10
-              </time>
-            
+      <time title="创建时间：2020-06-07 20:43:40" itemprop="dateCreated datePublished" datetime="2020-06-07T20:43:40+08:00">2020-06-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-04-24 22:06:24" itemprop="dateModified" datetime="2021-04-24T22:06:24+08:00">2021-04-24</time>
+      </span>
 
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+</div>
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2>
-          
+          <p>大话数据结构学习笔记</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
     
-
     
-
     
 
     <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
+</div>
+
+
 
 
     
-      
 
-  
 
-  
+<div class="post-block">
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/python基础知识复习/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/11/docker%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Weidong Ji">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Weidong Ji">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="PrueMat">
     </span>
-
-    
       <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/05/11/docker%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5/" class="post-title-link" itemprop="url">docker入门与实践</a>
+        </h2>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/08/python基础知识复习/" itemprop="url">python基础知识复习</a></h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-08T09:39:01+08:00">
-                2019-06-08
-              </time>
-            
+      <time title="创建时间：2020-05-11 17:14:11" itemprop="dateCreated datePublished" datetime="2020-05-11T17:14:11+08:00">2020-05-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-05-17 23:14:09" itemprop="dateModified" datetime="2020-05-17T23:14:09+08:00">2020-05-17</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CI/" itemprop="url" rel="index"><span itemprop="name">CI</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CI/CD/" itemprop="url" rel="index"><span itemprop="name">CD</span></a>
+        </span>
+    </span>
 
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+</div>
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
+          <h1 id="Docker从入门到实践"><a href="#Docker从入门到实践" class="headerlink" title="Docker从入门到实践"></a>Docker从入门到实践</h1><h2 id="什么是Docker"><a href="#什么是Docker" class="headerlink" title="什么是Docker"></a>什么是Docker</h2><p>Docker属于系统层面的虚拟化技术，能够对进程进行封装隔离。由于隔离的进程独立与宿主和其他的隔离进程，因此也被称做容器。</p>
+<img src="/2020/05/11/docker%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5/docker-on-linux.png" class="" title="Docker 架构 Doceker 架构">
 
-      
-      
+<blockquote>
+<p>runc 是一个命令行工具，用于根据<code>OCI容器运行时规范</code> 创建和运行容器。</p>
+</blockquote>
+<blockquote>
+<p>containerd 是一个守护程序，他管理容器的生命周期，提供了在一个节点上执行容器和管理镜像的最小功能集。</p>
+</blockquote>
+<p>Docker在容器的基础上，进行了进一步的封装，从文件系统、网络互联到进程隔离等等，极大地简化了容器的创建和维护。使得Docker技术比虚拟化技术更为轻便、快捷。</p>
+<p>Docker和传统虚拟化技术的不同之处，传统虚拟化技术是虚拟出一套硬件之后，在其上运行一个完整的操作系统，在该系统上再运行所需的应用进程；而容器内的应用进程直接运行于宿主的内核，容器内没有自己的内核，而且也没有进行硬盘虚拟。因此容器更为轻便。</p>
+<img src="/2020/05/11/docker%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5/virtualization.png" class="" title="传统虚拟化">
 
-      
-        
-          
-            <h2 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h2><ul>
-<li>python中int没有大小限制， 无限大可以使用<code>inf</code>来表示；常量通常使用大写字母表示。</li>
-<li><p><code>utf-8</code>是可变长编码：可以根据一个Unicode字符根据字节大小编码成1-6个字节；计算机中编码的工作方式如下：</p>
-<p>  用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件:</p>
-<img src="/2019/06/08/python基础知识复习/encode.png" title="encode"></li>
-<li><code>ord()</code>函数可以获取字符的整数表示，<code>chr()</code>可以把编码转换成对应的字符。</li>
-<li><p>bytes类型的数据用<code>b&#39;ABC&#39;</code>表示，与字符串<code>ABC</code>的差别是bytes类型每个字符只占一个字节。把字符串转换成bytes型使用<code>encode()</code>方法，使用<code>decode()</code>可以把bytes转换成字符串。</p>
-<pre><code>&gt;&gt;&gt; &apos;中文&apos;.encode(&apos;utf-8&apos;)
-b&apos;\xe4\xb8\xad\xe6\x96\x87&apos;
-</code></pre></li>
-<li>dict的key必须是不可变对象，因为dict是根据key来计算存储位置，key可变，dict内部就全乱了。</li>
-<li><p><strong>zip()</strong>：函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表，如果各个迭代器的元素个数不一致，则返回列表长度与最短的对象相同，利用 * 号操作符，可以将元组解压为列表。</p>
-<pre><code>&gt;&gt;&gt;a = [1,2,3]
-&gt;&gt;&gt; b = [4,5,6]
-&gt;&gt;&gt; c = [4,5,6,7,8]
-&gt;&gt;&gt; zipped = zip(a,b)     # 打包为元组的列表
-[(1, 4), (2, 5), (3, 6)]
-&gt;&gt;&gt; zip(a,c)              # 元素个数与最短的列表一致
-[(1, 4), (2, 5), (3, 6)]
-&gt;&gt;&gt; zip(*zipped)          # 与 zip 相反，*zipped 可理解为解压，返回二维矩阵式
-[(1, 2, 3), (4, 5, 6)]
-</code></pre></li>
-</ul>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>函数名其实就是指向一个函数对象的引用，完全可以把函数名赋给一个变量，相当于给这个函数起了一个“别名”：</p>
-<pre><code>&gt;&gt;&gt; a = abs # 变量a指向abs函数
-&gt;&gt;&gt; a(-1) # 所以也可以通过a调用abs函数
-1
-</code></pre><h3 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h3><p>默认参数</p>
-<pre><code>def power(x, n=2):
-    s = 1
-    while n &gt; 0:
-        n = n - 1
-        s = s * x
-    return s
-</code></pre><p>默认参数必须指向不变对象：Python函数在定义的时候，默认参数L的值就被计算出来了，即[]，因为默认参数L也是一个变量，它指向对象[]，每次调用该函数，如果改变了L的内容，则下次调用时，默认参数的内容就变了，不再是函数定义时的[]了。</p>
-<pre><code>def add_end(L=[]):
-    L.append(&apos;END&apos;)
-    return L
+<img src="/2020/05/11/docker%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5/docker.png" class="" title="Docker">
 
-&gt;&gt;&gt; add_end()
-[&apos;END&apos;, &apos;END&apos;]
-&gt;&gt;&gt; add_end()
-[&apos;END&apos;, &apos;END&apos;, &apos;END&apos;]
-</code></pre><p>可变参数：<br>    def calc(<em>numbers):<br>        sum = 0<br>        for n in numbers:<br>            sum = sum + n </em> n<br>        return sum<br>*nums表示把nums这个list的所有元素作为可变参数传进去。这种写法相当有用，而且很常见：</p>
-<pre><code>&gt;&gt;&gt; nums = [1, 2, 3]
-&gt;&gt;&gt; calc(*nums)
-14
-</code></pre><p>递归：函数内部调用自己本身。</p>
-<p>使用递归需要注意防止栈溢出。可以使用尾递归优化，尾递归即调用自己本身时 return语句不包含表达式，效果等同于循环。</p>
-<pre><code># 汉诺塔移动
-def move(n, a, b, c):
-    if n == 1:
-        print(a, &apos;--&gt;&apos;, c)
-    else:
-        move(n-1, a, c, b)
-        move(1, a, b, c)
-        move(n-1, b, c, a)
-</code></pre><h3 id="函数高级特性"><a href="#函数高级特性" class="headerlink" title="函数高级特性"></a>函数高级特性</h3><p>python内置函数<code>enumerate()</code>可以把列表变成一个索引-元素对。</p>
-<pre><code>&gt;&gt;&gt; for i, value in enumerate([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]):
-...     print(i, value)
-...
-0 A
-1 B
-2 C
-</code></pre><p><strong>生成式（generate）</strong>：列表元素根据某种算法推算出来，循环种不对退算后面的数，不需要创建完整的列表，以节省大量的空间；使用()创建一个生成器，列表生成式使用[]，使用next()获取下一个返回值，最后抛出StopIteration异常。</p>
-<p>斐波拉契数列：</p>
-<pre><code># 列表生成式
-def fib(x):
-    n, a, b = 0, 0, 1
-    while n &lt; max:
-        print(b)
-        a, b = a, a + b
-        n += 1
-    return &apos;done&apos;
-</code></pre><p>generator的另一种方法。如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generator：</p>
-<pre><code># 生成器
-def fib(x):
-    n, a, b = 0, 0, 1
-    while n &lt; max:
-        yield b
-        a, b = a, a + b
-        n += 1
-    return &apos;done&apos;
-</code></pre><p>最难理解的就是generator和函数的执行流程不一样。函数是顺序执行，遇到return语句或者最后一行函数语句就返回。而变成generator的函数，<strong>在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。</strong></p>
-<pre><code>def odd():
-print(&apos;step 1&apos;)
-yield 1
-print(&apos;step 2&apos;)
-yield(3)
-print(&apos;step 3&apos;)
-yield(5)
-
-&gt;&gt;&gt; o = odd()
-&gt;&gt;&gt; next(o)
-step 1
-1
-&gt;&gt;&gt; next(o)
-step 2
-3
-&gt;&gt;&gt; next(o)
-step 3
-5
-&gt;&gt;&gt; next(o)
-Traceback (most recent call last):
-File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-StopIteration
-</code></pre><p>杨辉三角：<br>    def trangles():<br>        L = [1]<br>        while True:<br>            yield L<br>            L = [1] + [L[a] + L[a+1] for a in range(0,len(L)-1)] + [1]</p>
-<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><ul>
-<li>可以直接作用于for循环的对象统称为可迭代对象：<strong>Iterable</strong>。</li>
-<li>可以被next()函数调用并不断返回下一个值的对象称为迭代器：<strong>Iterator</strong>。</li>
-</ul>
-<p>Python的Iterator对象表示的是一个数据流，Iterator对象可以被next()函数调用并不断返回下一个数据，直到没有数据时抛出StopIteration错误。可以把这个数据流看做是一个有序序列，但我们却不能提前知道序列的长度，只能不断通过next()函数实现按需计算下一个数据，所以Iterator的计算是惰性的，只有在需要返回下一个数据时它才会计算。Iterator甚至可以表示一个无限大的数据流，例如全体自然数。而使用list是永远不可能存储全体自然数的。</p>
-<p>Python的for循环本质上就是通过不断调用next()函数实现的</p>
-<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>函数式编程就是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量，因此，任意一个函数，只要输入是确定的，输出就是确定的，这种纯函数我们称之为没有副作用。而允许使用变量的程序设计语言，由于函数内部的变量状态不确定，同样的输入，可能得到不同的输出，因此，这种函数是有副作用的。</p>
-<p>函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！</p>
-<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><p>一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数</p>
-<p>变量可以指向函数</p>
-<pre><code>&gt;&gt;&gt; f = abs
-&gt;&gt;&gt; f(-10)
-10
-</code></pre><h3 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map()/reduce()"></a>map()/reduce()</h3><p><code>map()</code>函数接收两个参数，一个是函数，一个是Iterable，map将传入的函数依次作用到序列的每个元素，并把结果作为新的<strong>Iterator</strong>返回。</p>
-<pre><code>&gt;&gt;&gt; list(map(str, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
-[&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;, &apos;6&apos;, &apos;7&apos;, &apos;8&apos;, &apos;9&apos;]
-</code></pre><p><code>reduce()</code>把一个函数作用在一个序列[x1, x2, x3, …]上，这个函数必须接收两个参数，reduce把结果继续和序列的下一个元素做累积计算，其效果就是。</p>
-<pre><code>&gt;&gt;&gt; from functools import reduce
-&gt;&gt;&gt; def add(x, y):
-...     return x + y
-...
-&gt;&gt;&gt; reduce(add, [1, 3, 5, 7, 9])
-25
-</code></pre><p><code>filter()</code>也接收一个函数和一个序列。和map()不同的是，filter()把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素,返回一个<strong>Iterator</strong>。</p>
-<p><code>sorted()</code>排序</p>
-<pre><code>&gt;&gt;&gt; sorted([&apos;bob&apos;, &apos;about&apos;, &apos;Zoo&apos;, &apos;Credit&apos;], key=str.lower, reverse=True)
-[&apos;Zoo&apos;, &apos;Credit&apos;, &apos;bob&apos;, &apos;about&apos;]
-</code></pre><h3 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h3><p>高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。</p>
-<pre><code>def lazy_sum(*args):
-    def sum():
-        ax = 0
-        for n in args:
-            ax = ax + n
-        return ax
-    return sum
-</code></pre><p>调用<code>lazy_sum()</code>时，返回求和函数；并且每次调用时都返回一个新的函数：</p>
-<pre><code>&gt;&gt;&gt; f = lazy_sum(1, 3, 5, 7, 9)
-&gt;&gt;&gt; f
-&lt;function lazy_sum.&lt;locals&gt;.sum at 0x101c6ed90&gt;
-
-&gt;&gt;&gt; f1 = lazy_sum(1, 3, 5, 7, 9)
-&gt;&gt;&gt; f2 = lazy_sum(1, 3, 5, 7, 9)
-&gt;&gt;&gt; f1==f2
-False
-</code></pre><p>闭包：我们在函数<code>lazy_sum</code>中又定义了函数<code>sum</code>，并且，内部函数<code>sum</code>可以引用外部函数<code>lazy_sum</code>的参数和局部变量，当<code>lazy_sum</code>返回函数<code>sum</code>时，<strong>相关参数和变量都保存在返回的函数中</strong>，这种称为“闭包（Closure）”的程序结构拥有极大的威力。</p>
-<p>返回的函数并没有立刻执行，而是直到调用了f()才执行。</p>
-<pre><code>def count():
-    fs = []
-    for i in range(1, 4):
-        def f():
-            return i*i
-        fs.append(f)
-    return fs
-
-f1, f2, f3 = count()
-&gt;&gt;&gt; f1()
-9
-&gt;&gt;&gt; f2()
-9
-&gt;&gt;&gt; f3()
-9
-</code></pre><p>全部都是9！原因就在于返回的函数引用了变量i，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量i已经变成了3，因此最终结果为9。<strong>返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。</strong></p>
-<p>一定要引用循环变量怎么办？方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变:<br>    def count():<br>        def f(j):<br>            def g():<br>                return j*j<br>            return g<br>        fs = []<br>        for i in range(1, 4):<br>            fs.append(f(i)) # f(i)立刻被执行，因此i的当前值被传入f()<br>        return fs # 返回一个列表</p>
-<p>计数器：</p>
-<pre><code>def createCounter():
-    li = 0
-    def counter():
-        li += 1
-        return li
-    return counter
-</code></pre><p>上述代码会报错：当你在当前作用域中的给变量赋值时，该变量将成为该作用域的局部变量，并在外部范围中隐藏任何类似命名的变量。</p>
-<pre><code>def createCounter():
-    l = [0]
-    def counter():
-        l[0] = l[0] + 1
-        return l[0]
-    return counter
-</code></pre><h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><p>在代码运行期间动态增加功能的方式，成为<strong>装饰器（Decorator）</strong>；本质上decorator就是一个返回函数的高阶函数。</p>
-<pre><code># 装饰器
-def log(func):
-    @functools.wraps(func)
-    def wrapper(*args, **kw):
-        print(&apos;call %s()&apos; % func.__name__)
-        return func(*args, **kw)
-    return wrapper
-
-@log
-def now():
-    print(&apos;Hello World!&apos;)
-
-def log_text(text):
-    def decorator(func):
-        @functools.wraps(func)
-        def wrapper(*args, **kw):
-            print(&apos;%s %s()&apos; % (text, func.__name__))
-            return func(*args, **kw)
-        return wrapper
-    return decorator
-
-@log_text(&apos;调用&apos;)
-def new_now():
-    print(&apos;Hello World!&apos;)
-</code></pre><p>Python内置的<code>functools.wraps</code>，把原始函数的<code>__name__</code>属性复制到<code>wrapper()</code>中.</p>
-<p>偏函数</p>
-<p><code>functools.partial</code>的作用就是，把一个函数的某些参数给固定住（也就是设置默认值），返回一个新的函数，调用这个新函数会更简单。</p>
-<pre><code>&gt;&gt;&gt; import functools
-&gt;&gt;&gt; int2 = functools.partial(int, base=2)
-&gt;&gt;&gt; int2(&apos;1000000&apos;)
-64
-</code></pre><h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p><code>sys</code>模块有一个<code>argv</code>变量，用list存储了命令行的所有参数。运行python3 hello.py Michael获得的sys.argv就是[‘hello.py’, ‘Michael]。</p>
-<p>当我们在命令行运行hello模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试</p>
-<pre><code>if __name__==&apos;__main__&apos;:
-test()
-</code></pre><h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><p>类和实例</p>
-<p>和静态语言不同，Python允许对实例变量绑定任何数据，也就是说，对于两个实例变量，虽然它们都是同一个类的不同实例，但拥有的变量名称都可能不同。</p>
-<p>访问限制</p>
-<p>使用<code>__</code>限制属性访问，改为增加<code>get/se</code>t方法是因为<strong>在方法中可以对参数做检查</strong>。</p>
+<h2 id="Docker的好处"><a href="#Docker的好处" class="headerlink" title="Docker的好处"></a>Docker的好处</h2><p><em>更高效的利用系统资源</em></p>
+<p>由于容器不需要进行硬件虚拟以及完整的操作系统等额外开销，Docker 对系统资源的利用率更高。无论是应用执行速度、内存损耗或者文件存储速度都比传统虚拟技术更高效。</p>
+<p><em>更快速的启动时间</em></p>
+<p> 由于直接运行于宿主内核，不需要启动完整的操作系统，因此可以做到秒级、甚至毫秒级的启动时间。大大节约了开发、测试、部署的时间。</p>
+<p> <em>一致的运行环境</em></p>
+<p>Docker的镜像提供了除内核外完整的运行时环境，确保了应用运行环境的一致性。</p>
+<p><em>持续交付和部署</em></p>
+<p>使用Docker可以通过定制应用镜像来实现持续集成、持续交付、部署。开发人员可以通过Dockerfile来进行镜像构建，并结合持续集成系统进行集成测试，而运维人员则可以直接在生产环境部署镜像，甚至可以通过持续部署系统进行自动部署。</p>
+<p><em>更轻松的应用迁移</em></p>
+<p>由于确保了运行环境的一致性，Docker迁移更加容易。Docker是跨平台的，用户可以很轻松的将应用跨平台迁移。</p>
+<p><em>更轻松的扩展和维护</em></p>
+<p>Docker使用的分层存储以及镜像的技术，使得应用重复的部分的复用更加容易，应用的维护更新更加简单。</p>
+<p><em>对比传统虚拟技术</em></p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>容器</th>
+<th>虚拟机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动</td>
+<td>秒级</td>
+<td>分钟级</td>
+</tr>
+<tr>
+<td>硬盘使用</td>
+<td>一般为MB</td>
+<td>一般为GB</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>接近原生</td>
+<td>弱于</td>
+</tr>
+<tr>
+<td>系统支持量</td>
+<td>单机支持上千个容器</td>
+<td>一般十几个</td>
+</tr>
+</tbody></table>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>Docker包括三个基本概念</p>
 <ul>
-<li><code>__xxx__</code> 特殊变量。</li>
-<li><code>_xxx</code> 约定的私有变量：虽然我可以被访问，但是，请把我视为私有变量，不要随意访问。</li>
-<li><code>__xx</code> 私有变量，python解释器把<code>__xx</code>对外改变成<code>_ClassName__xx</code></li>
+<li>镜像（Image）</li>
+<li>容器（Container）</li>
+<li>仓库（Repository）</li>
 </ul>
-<p>外部设置变量错误，际上这个<strong>name变量和class内部的</strong>name变量不是一个变量！内部的<strong>name变量已经被Python解释器自动改成了_Student</strong>name，而外部代码给bart新增了一个__name变量：</p>
-<pre><code>&gt;&gt;&gt; bart = Student(&apos;Bart Simpson&apos;, 59)
-&gt;&gt;&gt; bart.get_name()
-&apos;Bart Simpson&apos;
-&gt;&gt;&gt; bart.__name = &apos;New Name&apos; # 设置__name变量！
-&gt;&gt;&gt; bart.__name
-&apos;New Name&apos;
-</code></pre><h3 id="继承和多态"><a href="#继承和多态" class="headerlink" title="继承和多态"></a>继承和多态</h3><p><strong>继承</strong>：子类获得了父类的全部功能。</p>
-<p><strong>多态</strong>：对于一个变量，我们只需要知道它是Animal类型，无需确切地知道它的子类型，就可以放心地调用run()方法，而具体调用的run()方法是作用在Animal、Dog、Cat还是Tortoise对象上，由运行时该对象的确切类型决定，这就是多态真正的威力：调用方只管调用，不管细节，而当我们新增一种Animal的子类时，只要确保run()方法编写正确，不用管原来的代码是如何调用的。这就是著名的“开闭”原则：</p>
-<pre><code>class Animal(object):
-def run(self):
-    print(&apos;Animal is running...&apos;)
-
-class Dog(Animal):
-    def run(self):
-        print(&apos;Dog is running...&apos;)
-
-def run_twice(animal):
-    animal.run()
-    animal.run()
-
-run_twice(Animal())
-run_twice(Dog())
-
-Animal is running...
-Animal is running...
-Dog is running...
-Dog is running...
-</code></pre><ul>
-<li>对扩展开放：允许新增Animal子类。</li>
-<li>对修改封闭：不需要修改依赖Animal类型的run_twice()等函数。</li>
+<h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p>操作系统分为内核和用户空间。对于Linux而言，内核启动后，会挂载root文件系统为其提供用户空间支持。docker就相当于一个root文件系统。</p>
+<p>Docker镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源等文件外，还包括了一些为运行时准备的一些配置参数。镜像不包括任何动态数据，其内容在构建之后也不会改变。</p>
+<h4 id="分层存储"><a href="#分层存储" class="headerlink" title="分层存储"></a>分层存储</h4><p>镜像的采用了分层存储技术，构建时会一层层构建，前一层是后一层的基础，每一层构建之后就不会发生改变，后一层的改变只发生在自己这一层。分层存储的特征使得镜像的复用、定制变得更为容易。</p>
+<h2 id="todo"><a href="#todo" class="headerlink" title="todo"></a>todo</h2><h2 id="使用镜像"><a href="#使用镜像" class="headerlink" title="使用镜像"></a>使用镜像</h2><p>从Docker Hub获取镜像：</p>
+<pre><code>docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</code></pre><h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>以ubuntu镜像为例，运行bash</p>
+<pre><code>docker run -it --rm ubuntu:18.04 bash</code></pre><p>参数：</p>
+<ul>
+<li>-it: -i 交互式操作；-t 终端</li>
+<li>–rm: 容器推出之后随即将其删除</li>
 </ul>
-<p>动态语言vs静态语言</p>
-<p>对于静态语言（例如Java）来说，如果需要传入Animal类型，则传入的对象必须是Animal类型或者它的子类，否则，将无法调用run()方法。</p>
-<p>对于Python这样的动态语言来说，则不一定需要传入Animal类型。我们只需要保证传入的对象有一个run()方法就可以了：</p>
-<pre><code>class Timer(object):
-    def run(self):
-        print(&apos;start...&apos;)
+<p>列出镜像</p>
+<pre><code>PS D:\Weidong\django-blog&gt; docker image ls [-afq] filter name [--format format]
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE  
+nginx               v3                  334bdfe45c56        5 days ago          127MB 
+nginx               v2                  ec40e4a4f34e        5 days ago          127MB 
+ubuntu              latest              1d622ef86b13        3 weeks ago         73.9MB
+nginx               latest              602e111c06b6        3 weeks ago         127MB </code></pre><p>参数：</p>
+<ul>
+<li>-a 列出所有镜像，包括中间层镜像。</li>
+<li>-q 返回image id</li>
+<li>filter name 返回指定name的镜像</li>
+<li>-f 高级filter 支持按时间筛选</li>
+<li>–format 指定返回内容格式</li>
+</ul>
+<p>查看空间占用</p>
+<pre><code>PS D:\Weidong\django-blog&gt; docker system df
+TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE
+Images              4                   1                   200.6MB             200.6MB (100%)
+Containers          1                   0                   2B                  2B (100%)
+Local Volumes       0                   0                   0B                  0B
+Build Cache         0                   0                   0B                  0B</code></pre><p>虚悬镜像（dangling image）：镜像的名字和标签指定到了新版本镜像之后，会成为虚悬镜像。</p>
+<pre><code>&lt;none&gt;               &lt;none&gt;              00285df0df87        5 days ago          342 MB</code></pre><p>删除镜像</p>
+<pre><code>docker image rm [name|tag|$(command)]</code></pre><h2 id="Commit构建镜像"><a href="#Commit构建镜像" class="headerlink" title="Commit构建镜像"></a>Commit构建镜像</h2><p>运行镜像</p>
+<pre><code>PS D:\Github\WeidongJ.github.io&gt; docker run --name webserver -d -p 80:80 nginx
+014dfd2cb4f1be7b03be0e6e8a8ab97de6deb92c9e7f6fd673ae673cfa4caa62</code></pre><p>进入镜像修改内容：</p>
+<pre><code>PS D:\Github\WeidongJ.github.io&gt; docker exec -it webserver bash
+root@014dfd2cb4f1:/# echo &apos;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&apos; &gt; /usr/share/nginx/html/index.html
+root@014dfd2cb4f1:/# exit
+exit</code></pre><p>nginx启动的webserver的首页已经发生变化</p>
+<img src="/2020/05/11/docker%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5/nginx-commited.png" class="" title="index">
 
-run_twice(Timer())
-
-start...
-start...
-</code></pre><p>这就是动态语言的“<strong>鸭子类型</strong>”，它并不要求严格的继承体系，一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子。</p>
-<h3 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h3><p><code>type()</code>用于判断对象的类型,使用<code>isinstance()</code>判断继承关系。</p>
-<p><code>dir()</code>获取对象的所有属性，实际上<code>len()</code>方法是自动调用该对象的<code>__len__()</code>方法</p>
-<p>配合<code>getattr()</code>、<code>setattr()</code>以及<code>hasattr()</code>，我们可以直接操作一个对象的状态:</p>
-<pre><code>&gt;&gt;&gt; class MyObject(object):
-...     def __init__(self):
-...         self.x = 9
-...     def power(self):
-...         return self.x * self.x
-...
-&gt;&gt;&gt; obj = MyObject()
-
-&gt;&gt;&gt; hasattr(obj, &apos;x&apos;) # 有属性&apos;x&apos;吗？
-True
-&gt;&gt;&gt; obj.x
-9
-&gt;&gt;&gt; hasattr(obj, &apos;y&apos;) # 有属性&apos;y&apos;吗？
-False
-&gt;&gt;&gt; setattr(obj, &apos;y&apos;, 19) # 设置一个属性&apos;y&apos;
-&gt;&gt;&gt; hasattr(obj, &apos;y&apos;) # 有属性&apos;y&apos;吗？
-True
-&gt;&gt;&gt; getattr(obj, &apos;y&apos;) # 获取属性&apos;y&apos;
-19
-&gt;&gt;&gt; obj.y # 获取属性&apos;y&apos;
-19
-</code></pre><h3 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h3><p>不可对实例属性和类属性使用相同的名字，因为相同名称的实例属性将屏蔽掉类属性，但是当你删除实例属性后，再使用相同的名称，访问到的将是类属性。</p>
-<pre><code>&gt;&gt;&gt; class Student(object):
-...     name = &apos;Student&apos;
-...
-&gt;&gt;&gt; s = Student() # 创建实例s
-&gt;&gt;&gt; print(s.name) # 打印name属性，因为实例并没有name属性，所以会继续查找class的name属性
-Student
-&gt;&gt;&gt; print(Student.name) # 打印类的name属性
-Student
-&gt;&gt;&gt; s.name = &apos;Michael&apos; # 给实例绑定name属性
-&gt;&gt;&gt; print(s.name) # 由于实例属性优先级比类属性高，因此，它会屏蔽掉类的name属性
-Michael
-&gt;&gt;&gt; print(Student.name) # 但是类属性并未消失，用Student.name仍然可以访问
-Student
-&gt;&gt;&gt; del s.name # 如果删除实例的name属性
-&gt;&gt;&gt; print(s.name) # 再次调用s.name，由于实例的name属性没有找到，类的name属性就显示出来了
-Student
-</code></pre><p>给Student类增加一个类属性，每创建一个实例，该属性自动增加：</p>
-<pre><code>class Student(object):
-    count = 0
-
-    def __init__(self, name):
-        self.name = name
-        Student.count += 1 # 访问类属性
-</code></pre><p>变量的类型：</p>
-<ol>
-<li>全局变量 - 在所有函数和类的外面</li>
-<li>局部变量 -  <ol>
-<li>在函数内</li>
-<li>在class的方法内，未加 self 修饰</li>
+<p>定制了变化之后，可以使用commit命令保存更改到镜像里：</p>
+<pre><code>docker commit [选项] &lt;容器ID或容器名&gt; [&lt;仓库名&gt;[:&lt;标签&gt;]]</code></pre><p>commit之后会生成新的镜像：</p>
+<pre><code>PS D:\Github\WeidongJ.github.io&gt; docker commit --author &quot;weidong&quot; --message &quot;index change&quot; webserver nginx:v3
+sha256:1f3d60c92743b93d008ce254a87dbae1d47cbc7cd06d00ef0f5e5ed9d9867397
+PS D:\Github\WeidongJ.github.io&gt; docker image ls
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+nginx               v3                  1f3d60c92743        24 seconds ago      127MB
+&lt;none&gt;              &lt;none&gt;              334bdfe45c56        5 days ago          127MB
+nginx               v2                  ec40e4a4f34e        5 days ago          127MB
+ubuntu              latest              1d622ef86b13        3 weeks ago         73.9MB
+nginx               latest              602e111c06b6        3 weeks ago         127MB</code></pre><p>还可以使用docker history来查看镜像内的历史记录：</p>
+<pre><code>PS D:\Github\WeidongJ.github.io&gt; docker history nginx:v2
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+ec40e4a4f34e        5 days ago          nginx -g daemon off;                            98B                 修改了index
+602e111c06b6        3 weeks ago         /bin/sh -c #(nop)  CMD [&quot;nginx&quot; &quot;-g&quot; &quot;daemon…   0B
+&lt;missing&gt;           3 weeks ago         /bin/sh -c #(nop)  STOPSIGNAL SIGTERM           0B
+&lt;missing&gt;           3 weeks ago         /bin/sh -c #(nop)  EXPOSE 80                    0B
+&lt;missing&gt;           3 weeks ago         /bin/sh -c ln -sf /dev/stdout /var/log/nginx…   22B
+&lt;missing&gt;           3 weeks ago         /bin/sh -c set -x     &amp;&amp; addgroup --system -…   57.6MB
+&lt;missing&gt;           3 weeks ago         /bin/sh -c #(nop)  ENV PKG_RELEASE=1~buster     0B
+&lt;missing&gt;           3 weeks ago         /bin/sh -c #(nop)  ENV NJS_VERSION=0.3.9        0B
+&lt;missing&gt;           3 weeks ago         /bin/sh -c #(nop)  ENV NGINX_VERSION=1.17.10    0B
+&lt;missing&gt;           3 weeks ago         /bin/sh -c #(nop)  LABEL maintainer=NGINX Do…   0B
+&lt;missing&gt;           3 weeks ago         /bin/sh -c #(nop)  CMD [&quot;bash&quot;]                 0B</code></pre><h3 id="慎用commit"><a href="#慎用commit" class="headerlink" title="慎用commit"></a>慎用commit</h3><p>commit修改的是运行中的container，同时会有大量的文件更改，一般达不到最小更改的意图，会使得镜像越来越臃肿。</p>
+<h3 id="使用DockerFile定制镜像"><a href="#使用DockerFile定制镜像" class="headerlink" title="使用DockerFile定制镜像"></a>使用DockerFile定制镜像</h3><p>dockerFile是一个文本文件，如：</p>
+<pre><code>FROM nginx
+RUN echo &apos;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&apos; &gt; /usr/share/nginx/html/index.html</code></pre><p>命令详解：</p>
+<ul>
+<li>FROM 指定基础镜像（docker 还提供了一个空白镜像scratch）</li>
+<li>RUN 执行命令，其格式有2种：<ol>
+<li>shell：直接运行</li>
+<li>exec：<code>RUN [&quot;可执行文件&quot;, &quot;参数1&quot;, &quot;参数2&quot;]</code></li>
 </ol>
 </li>
-<li>静态变量 - 在class内，并且是在方法外</li>
-<li>实例变量 - 在class方法内，用self修饰</li>
-</ol>
-<h2 id="面向对象高级编程"><a href="#面向对象高级编程" class="headerlink" title="面向对象高级编程"></a>面向对象高级编程</h2><p>给实例绑定一个属性：</p>
-<pre><code>class Student(object):
-    pass
-
-&gt;&gt;&gt; s = Student()
-&gt;&gt;&gt; s.name = &apos;Michael&apos; # 动态给实例绑定一个属性
-&gt;&gt;&gt; print(s.name)
-Michael
-</code></pre><p>给实例绑定一个方法：</p>
-<pre><code>&gt;&gt;&gt; def set_age(self, age): # 定义一个函数作为实例方法
-...     self.age = age
-...
-&gt;&gt;&gt; from types import MethodType
-&gt;&gt;&gt; s.set_age = MethodType(set_age, s) # 给实例绑定一个方法
-&gt;&gt;&gt; s.set_age(25) # 调用实例方法
-&gt;&gt;&gt; s.age # 测试结果
-25
-</code></pre><p>给类绑定一个方法：</p>
-<pre><code>&gt;&gt;&gt; def set_score(self, score):
-...     self.score = score
-...
-&gt;&gt;&gt; Student.set_score = set_scor
-</code></pre><p>使用<code>__slots__</code>可以限制实例的属性,使用<strong>slots</strong>要注意，<strong>slots</strong>定义的属性仅对当前类实例起作用，对继承的子类是不起作用的。</p>
-<pre><code>class Student(object):
-    __slots__ = (&apos;name&apos;, &apos;age&apos;) # 用tuple定义允许绑定的属性名称
-</code></pre><p><code>@property</code>装饰器就是负责把一个方法变成属性调用的:</p>
-<pre><code>class Student(object):
-
-    @property
-    def score(self):
-        return self._score
-
-    @score.setter
-    def score(self, value):
-        if not isinstance(value, int):
-            raise ValueError(&apos;score must be an integer!&apos;)
-        if value &lt; 0 or value &gt; 100:
-            raise ValueError(&apos;score must between 0 ~ 100!&apos;)
-        self._score = value
-
-&gt;&gt;&gt; s = Student()
-&gt;&gt;&gt; s.score = 60 # OK，实际转化为s.set_score(60)
-&gt;&gt;&gt; s.score # OK，实际转化为s.get_score()
-60
-&gt;&gt;&gt; s.score = 9999
-Traceback (most recent call last):
-...
-ValueError: score must between 0 ~ 100!
-</code></pre><p>注意：<code>@property</code> 赋值时需要使用<code>_xx</code></p>
-<h3 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h3><p>Mixln：在设计类的继承关系时，通常主线都是翻译继承下来的，但是如果需要“混入”额外的功能，通过多重继承可以实现。这种设计模式通常称为Mixln。Mixln的目的就是给一个类增加多个功能。</p>
-<p>tips：多重继承中的属性或者方法重复，遵循取左原则</p>
-<pre><code>class A(object):
-
-    def __init__(self):
-        self.name = &apos;A&apos;
-
-class B(object):
-
-    def __init__(self):
-        self.name = &apos;B&apos;
-
-class C(A, B):
-    pass
-
-class D(B, A):
-    pass
-
-a = C()
-print(a.name)
-b = D()
-print(b.name)
-
-A
-B
-</code></pre><p>python继承的优先顺序：按照拓扑排序：</p>
-<p>在图论中，拓扑排序(Topological Sorting) 是一个 有向无环图(DAG,Directed Acyclic Graph) 的所有顶点的线性序列。且该序列必须满足下面两个条件：</p>
-<ul>
-<li>每个顶点出现且只出现一次。</li>
-<li>若存在一条从顶点A到B的路径，那么序列中顶点A在B的前面。<img src="/2019/06/08/python基础知识复习/DAG.jpg" title="Topological Sorting">
-</li>
 </ul>
-<p>它是一个DAG图，那么如何写出它的拓扑顺序呢？这里说一种比较常用的方法：</p>
-<ul>
-<li>从DAG途中选择一个没有前驱(即没有指向其的箭头)的顶点并输出。</li>
-<li>从图中删除该顶点和所有以它为起点的有向边。</li>
-<li>重复1和2直到当前DAG图为空或当前途中不存在无前驱的顶点为止。后一种情况说明有向图中必然存在环。<img src="/2019/06/08/python基础知识复习/topo_sorted.webp" title="Topo_sorted">
-</li>
-</ul>
-<p>python C3算法遍历DAG顺序寻找方法，优先找到即调用。</p>
-<h2 id="定制类"><a href="#定制类" class="headerlink" title="定制类"></a>定制类</h2><p><code>__str__()</code>存储了实例的字符串：</p>
-<pre><code>class Student(object):
-    count = 0
 
-    def __init__(self, name):
-        self.name = name
-        Student.count += 1 # 访问类属性
-
-    def __str__(self):
-        return &apos;Student object (name: %s)&apos; % self.name
-
-print(Student(&apos;wdji&apos;))
-
-Student object (name: wdji)
-</code></pre><p>直接显示调用的变量还是不好看：</p>
-<pre><code>&gt;&gt;&gt; s = Student(&apos;Michael&apos;)
-&gt;&gt;&gt; s
-&lt;__main__.Student object at 0x109afb310&gt;
-</code></pre><p>因为直接显示变量调用的不是<code>__str__()</code>，而是<code>__repr__()</code>，两者的区别是<code>__str__()</code>返回用户看到的字符串，而<code>__repr__()</code>返回程序开发者看到的字符串，也就是说，<code>__repr__()</code>是为调试服务的。</p>
-<pre><code>class Student(object):
-    count = 0
-
-    def __init__(self, name):
-        self.name = name
-        Student.count += 1 # 访问类属性
-
-    def __str__(self):
-        return &apos;Student object (name: %s)&apos; % self.name
-
-    __repr__ == __str__
-</code></pre><p><code>__iter__()</code>一个类想被<code>for ... in</code>循环，类似list，tuple就必须实现一个<code>__iter__()</code>方法，该方法返回一个迭代对象。</p>
-<pre><code>class Fib(object):
-
-    def __init__(self):
-        self.a, self.b = 0, 1
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        self.a , self.b = self.b, self.a + self.b
-        if self.a &gt; 1000:
-            raise StopIteration()
-        return self.a
-
-for n in Fib():
-    print(n)
-
-1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
-</code></pre><p><code>__getitem__()</code>:实现像list一样取出按照下表取出元素</p>
-<pre><code>class Fib(object):
-
-    def __getitem__(self, n):
-        a, b = 1, 1
-        for x in range(n):
-            a, b = b, a + b
-        return a
-
-f = Fib()
-print(f[5]) # 8
-</code></pre><p>实现切片需要判断n的类型：</p>
-<pre><code>class Fib(object):
-
-    def __getitem__(self, n):
-        if isinstance(n, int):
-            a, b = 1, 1
-            for _ in range(n):
-                a, b = b, a + b
-            return a
-        if isinstance(n, slice):
-            start = n.start
-            stop = n.stop
-            if start is None:
-                start = 0
-            a, b = 1, 1
-            L = []
-            for x in range(stop):
-                if x &gt;= start:
-                    L.append(a)
-                a, b = b, a + b
-            return L
-
-f = Fib()
-print(f[5:10]) # [8, 13, 21, 34, 55]
-</code></pre><p>以上没有处理step和负数，所以实现一个<code>__getitem__()</code>还有很多工作要做。如果把对象看成dict，<code>__getitem__()</code>的参数也可能是一个可以作key的object，例如str。</p>
-<p>与之对应的是<code>__setitem__()</code>方法，把对象视作list或dict来对集合赋值。最后，还有一个<code>__delitem__()</code>方法，用于删除某个元素。通过上面的方法，我们自己定义的类表现得和Python自带的list、tuple、dict没什么区别，这完全归功于动态语言的“鸭子类型”，不需要强制继承某个接口。</p>
-<p><code>__getattr__()</code></p>
-<p>调用不存在的属性时会报错，可以用<code>__getattr__()</code>实现动态的返回一个属性。</p>
-<pre><code>class Student(object):
-    count = 0
-
-    def __init__(self, name):
-        self.name = name
-        Student.count += 1 # 访问类属性
-
-    def __str__(self):
-        return &apos;Student object (name: %s)&apos; % self.name
-
-    def __getattr__(self, attr):
-        if attr == &apos;age&apos;:
-            return lambda: 25
-        raise AttributeError(&apos;\&apos;Student\&apos; object has no attribute \&apos;%s\&apos;&apos; % attr)
-
-print(Student(&apos;wdji&apos;))
-a = Student(&apos;wdji2&apos;)
-print(a.age()) # 25
-print(a.grade) # AttributeError: &apos;Student&apos; object has no attribute &apos;grade&apos;
-</code></pre><p>动态调用的特性可以用在网站的REST API；利用完全动态的<code>__getattr__()</code>写出一个链式调用。</p>
-<pre><code>class Chain(object):
-
-    def __init__(self, path=&apos;&apos;):
-        self._path = path
-
-    def __getattr__(self, path):
-        return Chain(&apos;%s/%s&apos; % (self._path, path))
-
-    def __str__(self):
-        return self._path
-
-    __repr__ = __str__
-</code></pre><p><code>__call__()</code></p>
-<p>定义一个<strong>call</strong>()方法，就可以直接对实例进行调用:</p>
-<pre><code>class Student(object):
-    def __init__(self, name):
-        self.name = name
-
-    def __call__(self):
-        print(&apos;My name is %s.&apos; % self.name)
-
-&gt;&gt;&gt; s = Student(&apos;Michael&apos;)
-&gt;&gt;&gt; s() # self参数不要传入
-My name is Michael.
-</code></pre><p><code>__call__()</code>还可以定义参数。<strong>对实例进行直接调用就好比对一个函数进行调用一样，所以你完全可以把对象看成函数，把函数看成对象，因为这两者之间本来就没啥根本的区别。如果你把对象看成函数，那么函数本身其实也可以在运行期动态创建出来，因为类的实例都是运行期创建出来的，这么一来，我们就模糊了对象和函数的界限</strong>。</p>
-<p>那么，怎么判断一个变量是对象还是函数呢？其实，更多的时候，我们需要判断一个对象是否能被调用，能被调用的对象就是一个Callable对象，比如函数和我们上面定义的带有<strong>call</strong>()的类实例：</p>
-<pre><code>&gt;&gt;&gt; callable(Student())
-True
-&gt;&gt;&gt; callable(max)
-True
-&gt;&gt;&gt; callable([1, 2, 3])
-False
-&gt;&gt;&gt; callable(None)
-False
-&gt;&gt;&gt; callable(&apos;str&apos;)
-False
-
-class urls(Chain):
-    def __init__(self, path=&apos;/users&apos;):
-    self.__path = path
-
-    def __getattr__(self, path):
-        return urls((&apos;%s/%s&apos; % (self.__path, path)))
-
-    def __call__(self, path):
-        return urls((&apos;%s/%s&apos; % (self.__path, path)))
-
-    def __str__(self):
-        return self.__path
-
-    __repr__ = __str__
-</code></pre>
-          
-        
       
     </div>
-    
-    
-    
 
     
-
     
-
     
 
     <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
+</div>
+
+
 
 
     
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Weidong Ji">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrueMat">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/08/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" class="post-title-link" itemprop="url">python基础知识复习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-08 09:39:01" itemprop="dateCreated datePublished" datetime="2019-06-08T09:39:01+08:00">2019-06-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-04-24 22:35:17" itemprop="dateModified" datetime="2021-04-24T22:35:17+08:00">2021-04-24</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>python基础知识</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/06/08/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
+    </div>
 
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
   
 
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/27/network_learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Weidong Ji">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Weidong Ji">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="PrueMat">
     </span>
-
-    
       <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/05/27/network_learning/" class="post-title-link" itemprop="url">计算机网络学习笔记</a>
+        </h2>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/27/network_learning/" itemprop="url">计算机网络学习笔记</a></h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-27T22:42:27+08:00">
-                2019-05-27
-              </time>
-            
+      <time title="创建时间：2019-05-27 22:42:27" itemprop="dateCreated datePublished" datetime="2019-05-27T22:42:27+08:00">2019-05-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-06-17 19:30:55" itemprop="dateModified" datetime="2019-06-17T19:30:55+08:00">2019-06-17</time>
+      </span>
 
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+</div>
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
+          <h2 id="第一章-概述"><a href="#第一章-概述" class="headerlink" title="第一章 概述"></a>第一章 概述</h2><h3 id="计算机网络的主要性能指标"><a href="#计算机网络的主要性能指标" class="headerlink" title="计算机网络的主要性能指标"></a>计算机网络的主要性能指标</h3><ol>
+<li><p>带宽</p>
+<p> <strong>“带宽”</strong>本来的意思是指某个信号具有的频带宽度。一个信号的带宽是<strong>指该信号的各种不同频率成份所占据的频率范围。</strong><br> 对于数字信道，“带宽”是<strong>指在信道上(或一段链路上)能够传送的数字信号的速率</strong>，即数据率或比特率。比特(bit)是计算机中的数据的最小单元，它也是信息量的度量单位。带宽的单位就是<strong>比特每秒(bit/s)</strong>。</p>
+</li>
+<li><p>时延</p>
+<ol>
+<li><p>传播时延：传播时延是电磁波在信道中传播所需要的时间。</p>
+<p> 传播时延 = 信道长度 ÷ 电磁波在信道上的传播速率</p>
+</li>
+<li><p>发送时延：发送时延是发送数据所需要的时间.信道带宽就是数据在信道上的发送速率，它也常称为数据在信道上的传输速率。信号传输速率和电磁波在信道上的传播速率是两个完全不同的概念，不可弄混。 </p>
+<p> 发送时延 = 数据块长度 ÷ 信道带宽</p>
+</li>
+<li><p>排队时延：数据在交换结点等候发送在缓存的队列中排队所经历的时延。这种时延的大小主要取决于网络中当时的通信量。当网络的通信量很大时，还会发生队列溢出，使数据丢失，这相当于排队时延为无穷大。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="第二章-计算机网络的原理体系结构"><a href="#第二章-计算机网络的原理体系结构" class="headerlink" title="第二章 计算机网络的原理体系结构"></a>第二章 计算机网络的原理体系结构</h2><p>OSI和TCP/IP体系对比</p>
+<img src="/2019/05/27/network_learning/OSI%E5%AF%B9%E6%AF%94TCPIP.png" class="" title="OSI对比TCP&#x2F;IP">
 
-      
-      
+<h2 id="第三章-物理层"><a href="#第三章-物理层" class="headerlink" title="第三章 物理层"></a>第三章 物理层</h2><p>物理层考虑的是<strong>怎样才能在连接各种计算机的传输媒体上传输数据的比特流</strong>，而不是指连接计算机的具体的物理设备或具体的传输媒体。</p>
+<h3 id="数据通信的基本概念"><a href="#数据通信的基本概念" class="headerlink" title="数据通信的基本概念"></a>数据通信的基本概念</h3><p>模拟信号：连续变化的信号；数字信号：取值离散的信号。</p>
+<p>通信交互方式:</p>
+<ol>
+<li>单向通信：又称为单工通信，即只能有一个方向的通信而没有反方向的交互。</li>
+<li>双向交替通信：又称为半双工通信，即通信的双方都可以发送信息，但不能双方同时发送(当然也就不能同时接收)。这种通信方式是一方发送另一方接收，过一段时间后再反过来。</li>
+<li>双向同时通信：又称为全双工通信，即通信的双方可以同时发送和接收信息。</li>
+</ol>
+<h2 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h2><p>硬件地址组成：前3字节由IEEE分配，后3字节由公司自己分配。</p>
+<h3 id="MAC层的硬件地址"><a href="#MAC层的硬件地址" class="headerlink" title="MAC层的硬件地址"></a>MAC层的硬件地址</h3><h2 id="第七章-网络互连"><a href="#第七章-网络互连" class="headerlink" title="第七章 网络互连"></a>第七章 网络互连</h2><p>···</p>
+<p><strong>因特网际协议IP</strong><br>7.24 ip数据报格式：</p>
+<img src="/2019/05/27/network_learning/ip.png" class="" title="ip报文">
 
-      
-        
-          
-            <h2 id="第七章-网络互连"><a href="#第七章-网络互连" class="headerlink" title="第七章 网络互连"></a>第七章 网络互连</h2><p>···</p>
-<p><strong>因特网际协议IP</strong><br>7.24 ip数据报格式：<br><img src="/2019/05/27/network_learning/ip.png" title="ip报文"></p>
 <p>首部不可变部分：</p>
 <ol>
 <li>版本：占4bit，指IP协议的版本。通信双方使用的IP协议的版本必须一致。目前广泛使用的IP协议版本号为4 (即IPv4)</li>
@@ -1163,7 +694,7 @@ class urls(Chain):
 <li>最后一个比特目前尚未使用</li>
 </ul>
 </li>
-<li>总长度：总长度指首部和数据之和的长度，单位为字节。总长度字段为16 bit，因此数据报的最大长度为65535字节(即64 KB)。<br>在IP层下面的每一种数据链路层都有其自己的帧格式，其中包括数据字段的最大长度，这在IP层中就称为最大传送单元MTU (Maximum Transfer Unit)。当一个IP数据报封装成链路层的帧时，此数据报的总长度(即首部加上数据部分)一定不能超过MTU的值。表7-3给出了不同链路层协议的MTU值。<img src="/2019/05/27/network_learning/MTU.png" title="MTU">
+<li>总长度：总长度指首部和数据之和的长度，单位为字节。总长度字段为16 bit，因此数据报的最大长度为65535字节(即64 KB)。<br>在IP层下面的每一种数据链路层都有其自己的帧格式，其中包括数据字段的最大长度，这在IP层中就称为最大传送单元MTU (Maximum Transfer Unit)。当一个IP数据报封装成链路层的帧时，此数据报的总长度(即首部加上数据部分)一定不能超过MTU的值。表7-3给出了不同链路层协议的MTU值。<img src="/2019/05/27/network_learning/MTU.png" class="" title="MTU">
 虽然使用尽可能长的数据报会使传输效率提高，但由于以太网的普遍应用，实际上使用的数据报长度很少有超过1500字节的，而有时数据报长度还被限制在576字节。当数据报长度超过网络所容许的最大传送单元MTU时，就必须将过长的数据报进行分片后才能在网络上传送。这时，数据报首部中的“总长度”字段不是指未分片前的数据报长度，而是指分片后每片的首部长度与数据长度的总和。</li>
 <li>标识：当数据过长需要分片时，各分片中的标识计数器用于重新组装数据。</li>
 <li>标志：占3bit。<ul>
@@ -1173,7 +704,7 @@ class urls(Chain):
 </li>
 <li>片位移：较长的分组在分片后，某片在原分组中的相对位置。也就是说，相对于用户数据字段的起点，该片从何处开始。片偏移以8个字节为偏移单位。片偏移等于5就表明偏移量为40字节。每个分片的长度一定是8字节(64 bit)的整数倍。</li>
 <li>生存时间：生存时间字段记为TTL(Time To Live)，即数据报在网络中的寿命。一个数据报在它通过互连网时必须具有受限的寿命。这个字段用来控制数据报所通过路由器的最大跳数。当源站发送数据报时，它在此字段写入一个数。这个数值约为任何两个主机之间的路由器数的两倍。当路由器收到一个数据报时，它先将此字段的值减1。若在减1之后此字段的值是0，路由器就丢弃该数据报。</li>
-<li>协议：占8 bit，协议字段指出此数据报携带的数据是使用何种协议，以便使目的主机的IP层知道应将此数据报上交给哪个进程。图7-15表示IP层需要根据这个协议字段的值将所收到的数据交付到正确地方。常用的一些协议和相应的协议字段值如下：<img src="/2019/05/27/network_learning/ip_protocol.png" title="ip_protocol"></li>
+<li>协议：占8 bit，协议字段指出此数据报携带的数据是使用何种协议，以便使目的主机的IP层知道应将此数据报上交给哪个进程。图7-15表示IP层需要根据这个协议字段的值将所收到的数据交付到正确地方。常用的一些协议和相应的协议字段值如下：<img src="/2019/05/27/network_learning/ip_protocol.png" class="" title="ip_protocol"></li>
 <li>首部检验和：此字段只检验数据报的首部，不包括数据部分。这是因为数据报每经过一个结点，结点处理机就要重新计算一下首部检验和(一些字段，如生存时间、标志、片偏移等都可能发生变化)。检验和不采用CRC检验码而采用下面的简单计算方法：在发送端，先将IP数据报首部划分为许多16 bit字的序列，并将检验和字段置零。用反码算术运算将所有16 bit字相加后，将得到的和的反码写入检验和字段。接收端收到数据报后，将首部的所有16 bit字再使用反码算术运算相加一次。将得到的和取反码，即得出接收端检验和的计算结果。若首部未发生任何变化，则此结果必为0，于是就保留这个数据报。否则即认为出差错，并将此数据报丢弃</li>
 <li>源地址：占4字节。这是首部中最重要的字段。</li>
 <li>目的地址：占4字节。这也是首部中最重要的字段。</li>
@@ -1200,7 +731,11 @@ class urls(Chain):
 <p><strong>无分类编址</strong>：无分类编址CIDR：ip后指定网络号的比特数。仍然使用掩码。</p>
 <p><strong>最长匹配原则</strong>：因为网络前缀越长，其地址块就越小，因而路由就越具体(more specific)。</p>
 <p>7.4 <strong>因特网控制报文协议ICMP(Internet Control Message Protocol)</strong><br>为了提高IP数据报交付成功的机会，ICMP允许主机或路由器报告差错情况和提供有关异常情况的报告。但ICMP不是高层协议，而是IP层的协议。ICMP报文作为IP层数据报的数据，加上数据报的首部，组成数据报发送出去。</p>
-<p>ICMP报文格式：<br><img src="/2019/05/27/network_learning/ICMP.png" title="ICMP"><br>ICMP报文的种类有两种，即ICMP差错报告报文和ICMP询问报文。<br>ICMP报文的前4个字节是统一的格式，共有三个字段：即类型、代码和检验和。接着的4个字节的内容与ICMP的类型有关。再后面是数据字段，其长度取决于ICMP 的类型。ICMP报文的类型字段的值与ICMP报文类型的对应关系如表7-7所示。<br><img src="/2019/05/27/network_learning/ICMP1.png" title="ICMP"></p>
+<p>ICMP报文格式：</p>
+<img src="/2019/05/27/network_learning/ICMP.png" class="" title="ICMP">
+<p>ICMP报文的种类有两种，即ICMP差错报告报文和ICMP询问报文。<br>ICMP报文的前4个字节是统一的格式，共有三个字段：即类型、代码和检验和。接着的4个字节的内容与ICMP的类型有关。再后面是数据字段，其长度取决于ICMP 的类型。ICMP报文的类型字段的值与ICMP报文类型的对应关系如表7-7所示。</p>
+<img src="/2019/05/27/network_learning/ICMP1.png" class="" title="ICMP">
+
 <p>7.5<strong>路由选择算法</strong><br>1.理想的路由算法<br>特点：</p>
 <ol>
 <li>算法必须是正确的和完整的。这里，“正确”的含义是：沿着各路由表所指引的路由，分组一定能够最终到达的目的网络和目的主机。</li>
@@ -1242,7 +777,9 @@ class urls(Chain):
 <li>运输层为应用进程之间提供逻辑通信，网络层为主机间提供逻辑通信。</li>
 <li>运输层还要对收到的报文进行差错检测。大家应当还记得，在网络层，IP数据报首部中的检验和字段，只检验首部是否出现差错而不检查数据部分。</li>
 </ul>
-<h3 id="TCP-IP体系中的运输层"><a href="#TCP-IP体系中的运输层" class="headerlink" title="TCP/IP体系中的运输层"></a>TCP/IP体系中的运输层</h3><p>运输层的2个协议<br><img src="/2019/05/27/network_learning/tcp_udp.png" title="tcp and udp"></p>
+<h3 id="TCP-IP体系中的运输层"><a href="#TCP-IP体系中的运输层" class="headerlink" title="TCP/IP体系中的运输层"></a>TCP/IP体系中的运输层</h3><p>运输层的2个协议</p>
+<img src="/2019/05/27/network_learning/tcp_udp.png" class="" title="tcp and udp">
+
 <p>端口的概念</p>
 <p>16bit的地址，最大可允许有64k个端口号</p>
 <p>没有端口，运输层就无法知道数据应当交付给应用层的哪一个进程。从这个意义上讲，端口是用来标识应用层的进程。由于使用了复用和分用技术，在运输层与网络层的交互中已看不见各种应用进程，而只有TCP报文段或用户数据报。IP层也使用类似的复用和分用技术，因而在网络层和链路层的交互中也只有IP数据报。上述概念在网络中是十分重要的。</p>
@@ -1254,14 +791,17 @@ class urls(Chain):
 <li>UDP用户数据报首部只有八个字节开销，比TCP的20个要少。</li>
 <li>UDP适合允许适当丢包但实时性要求较高的数据传输。</li>
 </ol>
-<p>使用UDP的应用<br><img src="/2019/05/27/network_learning/udp-protocal.png" title="udp-protocal"></p>
+<p>使用UDP的应用</p>
+<img src="/2019/05/27/network_learning/udp-protocal.png" class="" title="udp-protocal">
+
 <p>UDP的缺点：</p>
 <ol>
 <li>使用没有拥塞控制的UDP，但当很多的源主机同时都向网络发送高速率的实时视频流时，网络就有可能发生拥塞，结果大家都无法正常接收。因此“UDP不具有拥塞控制功能”，可能会引起网络产生严重的拥塞问题。</li>
 <li>IP层将收到的IP数据报的数据部分上交给UDP。UDP再对收到的用户数据报进行分用，按照端口号将其加入到相应队列的末尾。如果队列已满，就丢弃该用户数据报。这里没有流量控制机制来通知发送方来降低发送速率。当应用进程要接收报文时，就从相应的队列前头取走一个报文。若队列已空，应用进程就被阻塞，直到队列中有到达的报文为止。</li>
 </ol>
 <p>UDP 数据报格式</p>
-<h3 id="TCP报文段"><a href="#TCP报文段" class="headerlink" title="TCP报文段"></a>TCP报文段</h3><img src="/2019/05/27/network_learning/TCP报文首部.png" title="TCP报文首部">
+<h3 id="TCP报文段"><a href="#TCP报文段" class="headerlink" title="TCP报文段"></a>TCP报文段</h3><img src="/2019/05/27/network_learning/TCP%E6%8A%A5%E6%96%87%E9%A6%96%E9%83%A8.png" class="" title="TCP报文首部">
+
 <ol>
 <li>源端口和目的端口：16bit的端口和IP构成socket。</li>
 <li>序号：占四个字节，TCP是面向数据流的，TCP传送的保温可以看作是连续的数据流。其中每一个字节都对应一个序号。“首部的徐浩是指本报问的所发送的数据中的第一个字节的序号。例如，某报文段的序号字段的值是301，而携带的数据共100字节，则本报文段的数据的第一个字节的序号是301，而最后一个字节的序号是400。这样，下一个报文段的数据序号应当从401开始，因而下一个报文段的序号字段的值应为401。</li>
@@ -1289,17 +829,18 @@ class urls(Chain):
 <li>发送端设置计时器，时间到了就把缓存中的数据发送出去。</li>
 </ol>
 <p>实际使用Nagle算法：若发送端应用进程将欲发送的数据逐个字节地送到发送端的TCP缓存，则发送端就将第一个字符(一个字符的长度是一个字节)先发送出去，将后面到达的字符都缓存起来。当接收端收到对第一个字符的确认后，再将缓存中的所有字符装成一个报文段发送出去，同时继续对随后到达的字符进行缓存。只有在收到对前一个报文段的确认后才继续发送下一个报<br>文段。当字符到达较快而网络速率较慢时，用这样的方法可明显地减少所用的网络带宽。算法还规定，当到达的字符已达到窗口大小的一半或已达到报文段的最大长度时，就立即发送一个报文段。</p>
-<img src="/2019/05/27/network_learning/TCP可变窗口流量控制.png" title="可变窗口进行流量控制举例">
+<img src="/2019/05/27/network_learning/TCP%E5%8F%AF%E5%8F%98%E7%AA%97%E5%8F%A3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6.png" class="" title="可变窗口进行流量控制举例">
+
 <p>流量控制不仅是为了使接收端来的及接受，也为了使网络部发生拥塞。</p>
 <p>发送窗口通常用：</p>
-<pre><code>发送窗口 = Min [通知窗口，拥塞窗口]
-</code></pre><ul>
+<pre><code>发送窗口 = Min [通知窗口，拥塞窗口]</code></pre><ul>
 <li>通知窗口(advertised window)是接收端根据其接收能力许诺的窗口值，是来自接收端的流量控制。接收端将通知窗口的值放在TCP报文的首部中，传送给发送端。</li>
 <li>拥塞窗口(congestion window)是发送端根据网络拥塞情况得出的窗口值，是来自发送端的流量控制。</li>
 </ul>
 <h3 id="TCP重传机制"><a href="#TCP重传机制" class="headerlink" title="TCP重传机制"></a>TCP重传机制</h3><p>TCP每发送一个报文段，就设置一次计时器。只要计时器设置的重传时间已经到了但还没有收到确认，就要重传这一报文段。</p>
 <p>TCP采用了一种自适应算法。这种算法记录每一个报文段发出的时间，以及收到相应的确认报文段的时间。这两个时间之差就是报文段的往返时延。将各个报文段的往返时延样本加权平均，就得出报文段的平均往返时延T。每测量到一个新的往返时延样本，就按下式重新计算一次平均往返时延：</p>
-<h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><img src="/2019/05/27/network_learning/三次握手.png" title="三次握手">
+<h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><img src="/2019/05/27/network_learning/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" class="" title="三次握手">
+
 <ol>
 <li>主机A的TCP向主机B的TCP发出连接请求报文段，其首部中的同步比特SYN应置为1，同时选择一个序号x，表明在后面传送数据时的第一个数据字节的序号是x + 1。在图8-19中，一个从A到B的箭头上标有“SYN，SEQ = x”就是这个意思。</li>
 <li>主机B的TCP收到连接请求报文段后，如同意，则发回确认。在确认报文段中应将SYN置为1，确认序号应为x + 1，同时也为自己选择一个序号y。</li>
@@ -1307,7 +848,8 @@ class urls(Chain):
 </ol>
 <p>目的： 主要是为了防止已失效的连接请求报文段突然又传送到了主机B，因而产生错误。</p>
 <p>TCP释放连接：</p>
-<img src="/2019/05/27/network_learning/TCP释放连接.png" title="释放连接">
+<img src="/2019/05/27/network_learning/TCP%E9%87%8A%E6%94%BE%E8%BF%9E%E6%8E%A5.png" class="" title="释放连接">
+
 <ol>
 <li>TCP通知对方要释放从A到B这个方向的连接，将发往主机B的TCP报文段首部的终止比特FIN置1，其序号x等于前面已传送过的数据的最后一个字节的序号加1。</li>
 <li>主机B的TCP收到释放连接通知后即发出确认，其序号为x + 1，同时通知高层应用进程，如图8-20中的箭头①所示。这样，从A到B的连接就释放了，连接处于半关闭(half-close)状态，相当于主机A向主机B说：“我已经没有数据要发送了。但你如果还发送数据，我仍接收。</li>
@@ -1330,866 +872,250 @@ class urls(Chain):
 </ol>
 <h3 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h3><p>工作原理：</p>
 
-          
-        
       
     </div>
-    
-    
-    
 
     
-
     
-
     
 
     <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
+</div>
+
+
 
 
     
-      
 
-  
 
-  
+<div class="post-block">
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/jmeter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Weidong Ji">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Weidong Ji">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="PrueMat">
     </span>
-
-    
       <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/05/12/jmeter/" class="post-title-link" itemprop="url">jmeter学习记录</a>
+        </h2>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/12/jmeter/" itemprop="url">jmeter学习记录</a></h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T22:24:21+08:00">
-                2019-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/性能测试/" itemprop="url" rel="index">
-                    <span itemprop="name">性能测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="jmeter使用基础"><a href="#jmeter使用基础" class="headerlink" title="jmeter使用基础"></a>jmeter使用基础</h1><p>主页面基本介绍：<br><img src="/2019/05/12/jmeter/commonView.png" title="commonView"></p>
-<h2 id="命令行执行"><a href="#命令行执行" class="headerlink" title="命令行执行"></a>命令行执行</h2><pre><code>jmeter -n -t F:\jmeter\TestPlan.jmx -l F:\jmeter\TestPlan.csv
-</code></pre><h2 id="参数处理"><a href="#参数处理" class="headerlink" title="参数处理"></a>参数处理</h2><ul>
-<li>手动填写</li>
-<li><p>读取csv，添加CSV Data Set Config </p>
-<img src="/2019/05/12/jmeter/csvSetConfig.png" title="csvConfig">
-</li>
-<li><p>读取文件</p>
-</li>
-</ul>
-<h2 id="内置变量"><a href="#内置变量" class="headerlink" title="内置变量"></a>内置变量</h2><ul>
-<li>日志函数：<code>${__log(“message here”)}</code></li>
-<li>时间函数 time：<code>${__time(format)}</code></li>
-<li>求和函数 intSum：<code>${__intSum(2,3,result)}</code> 可以调用result变量</li>
-</ul>
-<h2 id="selenium脚本录制"><a href="#selenium脚本录制" class="headerlink" title="selenium脚本录制"></a>selenium脚本录制</h2><ul>
-<li>chrome录制依赖BlazeMeter插件，录制完成导出成jmx格式即可</li>
-<li>fireFox可基于selenium+jmeter插件完成录制（适用于低版本fireFox）</li>
-<li>一个支持fireFox的脚本录制插件：katalon recorder（不支持导出为jmx形式）</li>
-</ul>
-<h2 id="性能测试用例设计"><a href="#性能测试用例设计" class="headerlink" title="性能测试用例设计"></a>性能测试用例设计</h2><p>流程：</p>
-<pre><code>线程组（用例名称），samplers, 逻辑控制器，配置元件，定时器，前置处理器，监听和断言。
-</code></pre><h2 id="测试报告"><a href="#测试报告" class="headerlink" title="测试报告"></a>测试报告</h2><p>csv报告使用参数：</p>
-<pre><code>-l F:\jmeter\TestPlan.csv
-</code></pre><p>html报告使用参数：</p>
-<pre><code>-l F:\jmeter\TestPlan.csv -e -o F:\jmeter\httpReports
-</code></pre><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul>
-<li>http请求生成的csv测试报告，包括一个请求中途重定向等所有路径，csv中看到的请求数量可能是最真实的。</li>
-<li>从csv读取参数时，用excel创建的csv文件无法读取参数,实际使用notepad++创建的csv文件没有问题。</li>
-<li><strong>性能测试难点在于场景模拟，主要维度：</strong><ol>
-<li>有思考时间：用户在不同的操作之间有时间停顿，或者延迟就是模拟用户的操作过程。</li>
-<li>步伐、速度，主要是大量用户进场和退场的时间，控制迭代之间的时间。</li>
-<li>压测时间</li>
-<li>业务场景</li>
-</ol>
-</li>
-<li><p>使用Aggregate Graph（聚合图像报告）抛出了如下异常，<a href="https://stackoverflow.com/questions/52755372/unable-to-display-aggregate-graph-within-jmeter" target="_blank" rel="noopener">stackoverflow</a>给出的答案是5.1版本会修复但是并没有，建议使用http report</p>
-<pre><code>2019-05-11 22:30:01,456 ERROR o.a.j.JMeter: Uncaught exception: 
-java.lang.ArrayIndexOutOfBoundsException: null
-</code></pre></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/算法图解学习笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Weidong Ji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <time title="创建时间：2019-05-12 22:24:21" itemprop="dateCreated datePublished" datetime="2019-05-12T22:24:21+08:00">2019-05-12</time>
     </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PrueMat">
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-04-24 22:34:38" itemprop="dateModified" datetime="2021-04-24T22:34:38+08:00">2021-04-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">性能测试</span></a>
+        </span>
     </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/12/算法图解学习笔记/" itemprop="url">算法图解学习笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T14:18:33+08:00">
-                2019-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="算法图解学习笔记"><a href="#算法图解学习笔记" class="headerlink" title="算法图解学习笔记"></a>算法图解学习笔记</h1><h2 id="第一章-算法简介"><a href="#第一章-算法简介" class="headerlink" title="第一章 算法简介"></a>第一章 算法简介</h2><p>二分查找：时间复杂度O(log n),</p>
-<p>实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 二分法</span><br><span class="line">def binary_search(list, item):</span><br><span class="line">    low = 0</span><br><span class="line">    high = len(list)-1</span><br><span class="line"></span><br><span class="line">    while low &lt;= high:</span><br><span class="line">        mid = (low +high)//2</span><br><span class="line">        guess = list[mid]</span><br><span class="line">        if guess == item:</span><br><span class="line">            return mid</span><br><span class="line">        if guess &lt; item:</span><br><span class="line">            low = mid +1</span><br><span class="line">        else:</span><br><span class="line">            high = mid -1</span><br><span class="line">    return None</span><br></pre></td></tr></table></figure></p>
-<h2 id="第二章-选择排序"><a href="#第二章-选择排序" class="headerlink" title="第二章 选择排序"></a>第二章 选择排序</h2><p>链表：顾名思义，每个元素连接着下一个元素（存储了下一个元素的位置）<br>优势：插入和删除元素方便，存储在内存中的任意位置</p>
-<p>数组：所有元素存储在一起，优势在于随机读取 </p>
-<p>选择排序：遍历数组找出最大或者最小的数放入新的数组中，对剩余的元素继续遍历，直到数组为空。<br>时间复杂度 O(n2)，实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 选择排序</span><br><span class="line">def selectionSorted(arr):</span><br><span class="line">    newArr = []</span><br><span class="line">    for i in range(len(arr)):</span><br><span class="line">        smallest = arr[0]</span><br><span class="line">        smallest_index = 0</span><br><span class="line">        for j in range(1,len(arr)):</span><br><span class="line">            if arr[j] &lt; smallest:</span><br><span class="line">                smallest = arr[j]</span><br><span class="line">                smallest_index = j</span><br><span class="line">        newArr.append(arr.pop(smallest_index))</span><br><span class="line"></span><br><span class="line">    return newArr</span><br></pre></td></tr></table></figure></p>
-<p>冒泡排序：遍历数组，比较每个元素两两大小，将大的或小的值交换，对剩余元素继续遍历。<br>时间复杂度 O(n2)，实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 冒泡排序 </span><br><span class="line">def bubble_sorted(arr):</span><br><span class="line">    for i in range(len(arr)-1):</span><br><span class="line">        for j in range(len(arr)-i-1):</span><br><span class="line">            if arr[j] &gt; arr[j+1]:</span><br><span class="line">                temp = arr[j]</span><br><span class="line">                arr[j] = arr[j+1]</span><br><span class="line">                arr[j+1] = temp</span><br><span class="line">    return arr</span><br></pre></td></tr></table></figure></p>
-<h2 id="第三章-递归"><a href="#第三章-递归" class="headerlink" title="第三章 递归"></a>第三章 递归</h2><p><strong>递归</strong>：返回时调用自己。只是在结构上更加清晰，没有性能上的优势，“如果使用循环，程序的性能可能更高；如果使用递归，程序可能更容易理解。如何选择要看什么对你来说更重要。”</p>
-<p><strong>栈</strong>：一种先入后出的队列，调用栈只支持2种操作：压入（插入）和弹出（删除并读取）</p>
-<h2 id="第四章-快速排序"><a href="#第四章-快速排序" class="headerlink" title="第四章 快速排序"></a>第四章 快速排序</h2><p>核心：取第一个元素作为基准值povit，其余元素与其对比，小的放入less组，大的放入glter组，返回新的数组<code>less+povit+glter</code>,对返回的数据进行同样的操作。<br>时间复杂度 O(n log n), 实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 快速排序</span><br><span class="line">def quicksort(arr):</span><br><span class="line">    if len(arr) &lt; 2:</span><br><span class="line">        return arr</span><br><span class="line">    else:</span><br><span class="line">        pivot = arr[0]</span><br><span class="line">        less = [i for i in arr[1:] if i &lt;= pivot]</span><br><span class="line">        glter = [i for i in arr[1:] if i &gt; pivot]</span><br><span class="line"></span><br><span class="line">        return quicksort(less) +[pivot] + quicksort(glter)</span><br></pre></td></tr></table></figure></p>
-<p><strong>分而治之</strong>（divide and conquer，D&amp;C）：我的理解就是分成等分之后再处理。<br><strong>欧几里得算法</strong>：2个数的最大公约数，等于较小数与2者差值的最大公约数</p>
-<h2 id="第五章-散列表"><a href="#第五章-散列表" class="headerlink" title="第五章 散列表"></a>第五章 散列表</h2><p>列表：</p>
-<p>冲突：如果两个键映射到了同一个位置</p>
-<p>解决方法：使用链表<br>影响列表速度的关键：</p>
-<ol>
-<li>装填因子：元素总数/位置总数，装因子越低，发生冲突的可能性越小，散列表的性能越高。一个不错的经验规则是：一旦填装因子大于0.7，就调整散列表的长度</li>
-<li>良好的散列函数，良好的散列函数让数组中的值呈均匀分布。</li>
-</ol>
-<h2 id="第六章-广度优先搜索"><a href="#第六章-广度优先搜索" class="headerlink" title="第六章 广度优先搜索"></a>第六章 广度优先搜索</h2><p><strong>广度优先搜索</strong>：解决最短路径问题的算法。例如查找整个人际关系网查找水果经销商。主要解决2类问题：</p>
-<ul>
-<li>从节点A出发有到达B的路径吗？</li>
-<li>从节点A到达节点B的最短路径是什么？</li>
-</ul>
-<p><em>队列</em>：实现广度优先搜索的顺序检查的方式；和生活中的排队一样，类似于栈只支持2中操作：<em>入队</em>和<em>出队</em>。<br>与栈的区别：</p>
-<ul>
-<li>队列：先进先出</li>
-<li>栈：先进后出</li>
-</ul>
-<p><strong>图</strong>：图模拟一组连接，由节点（node）和边（edge）组成，一些名词：</p>
-<ul>
-<li>一度关系：节点的邻居</li>
-<li>二度关系：邻居的邻居</li>
-</ul>
-<p>有向图：有箭头指向。<br>树：类似家谱，所有边都是向下指。</p>
-<p>实现：通过dict实现，节点和邻居的关系，并实现邻居与邻居的联系<br>算法：python可以使用deque创建双端队列</p>
-<p>时间复杂度 O(V + E)，其中V为顶点（vertice）数，E为边数</p>
-<p>实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># 广度优先搜索</span><br><span class="line">from collections import deque</span><br><span class="line">def person_is_seller(person): # 指定名字最后以m结尾的是经销商</span><br><span class="line">    return person[-1] == &quot;y&quot;</span><br><span class="line"></span><br><span class="line">graph = &#123;&#125; </span><br><span class="line">graph[&quot;you&quot;] = [&quot;alice&quot;, &quot;bob&quot;, &quot;claire&quot;] </span><br><span class="line">graph[&quot;bob&quot;] = [&quot;anuj&quot;, &quot;peggy&quot;] </span><br><span class="line">graph[&quot;alice&quot;] = [&quot;peggy&quot;] </span><br><span class="line">graph[&quot;claire&quot;] = [&quot;thom&quot;, &quot;jonny&quot;] </span><br><span class="line">graph[&quot;anuj&quot;] = [] </span><br><span class="line">graph[&quot;peggy&quot;] = [] </span><br><span class="line">graph[&quot;thom&quot;] = [] </span><br><span class="line">graph[&quot;jonny&quot;] = []</span><br><span class="line"></span><br><span class="line">def search(name):</span><br><span class="line">    search_queue = deque()</span><br><span class="line">    search_queue += graph[name]</span><br><span class="line">    searched = []</span><br><span class="line">    while search_queue:</span><br><span class="line">        person = search_queue.popleft()</span><br><span class="line">        if not person in searched:</span><br><span class="line">            if person_is_seller(person):</span><br><span class="line">                print(person + &apos; is a mango seller&apos;)</span><br><span class="line">                return True # return 会退出函数</span><br><span class="line">            else:</span><br><span class="line">                search_queue += graph[person]</span><br><span class="line">                searched.append(person)</span><br><span class="line">    return False</span><br></pre></td></tr></table></figure></p>
-<p><em>问题</em>：同一个节点由于可能同时是多个节点的邻居可能会多次进入队列，也会出现无线循环的情况：<br>解决方法：标记节点已经检查。</p>
-<h2 id="第七章-狄克斯特拉算法"><a href="#第七章-狄克斯特拉算法" class="headerlink" title="第七章 狄克斯特拉算法"></a>第七章 狄克斯特拉算法</h2><p>核心：<em>找出图中最便宜的节点，并确保没有到该节点更便宜的路径</em>。<br>适用场景：有向图，不含负加权（<strong>这是因为狄克斯特拉算法这样假设：对于处理过的海报节点，没有前往该节点的更短路径。这种假设仅在没有负权边时才成立</strong>）。</p>
-<p>时间复杂度 O(V + E)，其中V为顶点（vertice）数，E为边数</p>
-<p>实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"># 狄克斯特拉算法</span><br><span class="line"></span><br><span class="line">graph_weight = &#123;&#125;</span><br><span class="line"># 起点的邻居</span><br><span class="line">graph_weight[&apos;start&apos;] = &#123;&#125;</span><br><span class="line">graph_weight[&apos;start&apos;][&apos;a&apos;] = 6</span><br><span class="line">graph_weight[&apos;start&apos;][&apos;b&apos;] = 2</span><br><span class="line"></span><br><span class="line"># a的邻居</span><br><span class="line">graph_weight[&apos;a&apos;] = &#123;&#125;</span><br><span class="line">graph_weight[&apos;a&apos;][&apos;fin&apos;] = 1</span><br><span class="line"></span><br><span class="line"># b 的邻居</span><br><span class="line">graph_weight[&apos;b&apos;] = &#123;&#125;</span><br><span class="line">graph_weight[&apos;b&apos;][&apos;a&apos;] = 3</span><br><span class="line">graph_weight[&apos;b&apos;][&apos;fin&apos;] = 5</span><br><span class="line"></span><br><span class="line"># 终点</span><br><span class="line">graph_weight[&apos;fin&apos;] = &#123;&#125;</span><br><span class="line"></span><br><span class="line"># 开销</span><br><span class="line"></span><br><span class="line">infinity = float(&apos;inf&apos;)</span><br><span class="line">costs = &#123;&#125;</span><br><span class="line">costs[&apos;a&apos;] = 6</span><br><span class="line">costs[&apos;b&apos;] = 2</span><br><span class="line">costs[&apos;fin&apos;] = infinity</span><br><span class="line"></span><br><span class="line"># 父节点</span><br><span class="line">parents = &#123;&#125;</span><br><span class="line">parents[&apos;a&apos;] = &apos;start&apos;</span><br><span class="line">parents[&apos;b&apos;] = &apos;start&apos;</span><br><span class="line">parents[&apos;fin&apos;] = None</span><br><span class="line"></span><br><span class="line">processed = []</span><br><span class="line"># 找出开销最低的节点</span><br><span class="line"></span><br><span class="line">def find_lowest_cost_node(costs):</span><br><span class="line">    lowest_cost = float(&apos;inf&apos;)</span><br><span class="line">    lowest_cost_node = None</span><br><span class="line">    for node in costs:</span><br><span class="line">        cost = costs[node]</span><br><span class="line">        if cost &lt; lowest_cost and node not in processed:</span><br><span class="line">            lowest_cost = cost</span><br><span class="line">            lowest_cost_node = node</span><br><span class="line">    return lowest_cost_node</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">node = find_lowest_cost_node(costs)</span><br><span class="line"></span><br><span class="line">while node is not None:</span><br><span class="line">    cost =  costs[node]</span><br><span class="line">    neighbors = graph_weight[node]</span><br><span class="line">    for n in neighbors.keys():</span><br><span class="line">        new_cost = cost + neighbors[n]</span><br><span class="line">        if costs[n] &gt; new_cost:</span><br><span class="line">            costs[n] = new_cost</span><br><span class="line">            parents[n] = node</span><br><span class="line">    processed.append(node)</span><br><span class="line">    node = find_lowest_cost_node(costs)</span><br></pre></td></tr></table></figure></p>
-<h2 id="第八章-贪婪算法"><a href="#第八章-贪婪算法" class="headerlink" title="第八章 贪婪算法"></a>第八章 贪婪算法</h2><p>每次都取最优解，<br>优劣评判标准：</p>
-<ul>
-<li>速度有多快</li>
-<li>得到的近似解与最优解的接近程度<br><strong>NP完全问题</strong>：以难解著称的问题。<br>时间复杂度 O(n2)<br>实现：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># 贪婪算法</span><br><span class="line"></span><br><span class="line">states_need = set([&apos;mt&apos;, &apos;wa&apos;, &apos;or&apos;, &apos;id&apos;, &apos;nv&apos;, &apos;ut&apos;, &apos;ca&apos;, &apos;az&apos;])</span><br><span class="line"></span><br><span class="line">stations = &#123;&#125;</span><br><span class="line">stations[&apos;kone&apos;] = set([&apos;id&apos;, &apos;nv&apos;, &apos;ut&apos;])</span><br><span class="line">stations[&apos;ktwo&apos;] = set([&apos;wa&apos;, &apos;id&apos;, &apos;mt&apos;])</span><br><span class="line">stations[&apos;kthree&apos;] = set([&apos;or&apos;, &apos;nv&apos;, &apos;ca&apos;])</span><br><span class="line">stations[&apos;kfour&apos;] = set([&apos;nv&apos;, &apos;ut&apos;])</span><br><span class="line">stations[&apos;ktfive&apos;] = set([&apos;ca&apos;, &apos;az&apos;])</span><br><span class="line"></span><br><span class="line">final_stations = set()</span><br><span class="line"></span><br><span class="line"># 实现</span><br><span class="line">while states_need:</span><br><span class="line">    best_station = None</span><br><span class="line">    states_covered = set()</span><br><span class="line"></span><br><span class="line">    for station, states_for_station in stations.items():</span><br><span class="line">        covered = states_need &amp; states_for_station</span><br><span class="line">        if len(covered) &gt; len(states_covered):</span><br><span class="line">            best_station = station</span><br><span class="line">            states_covered = covered</span><br><span class="line">    final_stations.add(best_station)</span><br><span class="line">    states_need -= states_covered</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="第九章-动态规划"><a href="#第九章-动态规划" class="headerlink" title="第九章 动态规划"></a>第九章 动态规划</h2><p>限制：<em>动态规划功能强大，它能够解决子问题并使用这些答案来解决大问题。但仅当每个子问题都是离散的，即不依赖于其他子问题时，动态规划才管用</em><br><strong>2种计算维度</strong>：</p>
-<ul>
-<li><p>比较最长公共子串：两个字符串都包含的最长子串的长度，伪代码：</p>
-<pre><code>if word_a[i] == word_b[j]: 
-    cell[i][j] = cell[i-1][j-1] + 1 
-else: 
-    cell[i][j] = 0 
-</code></pre></li>
-<li><p>最长公共子序列：两个单词中都有的序列包含的字母数，伪代码：</p>
-<pre><code>if word_a[i] == word_b[j]:
-    cell[i][j] = cell[i-1][j-1] + 1 
-else: 
-    cell[i][j] = max(cell[i-1][j], cell[i][j-1])
-</code></pre><p>应用：DNA相似度，git diff的实现</p>
-</li>
-</ul>
-<p>具体适用场景：</p>
-<ul>
-<li>需要在给定约束条件下优化某种指标时，动态规划很有用。</li>
-<li>问题可以分为离散问题时，可以使用动态规划来解决。</li>
-<li>每种动态规划都涉及网络。</li>
-<li>单元格的值就是要优化的值。</li>
-<li>每一个单元格都是一个子问题，因此需要将问题划分为子问题。</li>
-<li>计算动态规划的公式不唯一。</li>
-</ul>
-<h2 id="第十章-K最近邻算法"><a href="#第十章-K最近邻算法" class="headerlink" title="第十章 K最近邻算法"></a>第十章 K最近邻算法</h2><p>K最近邻算法（KNN）：</p>
-<ol>
-<li>对一个水果进行分类</li>
-<li>查看他的最近3个邻居</li>
-<li>邻居中最多的种类，是可能的类型</li>
-</ol>
-<p>回归：计算出邻居的平局值</p>
-<p><strong>机器学习</strong>：<br>OCR（图像识别）原理，</p>
-<ol>
-<li>浏览大量数字图片，提取数字图片特征（线，点，曲线特征）。–<strong>训练</strong></li>
-<li>遇到新图像时，提取图像的特征，找出他最近的邻居。</li>
-</ol>
-<p><em>**总结</em>：</p>
-<ul>
-<li>KNN就是用于分类和回归，需要考虑最近的邻居</li>
-<li>分类就是编组</li>
-<li>回归就是预测结果</li>
-<li>特征抽取意味着将物品转换为一系列可比较的数字</li>
-<li>能否挑选合适的特征事关KNN算法的成败</li>
-</ul>
-<h2 id="第十一章-十种算法"><a href="#第十一章-十种算法" class="headerlink" title="第十一章 十种算法"></a>第十一章 十种算法</h2><h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p>定义：对于每一个节点，左子节点的值都比他小，右子节点的值都比他大<br>对比快速排序：</p>
-<ul>
-<li>优点：二叉树查找法的插入和删除速度要快的很多；</li>
-<li>缺点：不能随机访问</li>
-</ul>
-<p>扩展：<em>堆</em>：又被为优先队列(priority queue)。尽管名为优先队列，但堆并不是队列。回忆一下，在队列中，我们可以进行的限定操作是dequeue和enqueue。dequeue是按照进入队列的先后顺序来取出元素。而在堆中，我们不是按照元素进入队列的先后顺序取出元素的，而是按照元素的优先级取出元素。<a href="https://www.cnblogs.com/vamei/archive/2013/03/20/2966612.html" target="_blank" rel="noopener">堆</a></p>
-<p>插入：进行名为<code>[precolate_up</code>的操作：在树的最后插入元素，和其父节点比较优先级大小，比父节点大就进行交换，直到优先级小于父节点。</p>
-<p>删除：只能删除根节点，成为2个子树；让最后一个元素（last）成为根节点，进行<code>precolate_down</code>操作，不断比较last节点和子节点的优先级大小，如果last的优先级比2个子结点中小的那个大，则和其交换位置。</p>
-<h3 id="反向索引"><a href="#反向索引" class="headerlink" title="反向索引"></a>反向索引</h3><p>定义：字典的key为单词，值为所在的页码</p>
-<p>作用：用于搜索引擎</p>
-<h3 id="傅里叶变换-？？"><a href="#傅里叶变换-？？" class="headerlink" title="傅里叶变换 ？？"></a>傅里叶变换 ？？</h3><h3 id="并行算法"><a href="#并行算法" class="headerlink" title="并行算法"></a>并行算法</h3><p>主要的问题：</p>
-<ol>
-<li>并行性管理开销：如何合理分配任务，如何有效合并任务</li>
-<li>负载均衡：如何均匀的分配任务，让各个内核的任务达到负载均衡</li>
-</ol>
-<p><strong>MapReduce</strong>：流行的分布式算法</p>
-<p>map（映射函数）：接受一个数组，并对每个元素执行同样的操作</p>
-<p>reduce（归并函数）：将一个数组转化成一个元素。</p>
-<h3 id="概率性算法"><a href="#概率性算法" class="headerlink" title="概率性算法"></a>概率性算法</h3><p><strong>布隆过滤器</strong>：一种概率性的数据结构，结果可能不对，很可能是正确的</p>
-<ul>
-<li>可能出错的情况：指出结果是正确时，结果可能是错误的</li>
-<li>不可能错误的情况：指出结果是错误的情况时<br><strong>HyperLogLog</strong></li>
-</ul>
-<h3 id="SHA算法"><a href="#SHA算法" class="headerlink" title="SHA算法"></a>SHA算法</h3><p>散列函数：即反向索引<br>安全散列算法函数（SHA）：给定一个字符串，返回其散列值。<strong>无法根据散列值推算出字符串</strong><br>特点：局部不敏感：改动一个字符串，返回的散列值没有任何的相似性，</p>
-<h3 id="Diffie-Hellman-密钥交换"><a href="#Diffie-Hellman-密钥交换" class="headerlink" title="Diffie-Hellman 密钥交换"></a>Diffie-Hellman 密钥交换</h3><p>特点:公钥和私钥结合使用：使用公钥生成散列值，使用私钥揭秘散列值。</p>
-<h3 id="线性规划：即使用方程求最优化解"><a href="#线性规划：即使用方程求最优化解" class="headerlink" title="线性规划：即使用方程求最优化解"></a>线性规划：即使用方程求最优化解</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/01/hexo-github搭建过程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Weidong Ji">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PrueMat">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/01/hexo-github搭建过程/" itemprop="url">hexo + github搭建过程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-01T10:21:04+08:00">
-                2019-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/git-pages/" itemprop="url" rel="index">
-                    <span itemprop="name">git pages</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
-<li>GitHub配置</li>
-<li>hexo安装</li>
-<li>hexo配置及命令</li>
-<li>hexo</li>
-</ul>
-<h3 id="git-配置"><a href="#git-配置" class="headerlink" title="git 配置"></a>git 配置</h3><p>安装git，配置账户及ssh密钥，<a href="&#39;https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000&#39;" title="廖雪峰 Git教程">Git教程</a></p>
-<p>github上创建git Pages项目，使用git托管项目名称为：<em><code>用户名.github.io</code></em>,项目权限必须是<em>public</em>;</p>
-<h3 id="hexo-安装"><a href="#hexo-安装" class="headerlink" title="hexo 安装"></a>hexo 安装</h3><p>安装<a href="&#39;https://nodejs.org/en/download/&#39;" title="Node.js">node.js</a><br>安装hexo，进入cmd执行安装命令：</p>
-<pre><code>npm install -g hexo-cli
-</code></pre><p>初始化hexo项目blog：创建一个Blog文件夹，cmd在该目录下执行</p>
-<pre><code>hexo init blog
-</code></pre><p>启动hexo</p>
-<pre><code>hexo g
-hexo s
-</code></pre><p>部署hexo</p>
-<pre><code>hexo d
-</code></pre><p>tips：部署后打开站点修改可能不会立即生效，需要等待</p>
-<h3 id="hexo-配置及命令"><a href="#hexo-配置及命令" class="headerlink" title="hexo 配置及命令"></a>hexo 配置及命令</h3><h4 id="站点配置，配置文件-blog-config-yml"><a href="#站点配置，配置文件-blog-config-yml" class="headerlink" title="站点配置，配置文件 blog/_config.yml"></a>站点配置，配置文件 <code>blog/_config.yml</code></h4><p>基本信息</p>
-<pre><code># Site
-title: PrueMat # 站点名称
-subtitle:
-description:
-keywords:
-author: Weidong Ji
-language: zh-Hans # 中文
-timezone: Asia/Shanghai #
-</code></pre><p>主题：</p>
-<pre><code>theme: next
-</code></pre><p>部署：</p>
-<pre><code># Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy: # 部署配置
-type: git #部署方式
-repo: https://github.com/WeidongJ/WeidongJ.github.io.git # git
-branch: master
-</code></pre><p>Tips:修改站点配置后需要执行clean命令才能生效：</p>
-<pre><code>hexo clean
-hexo g
-hexo s
-</code></pre><h4 id="主题配置（next）"><a href="#主题配置（next）" class="headerlink" title="主题配置（next）"></a>主题配置（next）</h4><p>使用命令clone next主题文件夹</p>
-<pre><code>git clone https://github.com/iissnan/hexo-theme-next themes/next
-</code></pre><p>修改样式，配置文件 <code>blog/themes/next/_config.yml</code></p>
-<pre><code># Schemes
-#scheme: Muse
-#scheme: Mist
-scheme: Pisces # 指定样式
-#scheme: Gemini
-</code></pre><p>tips：非站点配置，一般不用执行clean命令</p>
-<pre><code>hexo g
-hexo s
-</code></pre><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="迁移本地hexo文件及配置至git"><a href="#迁移本地hexo文件及配置至git" class="headerlink" title="迁移本地hexo文件及配置至git"></a>迁移本地hexo文件及配置至git</h3><p>cmd至Blog目录，把文件夹推送至项目 dev 分支</p>
-<pre><code>git push git@github.com:WeidongJ/WeidongJ.github.io.git -b dev
-</code></pre><p>问题：推送出去的next文件夹不可用</p>
-<p>原因：next文件夹是git项目</p>
-<p>解决方法：</p>
-<ol>
-<li>设置windows查看，显示隐藏项目，删除<code>.git</code></li>
-<li>删除git上next文件夹</li>
-<li>重新 push</li>
-</ol>
-<h3 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h3><p>hexo 使用介绍：<a href="&#39;https://hexo.io/zh-cn/docs/&#39;" title="hexo doc">hexo文档</a><br>next 使用介绍：<a href="&#39;https://theme-next.org/docs/&#39;" title="next doc">next文档</a><br>markdown 使用介绍：<a href="&#39;http://www.markdown.cn/&#39;" title="markdown doc">markdown文档</a></p>
-<h3 id="待学习"><a href="#待学习" class="headerlink" title="待学习"></a>待学习</h3><p>hexo 分享及页面定制，嵌入等</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-
-
-          </div>
-          
-
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Weidong Ji</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Weidong Ji</span>
 
   
 </div>
 
+        </div>
+      </header>
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
-
-
-
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>jmeter使用笔记</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/05/12/jmeter/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
         
+      
+    </div>
 
+    
+    
+    
 
-
-
-
-
-
-        
-      </div>
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
     </footer>
+  </article>
+</div>
+
+
+
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
 
-    
 
-  </div>
-
+<div class="post-block">
+  
   
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Weidong Ji">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrueMat">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/05/12/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">算法图解学习笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-05-12 14:18:33" itemprop="dateCreated datePublished" datetime="2019-05-12T14:18:33+08:00">2019-05-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-04-24 22:33:34" itemprop="dateModified" datetime="2021-04-24T22:33:34+08:00">2021-04-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>算法图解学习笔记</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/05/12/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
 
 
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Weidong Ji</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
 
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
 
 
 
@@ -2201,126 +1127,6 @@ hexo s
 
 
 
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
